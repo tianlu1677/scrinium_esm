@@ -1,0 +1,37 @@
+<%=
+  f.input :name,
+  label: false,
+  placeholder: t('model.name'),
+  required: true
+%>
+<%=
+  f.input :short_name,
+  label: false,
+  placeholder: t('model.short_name'),
+  required: true
+%>
+<%=
+  f.input :repository_url,
+  label: false,
+  placeholder: t('model.repository_url'),
+  required: true
+%>
+<%=
+  f.input :description,
+  label: false,
+  placeholder: t('global.description'),
+  required: true,
+  as: :text
+%>
+<%=
+  f.input :contact_id,
+  label: false,
+  required: true,
+  collection: [model.contact_id],
+  input_html: {
+    id: 'input-user-name',
+    data: {
+      placeholder: t('global.contact')
+    }
+  }
+%>

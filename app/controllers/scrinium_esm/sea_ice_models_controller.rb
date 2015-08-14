@@ -1,0 +1,67 @@
+require_dependency "scrinium_esm/application_controller"
+
+module ScriniumEsm
+  class SeaIceModelsController < ApplicationController
+    before_action :set_sea_ice_model, only: [:show, :edit, :update, :destroy]
+
+    # GET /sea_ice_models
+    def index
+      @sea_ice_models = SeaIceModel.all
+    end
+
+    # GET /sea_ice_models/1
+    def show
+    end
+
+    # GET /sea_ice_models/new
+    def new
+      @sea_ice_model = SeaIceModel.new
+    end
+
+    # GET /sea_ice_models/1/edit
+    def edit
+    end
+
+    # POST /sea_ice_models
+    def create
+      @sea_ice_model = SeaIceModel.new(sea_ice_model_params)
+
+      if @sea_ice_model.save
+        redirect_to @sea_ice_model, notice: t('message.create_success', thing: t('models.sea_ice'))
+      else
+        render :new
+      end
+    end
+
+    # PATCH/PUT /sea_ice_models/1
+    def update
+      if @sea_ice_model.update(sea_ice_model_params)
+        redirect_to @sea_ice_model, notice: t('message.update_success', thing: t('models.sea_ice'))
+      else
+        render :edit
+      end
+    end
+
+    # DELETE /sea_ice_models/1
+    def destroy
+      @sea_ice_model.destroy
+      redirect_to sea_ice_models_url, notice: t('message.destroy_success', thing: t('models.sea_ice'))
+    end
+
+    private
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_sea_ice_model
+      @sea_ice_model = SeaIceModel.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def sea_ice_model_params
+      params.require(:sea_ice_model).permit(:name,
+                                            :short_name,
+                                            :contact_id,
+                                            :repository_url,
+                                            :description)
+    end
+  end
+end

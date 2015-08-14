@@ -1,0 +1,11 @@
+<% content_for :title, t('models.ocn') %>
+
+<% content_for :main_block do %>
+  <%=
+    render partial: 'scrinium_esm/commons/model_list',
+    locals: { models: ScriniumEsm::OcnModel.all }
+  %>
+  <% if is_super_admin?(current_user) %>
+    <%= link_to t('action.add'), new_ocn_model_path, class: 'button right' %>
+  <% end %>
+<% end %>

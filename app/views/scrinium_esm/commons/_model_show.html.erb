@@ -1,0 +1,17 @@
+<% content_for :title, model.short_name %>
+
+<% content_for :left_side do %>
+  <%=
+    render partial: 'scrinium_esm/commons/model_profile_left',
+    locals: { model: model }
+  %>
+<% end %>
+
+<% content_for :main_block do %>
+  <dl>
+    <dt><%= t('global.description') %></dt>
+    <dd>
+      <%= markdown model.description %>
+    </dd>
+  </dl>
+<% end %>

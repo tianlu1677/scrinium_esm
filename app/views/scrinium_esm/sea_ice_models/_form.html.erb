@@ -1,10 +1,10 @@
 <div class='model-form'>
-  <%= simple_form_for @atm_model do |f| %>
+  <%= simple_form_for @sea_ice_model do |f| %>
     <%=
       render partial: 'scrinium_esm/commons/model_form',
-      locals: { f: f, model: @atm_model }
+      locals: { f: f, model: @sea_ice_model }
     %>
-    <% if @atm_model.id %>
+    <% if @sea_ice_model.id %>
       <%= f.button :submit, t('action.edit'), class: 'button right' %>
     <% else %>
       <%= f.button :submit, t('action.add'), class: 'button right' %>

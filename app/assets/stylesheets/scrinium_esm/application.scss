@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+.model-form {
+ padding-top: 30px;
+ max-width: 320px;
+ margin: auto;
+ h3 {
+   margin-top: 0;
+   margin-bottom: 20px;
+ }
+ textarea.text {
+   height: 200px;
+ }
+}

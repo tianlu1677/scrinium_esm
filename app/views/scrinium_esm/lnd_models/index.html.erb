@@ -1,0 +1,11 @@
+<% content_for :title, t('models.lnd') %>
+
+<% content_for :main_block do %>
+  <%=
+    render partial: 'scrinium_esm/commons/model_list',
+    locals: { models: ScriniumEsm::LndModel.all }
+  %>
+  <% if is_super_admin?(current_user) %>
+    <%= link_to t('action.add'), new_lnd_model_path, class: 'button right' %>
+  <% end %>
+<% end %>

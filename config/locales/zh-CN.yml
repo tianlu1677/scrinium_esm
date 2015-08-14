@@ -1,0 +1,24 @@
+zh-CN:
+  model:
+    short_name: 模式简称
+    name: 模式全称
+    repository_url: 版本库地址
+
+  models:
+    model: 模式
+    atm: 大气环流模式
+    ocn: 海洋环流模式
+    lnd: 陆面模式
+    sea_ice: 海冰模式
+    coupled: 耦合模式
+    esm: 地球系统模式
+
+  activerecord:
+    errors:
+      models:
+        scrinium_esm/atm_model:
+          attributes:
+            name:
+              taken: 已经存在相同名称的大气环流模式！
+            short_name:
+              taken: 已经存在相同简称的大气环流模式！

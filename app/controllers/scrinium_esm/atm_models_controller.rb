@@ -27,7 +27,7 @@ module ScriniumEsm
       @atm_model = AtmModel.new(atm_model_params)
 
       if @atm_model.save
-        redirect_to @atm_model, notice: 'Atm model was successfully created.'
+        redirect_to @atm_model, notice: t('message.create_success', thing: t('models.atm'))
       else
         render :new
       end
@@ -36,7 +36,7 @@ module ScriniumEsm
     # PATCH/PUT /atm_models/1
     def update
       if @atm_model.update(atm_model_params)
-        redirect_to @atm_model, notice: 'Atm model was successfully updated.'
+        redirect_to @atm_model, notice: t('message.update_success', thing: t('models.atm'))
       else
         render :edit
       end
@@ -45,18 +45,22 @@ module ScriniumEsm
     # DELETE /atm_models/1
     def destroy
       @atm_model.destroy
-      redirect_to atm_models_url, notice: 'Atm model was successfully destroyed.'
+      redirect_to atm_models_url, notice: t('message.destroy_success', thing: t('models.atm'))
     end
 
     private
-      # Use callbacks to share common setup or constraints between actions.
-      def set_atm_model
-        @atm_model = AtmModel.find(params[:id])
-      end
 
-      # Only allow a trusted parameter "white list" through.
-      def atm_model_params
-        params.require(:atm_model).permit(:name, :description)
-      end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_atm_model
+      @atm_model = AtmModel.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def atm_model_params
+      params.require(:atm_model).permit(:name,
+                                        :short_name,
+                                        :description,
+                                        :contact_id)
+    end
   end
 end
