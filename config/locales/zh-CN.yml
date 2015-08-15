@@ -3,6 +3,21 @@ zh-CN:
     short_name: 模式简称
     name: 模式全称
     repository_url: 版本库地址
+    affiliation: 所属单位
+    simulation_region: 模拟区域
+    simulation_regions:
+      global: 全球
+      regional: 区域
+    simulation_type: 模拟类型
+    simulation_types:
+      climate: 气候
+      weather: 天气
+    horizontal_mesh: 水平网格
+    vertical_coordinate: 垂直坐标
+    dynamical_core: 动力框架
+    advection_scheme: 平流方案
+    physics_parameterization: 物理参数化
+    scheme_name: 方案名称
 
   models:
     model: 模式
@@ -13,6 +28,33 @@ zh-CN:
     coupled: 耦合模式
     esm: 地球系统模式
 
+  atm_model:
+    is_hydrostatic: 精力平衡假设
+    is_shallow: 浅层假设
+    horizontal_meshes:
+      lat_lon: 经纬网格
+      cubed_sphere: 立方球网格
+    vertical_coordinates:
+      classic_sigma_pressure: 经典𝜎气压垂直坐标
+      hybrid_sigma_pressure: 混合𝜎气压垂直坐标
+      float_lagrangian_pressure: 浮动拉格朗日气压垂直坐标
+    physics_parameterizations:
+      radiation_scheme: 辐射参数化方案
+      convection_scheme: 对流参数化方案
+      microphysics_scheme: 云微微物理参数化方案
+      planet_boundary_layer_scheme: 边界层参数化方案
+      gravity_drag_scheme: 重力波拖曳参数化方案
+
+  ocn_model:
+    horizontal_meshes:
+      lat_lon: 经纬网格
+      tripole: 三级网格
+      rotation: 旋转网格
+    vertical_coordinates:
+      height: 高度垂直坐标
+      hybrid_sigma_height: 混合𝜎高度垂直坐标
+      isopycnic: 等密度垂直坐标
+
   activerecord:
     errors:
       models:
@@ -22,3 +64,7 @@ zh-CN:
               taken: 已经存在相同名称的大气环流模式！
             short_name:
               taken: 已经存在相同简称的大气环流模式！
+        scrinium_esm/ocn_model:
+          attributes:
+            contact_id:
+              blank: 未指定联系人！

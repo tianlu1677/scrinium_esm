@@ -1,3 +1,33 @@
+<% content_for :specification do %>
+  <div class='col-md-8'>
+    <dl>
+      <dt><%= t('model.dynamical_core') %></dt>
+      <dd>
+        <table class='table'>
+          <tbody>
+            <tr>
+              <td><%= t('model.dynamical_core')+t('model.scheme_name') %></td>
+              <td><%= @ocn_model.dynamical_core %></td>
+            </tr>
+            <tr>
+              <td><%= t('model.advection_scheme')+t('model.scheme_name') %></td>
+              <td><%= @ocn_model.advection_scheme %></td>
+            </tr>
+            <tr>
+              <td><%= t('model.horizontal_mesh') %></td>
+              <td><%= @ocn_model.horizontal_mesh %></td>
+            </tr>
+            <tr>
+              <td><%= t('model.vertical_coordinate') %></td>
+              <td><%= @ocn_model.vertical_coordinate %></td>
+            </tr>
+          </tbody>
+        </table>
+      </dd>
+    </dl>
+  </div>
+<% end %>
+
 <%= render partial: 'scrinium_esm/commons/model_show',
   locals: { model: @ocn_model }
 %>

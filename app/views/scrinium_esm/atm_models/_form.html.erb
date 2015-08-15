@@ -1,9 +1,101 @@
 <div class='model-form'>
   <%= simple_form_for @atm_model do |f| %>
-    <%=
-      render partial: 'scrinium_esm/commons/model_form',
-      locals: { f: f, model: @atm_model }
-    %>
+    <div class='row'>
+      <div class='col-md-4'>
+        <dl>
+          <dt><%= t('global.basic_info') %></dt>
+          <dd>
+            <%=
+              render partial: 'scrinium_esm/commons/model_form',
+              locals: { f: f, model: @atm_model }
+            %>
+          </dd>
+        </dl>
+      </div>
+      <div class='col-md-4'>
+        <dl>
+          <dt><%= t('model.dynamical_core') %></dt>
+          <dd>
+            <%=
+              f.input :dynamical_core,
+              label: false,
+              placeholder: t('model.dynamical_core')+t('model.scheme_name')
+            %>
+            <%=
+              f.input :advection_scheme,
+              label: false,
+              placeholder: t('model.advection_scheme')+t('model.scheme_name')
+            %>
+            <div class='row'>
+              <div class='col-md-6'>
+                <%=
+                  f.input :is_hydrostatic,
+                  label: t('atm_model.is_hydrostatic'),
+                  required: true
+                %>
+              </div>
+              <div class='col-sm-6'>
+                <%=
+                  f.input :is_shallow,
+                  label: t('atm_model.is_shallow'),
+                  required: true
+                %>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-md-6'>
+                <%=
+                  f.input :horizontal_mesh,
+                  label: t('model.horizontal_mesh'),
+                  collection: ScriniumEsm::AtmModel.horizontal_meshes,
+                  selected: ScriniumEsm::AtmModel.horizontal_meshes[@atm_model.horizontal_mesh]
+                %>
+              </div>
+              <div class='col-md-6'>
+                <%=
+                  f.input :vertical_coordinate,
+                  label: t('model.vertical_coordinate'),
+                  collection: ScriniumEsm::AtmModel.vertical_coordinates,
+                  selected: ScriniumEsm::AtmModel.vertical_coordinates[@atm_model.vertical_coordinate]
+                %>
+              </div>
+            </div>
+          </dd>
+        </dl>
+      </div>
+      <div class='col-md-4'>
+        <dl>
+          <dt><%= t('model.physics_parameterization') %></dt>
+          <dd>
+            <%=
+              f.input :radiation_scheme,
+              label: false,
+              placeholder: t('atm_model.physics_parameterizations.radiation_scheme')+t('model.scheme_name')
+            %>
+            <%=
+              f.input :convection_scheme,
+              label: false,
+              placeholder: t('atm_model.physics_parameterizations.convection_scheme')+t('model.scheme_name')
+            %>
+            <%=
+              f.input :microphysics_scheme,
+              label: false,
+              placeholder: t('atm_model.physics_parameterizations.microphysics_scheme')+t('model.scheme_name')
+            %>
+            <%=
+              f.input :planet_boundary_layer_scheme,
+              label: false,
+              placeholder: t('atm_model.physics_parameterizations.planet_boundary_layer_scheme')+t('model.scheme_name')
+            %>
+            <%=
+              f.input :gravity_drag_scheme,
+              label: false,
+              placeholder: t('atm_model.physics_parameterizations.gravity_drag_scheme')+t('model.scheme_name')
+            %>
+          </dd>
+        </dl>
+      </div>
+    </div>
     <% if @atm_model.id %>
       <%= f.button :submit, t('action.edit'), class: 'button right' %>
     <% else %>

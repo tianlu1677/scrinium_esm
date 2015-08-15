@@ -2,6 +2,7 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class CoupledModelsController < ApplicationController
+    before_filter :authenticate_user!, :except => [:index, :show]
     before_action :set_coupled_model, only: [:show, :edit, :update, :destroy]
 
     # GET /coupled_models
@@ -61,7 +62,10 @@ module ScriniumEsm
                                             :short_name,
                                             :contact_id,
                                             :repository_url,
-                                            :description)
+                                            :description
+                                            :affiliation,
+                                            :simulation_region,
+                                            :simulation_type)
     end
   end
 end

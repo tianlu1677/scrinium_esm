@@ -1,9 +1,14 @@
 <div class='model-form'>
   <%= simple_form_for @sea_ice_model do |f| %>
-    <%=
-      render partial: 'scrinium_esm/commons/model_form',
-      locals: { f: f, model: @sea_ice_model }
-    %>
+    <dl>
+      <dt><%= t('global.basic_info') %></dt>
+      <dd>
+        <%=
+          render partial: 'scrinium_esm/commons/model_form',
+          locals: { f: f, model: @sea_ice_model }
+        %>
+      </dd>
+    </dl>
     <% if @sea_ice_model.id %>
       <%= f.button :submit, t('action.edit'), class: 'button right' %>
     <% else %>

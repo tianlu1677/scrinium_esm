@@ -2,6 +2,7 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class AtmModelsController < ApplicationController
+    before_filter :authenticate_user!, :except => [:index, :show]
     before_action :set_atm_model, only: [:show, :edit, :update, :destroy]
 
     # GET /atm_models
@@ -57,10 +58,28 @@ module ScriniumEsm
 
     # Only allow a trusted parameter "white list" through.
     def atm_model_params
+      ApplicationHelper.transform_params params, :atm_model,
+        [:simulation_region, :simulation_type, :horizontal_mesh,
+         :vertical_coordinate, :vertical_mesh]
       params.require(:atm_model).permit(:name,
                                         :short_name,
                                         :description,
-                                        :contact_id)
+                                        :contact_id,
+                                        :affiliation,
+                                        :simulation_region,
+                                        :simulation_type,
+                                        :is_hydrostatic,
+                                        :is_shallow,
+                                        :horizontal_mesh,
+                                        :vertical_coordinate,
+                                        :vertical_mesh,
+                                        :dynamical_core,
+                                        :advection_scheme,
+                                        :radiation_scheme,
+                                        :convection_scheme,
+                                        :microphysics_scheme,
+                                        :planet_boundary_layer_scheme,
+                                        :gravity_drag_scheme)
     end
   end
 end

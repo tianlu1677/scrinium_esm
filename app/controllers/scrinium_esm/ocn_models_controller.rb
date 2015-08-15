@@ -2,6 +2,7 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class OcnModelsController < ApplicationController
+    before_filter :authenticate_user!, :except => [:index, :show]
     before_action :set_ocn_model, only: [:show, :edit, :update, :destroy]
 
     # GET /ocn_models
@@ -57,11 +58,22 @@ module ScriniumEsm
 
     # Only allow a trusted parameter "white list" through.
     def ocn_model_params
+      ApplicationHelper.transform_params params, :ocn_model,
+        [:simulation_region, :simulation_type, :horizontal_mesh,
+         :vertical_coordinate, :vertical_mesh]
       params.require(:ocn_model).permit(:name,
                                         :short_name,
                                         :contact_id,
                                         :repository_url,
-                                        :description)
+                                        :description,
+                                        :affiliation,
+                                        :simulation_region,
+                                        :simulation_type,
+                                        :dynamical_core,
+                                        :advection_scheme,
+                                        :horizontal_mesh,
+                                        :vertical_coordinate,
+                                        :vertical_mesh)
     end
   end
 end

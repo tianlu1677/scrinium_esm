@@ -1,9 +1,53 @@
 <div class='model-form'>
   <%= simple_form_for @ocn_model do |f| %>
-    <%=
-      render partial: 'scrinium_esm/commons/model_form',
-      locals: { f: f, model: @ocn_model }
-    %>
+    <div class='row'>
+      <div class='col-md-4'>
+        <dl>
+          <dt><%= t('global.basic_info') %></dt>
+          <dd>
+            <%=
+              render partial: 'scrinium_esm/commons/model_form',
+              locals: { f: f, model: @ocn_model }
+            %>
+          </dd>
+        </dl>
+      </div>
+      <div class='col-md-4'>
+        <dl>
+          <dt><%= t('model.dynamical_core') %></dt>
+          <dd>
+            <%=
+              f.input :dynamical_core,
+              label: false,
+              placeholder: t('model.dynamical_core')+t('model.scheme_name')
+            %>
+            <%=
+              f.input :advection_scheme,
+              label: false,
+              placeholder: t('model.advection_scheme')+t('model.scheme_name')
+            %>
+            <div class='row'>
+              <div class='col-md-6'>
+                <%=
+                  f.input :horizontal_mesh,
+                  label: t('model.horizontal_mesh'),
+                  collection: ScriniumEsm::OcnModel.horizontal_meshes,
+                  selected: ScriniumEsm::OcnModel.horizontal_meshes[@ocn_model.horizontal_mesh]
+                %>
+              </div>
+              <div class='col-md-6'>
+                <%=
+                  f.input :vertical_coordinate,
+                  label: t('model.vertical_coordinate'),
+                  collection: ScriniumEsm::OcnModel.vertical_coordinates,
+                  selected: ScriniumEsm::OcnModel.vertical_coordinates[@ocn_model.vertical_coordinate]
+                %>
+              </div>
+            </div>
+          </dd>
+        </dl>
+      </div>
+    </div>
     <% if @ocn_model.id %>
       <%= f.button :submit, t('action.edit'), class: 'button right' %>
     <% else %>
