@@ -1,4 +1,8 @@
 zh-CN:
+  scrinium_esm:
+    model: 模式
+    experiment: 试验
+
   model:
     short_name: 模式简称
     name: 模式全称
@@ -20,7 +24,6 @@ zh-CN:
     scheme_name: 方案名称
 
   models:
-    model: 模式
     atm: 大气环流模式
     ocn: 海洋环流模式
     lnd: 陆面模式
@@ -55,6 +58,11 @@ zh-CN:
       hybrid_sigma_height: 混合𝜎高度垂直坐标
       isopycnic: 等密度垂直坐标
 
+  experiment:
+    name: 试验名称
+    description: 试验简介
+    type: 试验类型
+
   activerecord:
     errors:
       models:
@@ -64,7 +72,13 @@ zh-CN:
               taken: 已经存在相同名称的大气环流模式！
             short_name:
               taken: 已经存在相同简称的大气环流模式！
+            contact_id:
+              blank: 未指定联系人！
         scrinium_esm/ocn_model:
           attributes:
+            name:
+              taken: 已经存在相同名称的海洋环流模式！
+            short_name:
+              taken: 已经存在相同简称的海洋环流模式！
             contact_id:
               blank: 未指定联系人！

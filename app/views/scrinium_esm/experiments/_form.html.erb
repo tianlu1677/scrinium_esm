@@ -1,0 +1,115 @@
+<div class='experiment-form'>
+  <%= simple_form_for @experiment do |f| %>
+    <div class='row'>
+      <div class='col-md-6'>
+        <dl>
+          <dt><%= t('global.basic_info') %></dt>
+          <dd>
+            <%=
+              f.input :name,
+              label: false,
+              placeholder: t('experiment.name'),
+              required: true %>
+            <%=
+              f.input :description,
+              label: false,
+              placeholder: t('experiment.description'),
+              required: true,
+              as: :text
+            %>
+            <div class='row'>
+              <div class='col-md-3'>
+                <%=
+                  f.input :contact_id,
+                  label: false,
+                  required: true,
+                  collection: [@experiment.contact_id],
+                  input_html: {
+                    id: 'input-user-name',
+                    data: {
+                      placeholder: t('global.contact')
+                    }
+                  }
+                %>
+              </div>
+              <div class='col-md-3' id='input-experiment-type'>
+                <%=
+                  f.input :experimentable_type,
+                  label: false,
+                  collection: ScriniumEsm::Experiment::TypeMap.keys,
+                  include_blank: true,
+                  selected: get_experiment_type(@experiment),
+                  input_html: {
+                    id: 'input-experiment-type'
+                  }
+                %>
+              </div>
+              <div class='col-md-3' id='input-atm-model-id'
+              <% if @experiment.experimentable_type == 'ScriniumEsm::AtmModel' %>
+                >
+              <% else %>
+                style='display:none'>
+              <% end %>
+                <%=
+                  f.input :experimentable_id,
+                  label: false,
+                  collection: ScriniumEsm::AtmModel.all,
+                  include_blank: true,
+                  selected: get_experimentable_id(@experiment),
+                  label_method: :short_name,
+                  value_method: :id,
+                  input_html: {
+                    id: 'input-atm-model-id'
+                  }
+                %>
+              </div>
+              <div class='col-md-3' id='input-ocn-model-id'
+              <% if @experiment.experimentable_type == 'ScriniumEsm::OcnModel' %>
+                >
+              <% else %>
+                style='display:none'>
+              <% end %>
+                <%=
+                  f.input :experimentable_id,
+                  label: false,
+                  collection: ScriniumEsm::OcnModel.all,
+                  include_blank: true,
+                  selected: get_experimentable_id(@experiment),
+                  label_method: :short_name,
+                  value_method: :id,
+                  input_html: {
+                    id: 'input-ocn-model-id'
+                  }
+                %>
+              </div>
+              <div class='col-md-3' id='input-coupled-model-id'
+              <% if @experiment.experimentable_type == 'ScriniumEsm::CoupledModel' %>
+                >
+              <% else %>
+                style='display:none'>
+              <% end %>
+                <%=
+                  f.input :experimentable_id,
+                  label: false,
+                  collection: ScriniumEsm::CoupledModel.all,
+                  include_blank: true,
+                  selected: get_experimentable_id(@experiment),
+                  label_method: :short_name,
+                  value_method: :id,
+                  input_html: {
+                    id: 'input-coupled-model-id'
+                  }
+                %>
+              </div>
+            </div>
+            <% if @experiment.id %>
+              <%= f.button :submit, t('action.edit'), class: 'button right' %>
+            <% else %>
+              <%= f.button :submit, t('action.add'), class: 'button right' %>
+            <% end %>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  <% end %>
+</div>

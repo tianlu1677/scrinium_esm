@@ -1,0 +1,6 @@
+<ul class='left-side-list'>
+  <li><%= @experiment.name %></li>
+  <li><%= "#{t('experiment.type')}: #{get_experiment_type @experiment}" %></li>
+  <li><%= t('global.contact') %>: <%= link_to User.find(@experiment.contact_id).name, main_app.user_path(@experiment.contact_id) %></li>
+  <li><%= link_to fa_icon('edit', text: t('action.edit')), [:edit, @experiment] %></li>
+</ul>

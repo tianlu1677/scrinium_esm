@@ -1,0 +1,42 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th width='100'><%= t('experiment.name') %></th>
+      <th width='50'><%= t('experiment.type') %></th>
+      <th width='50'><%= t('scrinium_esm.model') %></th>
+      <th width='100'><%= t('global.contact') %></th>
+      <th width='200'><%= t('global.create_time') %></th>
+      <% if is_super_admin_or_admin?(current_user) %>
+        <th width='100'><%= t('actions') %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% experiments.each do |e| %>
+      <% model = get_experimentable(e) %>
+      <tr>
+        <td><%= link_to e.name, e %></td>
+        <td><%= get_experiment_type e %></td>
+        <td><%= link_to model.short_name, model %></td>
+        <td><%= link_to User.find(e.contact_id).name, main_app.user_path(e.contact_id) %></td>
+        <td><%= e.created_at %></td>
+        <% if is_super_admin_or_admin?(current_user) %>
+          <td>
+            <% if is_super_admin?(current_user) %>
+              <%=
+                link_to t('action.edit'), [:edit, e],
+                class: 'button btn-xs'
+              %>
+              <%=
+                link_to t('action.delete'), e,
+                method: :delete,
+                data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.experiment')) },
+                class: 'button btn-xs btn-danger'
+              %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

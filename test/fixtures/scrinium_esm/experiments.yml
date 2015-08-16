@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  contact_id: 1
+  experimentable_id: 
+  experimentable_type: Experimentable
+
+two:
+  name: MyString
+  description: MyText
+  contact_id: 1
+  experimentable_id: 
+  experimentable_type: Experimentable

@@ -1,0 +1,15 @@
+<% content_for :title, @experiment.name %>
+<% add_breadcrumb @experiment.name, url_for(@experiment) %>
+
+<% content_for :left_side do %>
+  <%= render 'profile_left' %>
+<% end %>
+
+<% content_for :main_block do %>
+  <dl>
+    <dt><%= t('global.basic_info') %></dt>
+    <dd>
+      <%= markdown @experiment.description %>
+    </dd>
+  </dl>
+<% end %>

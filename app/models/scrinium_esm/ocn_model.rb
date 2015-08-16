@@ -5,6 +5,8 @@ module ScriniumEsm
     validates :contact_id, presence: true
     translates :description
 
+    has_many :experiments, as: :experimentable, dependent: :destroy
+
     enum simulation_region: [
       :global,
       :regional
