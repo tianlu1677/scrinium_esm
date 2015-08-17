@@ -1,4 +1,18 @@
 <% content_for :title, t('action.add')+t('scrinium_esm.experiment') %>
+<% content_for :head do %>
+  <script type='text/javascript' charset='utf-8'>
+    var ActionTypeMap = <%= ScriniumEsm::Experiment::ActionTypeMap.to_json.html_safe %>
+    function makeid() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 5; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    }
+  </script>
+<% end %>
 
 <% content_for :main_block do %>
   <%= render 'form' %>

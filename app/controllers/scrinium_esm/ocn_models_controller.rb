@@ -69,7 +69,7 @@ module ScriniumEsm
                                         :affiliation,
                                         :simulation_region,
                                         :simulation_type,
-                                        :dynamical_core,
+                                        :dynamical_core_scheme,
                                         :advection_scheme,
                                         :horizontal_mesh,
                                         :vertical_coordinate,

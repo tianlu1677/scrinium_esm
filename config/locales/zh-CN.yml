@@ -18,7 +18,7 @@ zh-CN:
       weather: 天气
     horizontal_mesh: 水平网格
     vertical_coordinate: 垂直坐标
-    dynamical_core: 动力框架
+    dynamical_core_scheme: 动力框架方案
     advection_scheme: 平流方案
     physics_parameterization: 物理参数化
     scheme_name: 方案名称
@@ -62,6 +62,30 @@ zh-CN:
     name: 试验名称
     description: 试验简介
     type: 试验类型
+    actions: 试验操作
+    action_types:
+      change_parameter: 修改参数
+      replace_scheme: 更换方案
+      change_scheme: 修改方案
+      change_code: 修改程序
+      add_compiler_option: 添加编译选项
+      delete_compiler_option: 删除编译选项
+      change_compiler_option: 修改编译选项
+      change_space_resolution: 改变空间分辨率
+      change_time_step_size: 改变时间步长
+    action_subjects:
+      parameter_name: 参数名称
+      parameter_new_value: 参数新值
+      what_scheme: 什么方案
+      scheme_name: 方案名称
+      changed_parts: 修改的程序
+      code_file: 程序文件
+      added_compiler_option: 添加的编译选项
+      deleted_compiler_option: 删除的编译选项
+      changed_compiler_option: 修改的编译选项
+      compiler_option_new_value: 新的编译选项
+      new_space_resolution: 新的空间分辨率
+      new_time_step_size: 新的时间步长
 
   activerecord:
     errors:
@@ -82,3 +106,14 @@ zh-CN:
               taken: 已经存在相同简称的海洋环流模式！
             contact_id:
               blank: 未指定联系人！
+        scrinium_esm/experiment:
+          attributes:
+            name:
+              blank: 未设置试验名称！
+              taken: 已经存在相同名称的试验！
+            contact_id:
+              blank: 未指定联系人！
+            experimentable_type:
+              blank: 未设置试验类型！
+            experimentable_id:
+              blank: 未设置试验模式！

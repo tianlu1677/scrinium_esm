@@ -15,7 +15,7 @@ class CreateScriniumEsmAtmModels < ActiveRecord::Migration
       t.integer :horizontal_mesh
       t.integer :vertical_coordinate
       t.integer :vertical_mesh
-      t.string  :dynamical_core
+      t.string  :dynamical_core_scheme
       t.string  :advection_scheme
       t.string  :radiation_scheme
       t.string  :convection_scheme

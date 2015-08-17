@@ -73,7 +73,7 @@ module ScriniumEsm
                                         :horizontal_mesh,
                                         :vertical_coordinate,
                                         :vertical_mesh,
-                                        :dynamical_core,
+                                        :dynamical_core_scheme,
                                         :advection_scheme,
                                         :radiation_scheme,
                                         :convection_scheme,

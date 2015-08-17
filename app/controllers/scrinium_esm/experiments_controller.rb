@@ -59,9 +59,13 @@ module ScriniumEsm
     def experiment_params
       params[:experiment][:experimentable_type] =
         ScriniumEsm::Experiment::TypeMap[params[:experiment][:experimentable_type]]
+      params[:experiment][:action_types] = params[:action_types].split(',')
+      params[:experiment][:action_subjects] = params[:action_subjects].split(',')
       params.require(:experiment).permit(:name,
                                          :description,
                                          :contact_id,
+                                         { action_types: [] },
+                                         { action_subjects: [] },
                                          :experimentable_id,
                                          :experimentable_type)
     end

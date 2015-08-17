@@ -14,17 +14,17 @@
       </div>
       <div class='col-md-4'>
         <dl>
-          <dt><%= t('model.dynamical_core') %></dt>
+          <dt><%= t('model.dynamical_core_scheme') %></dt>
           <dd>
             <%=
-              f.input :dynamical_core,
+              f.input :dynamical_core_scheme,
               label: false,
-              placeholder: t('model.dynamical_core')+t('model.scheme_name')
+              placeholder: t('model.dynamical_core_scheme')
             %>
             <%=
               f.input :advection_scheme,
               label: false,
-              placeholder: t('model.advection_scheme')+t('model.scheme_name')
+              placeholder: t('model.advection_scheme')
             %>
             <div class='row'>
               <div class='col-md-6'>

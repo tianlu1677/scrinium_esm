@@ -102,14 +102,51 @@
                 %>
               </div>
             </div>
-            <% if @experiment.id %>
-              <%= f.button :submit, t('action.edit'), class: 'button right' %>
-            <% else %>
-              <%= f.button :submit, t('action.add'), class: 'button right' %>
-            <% end %>
+          </dd>
+        </dl>
+      </div>
+      <div class='col-md-6'>
+        <dl>
+          <dt><%= t('experiment.actions') %></dt>
+          <dd>
+            <div class='panel panel-default'>
+              <div class='panel-heading'>
+                <select id='select-action-type'>
+                  <option></option>
+                  <% ScriniumEsm::Experiment::ActionTypeMap.each do |k, v| %>
+                    <option value='<%= k %>'><%= v %></option>
+                  <% end %>
+                </select>
+                <div class='right'>
+                  <a class='button btn-xs' id='save-action'><%= t('action.save') %></a>
+                </div>
+              </div>
+              <div class='panel-body' id='edit-action-subject'></div>
+            </div>
           </dd>
         </dl>
       </div>
     </div>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th width='100'></th>
+          <th width='100'></th>
+          <th width='100'></th>
+          <th width='30'></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @experiment.action_types.zip(@experiment.action_subjects).each do |t, s| %>
+          <%= render partial: 'action', locals: { type: t, subject: s } %>
+        <% end %>
+        <tr id='action-placeholder'></tr>
+      </tbody>
+    </table>
+    <% if @experiment.id %>
+      <%= f.button :submit, t('action.edit'), class: 'button right' %>
+    <% else %>
+      <%= f.button :submit, t('action.add'), class: 'button right' %>
+    <% end %>
   <% end %>
 </div>
