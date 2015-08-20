@@ -62,7 +62,7 @@ module ScriniumEsm
                                             :short_name,
                                             :contact_id,
                                             :repository_url,
-                                            :description
+                                            :description,
                                             :affiliation,
                                             :simulation_region,
                                             :simulation_type)
