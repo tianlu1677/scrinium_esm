@@ -9,7 +9,19 @@
               f.input :name,
               label: false,
               placeholder: t('experiment.name'),
-              required: true %>
+              required: true
+            %>
+            <%=
+              f.input :category_list,
+              label: false,
+              collection: @experiment.categories.map { |t| t.name },
+              input_html: {
+                multiple: 'multiple',
+                data: {
+                  placeholder: t('experiment.placeholder.categories')
+                }
+              }
+            %>
             <%=
               f.input :description,
               label: false,

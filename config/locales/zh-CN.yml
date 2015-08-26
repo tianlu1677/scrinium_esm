@@ -63,6 +63,8 @@ zh-CN:
     description: 试验简介
     type: 试验类型
     actions: 试验操作
+    placeholder:
+      categories: 试验类别（如CMIP6）
     action_types:
       change_parameter: 修改参数
       replace_scheme: 更换方案

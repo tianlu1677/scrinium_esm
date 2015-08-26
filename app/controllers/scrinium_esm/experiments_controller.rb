@@ -36,7 +36,7 @@ module ScriniumEsm
     # PATCH/PUT /experiments/1
     def update
       if @experiment.update(experiment_params)
-        redirect_to session[:previous_url], notice: t('message.update_success', thing: t('scrinium_esm.experiment'))
+        redirect_to @experiment, notice: t('message.update_success', thing: t('scrinium_esm.experiment'))
       else
         render :edit
       end
@@ -66,6 +66,8 @@ module ScriniumEsm
                                          :contact_id,
                                          { action_types: [] },
                                          { action_subjects: [] },
+                                         :tag_list,
+                                         { category_list: [] },
                                          :experimentable_id,
                                          :experimentable_type)
     end

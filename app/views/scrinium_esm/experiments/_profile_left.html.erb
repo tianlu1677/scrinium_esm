@@ -1,6 +1,15 @@
 <ul class='left-side-list'>
   <li><%= @experiment.name %></li>
   <li><%= "#{t('experiment.type')}: #{get_experiment_type @experiment}" %></li>
+  <li>
+    <ul class='left-side-list'>
+      <% @experiment.categories.each do |t| %>
+        <li><span class='label label-default'>
+          <%= t.name %>
+        </span></li>
+      <% end %>
+    </ul>
+  </li>
   <li><%= t('global.contact') %>: <%= link_to User.find(@experiment.contact_id).name, main_app.user_path(@experiment.contact_id) %></li>
   <li>
     <%=

@@ -3,6 +3,8 @@ module ScriniumEsm
     validates :name, uniqueness: { scope: :experimentable_id }
     validates :name, :contact_id, :experimentable_id, :experimentable_type, presence: true
     belongs_to :experimentable, polymorphic: true
+    acts_as_taggable
+    acts_as_taggable_on :categories
 
     TypeMap = {
       'AMIP' => 'ScriniumEsm::AtmModel',
