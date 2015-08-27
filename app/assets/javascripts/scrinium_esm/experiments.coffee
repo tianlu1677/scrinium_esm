@@ -79,7 +79,7 @@ $(document).on 'page:change', ->
       <tr id='#{randomString}'>
         <td>#{ActionTypeMap[$('#select-action-type').val()]}</td>
         #{content}
-        <td><a class='button btn-xs btn-danger right' id='delete-action-#{randomString}'>#{I18n.t('action.delete')}</a></td>
+        <td><a class='button btn-xs btn-danger float-right' id='delete-action-#{randomString}'>#{I18n.t('action.delete')}</a></td>
       </tr>
     """
 

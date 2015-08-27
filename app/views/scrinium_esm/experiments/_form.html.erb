@@ -129,9 +129,7 @@
                     <option value='<%= k %>'><%= v %></option>
                   <% end %>
                 </select>
-                <div class='right'>
-                  <a class='button btn-xs' id='save-action'><%= t('action.save') %></a>
-                </div>
+                <a class='button btn-xs float-right' id='save-action'><%= t('action.save') %></a>
               </div>
               <div class='panel-body' id='edit-action-subject'></div>
             </div>
@@ -156,9 +154,9 @@
       </tbody>
     </table>
     <% if @experiment.id %>
-      <%= f.button :submit, t('action.edit'), class: 'button right' %>
+      <%= f.button :submit, t('action.edit'), class: 'button float-right' %>
     <% else %>
-      <%= f.button :submit, t('action.add'), class: 'button right' %>
+      <%= f.button :submit, t('action.add'), class: 'button float-right' %>
     <% end %>
   <% end %>
 </div>
