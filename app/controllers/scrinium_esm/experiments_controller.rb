@@ -27,7 +27,7 @@ module ScriniumEsm
       @experiment = Experiment.new(experiment_params)
 
       if @experiment.save
-        redirect_to @experiment, notice: t('message.create_success', thing: t('scrinium_esm.experiment'))
+        redirect_to [@experiment.user, @experiment], notice: t('message.create_success', thing: t('scrinium_esm.experiment'))
       else
         render :new
       end
@@ -36,7 +36,7 @@ module ScriniumEsm
     # PATCH/PUT /experiments/1
     def update
       if @experiment.update(experiment_params)
-        redirect_to @experiment, notice: t('message.update_success', thing: t('scrinium_esm.experiment'))
+        redirect_to [@experiment.user, @experiment], notice: t('message.update_success', thing: t('scrinium_esm.experiment'))
       else
         render :edit
       end
@@ -59,8 +59,8 @@ module ScriniumEsm
     def experiment_params
       params[:experiment][:experimentable_type] =
         ScriniumEsm::Experiment::TypeMap[params[:experiment][:experimentable_type]]
-      params[:experiment][:action_types] = params[:action_types].split(',')
-      params[:experiment][:action_subjects] = params[:action_subjects].split(',')
+      params[:experiment][:action_types] = params[:action_types] ? params[:action_types].split(',') : []
+      params[:experiment][:action_subjects] = params[:action_subjects] ? params[:action_subjects].split(',') : []
       params.require(:experiment).permit(:name,
                                          :description,
                                          :contact_id,

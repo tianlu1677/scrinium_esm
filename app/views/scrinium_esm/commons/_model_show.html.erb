@@ -11,9 +11,7 @@
 <% content_for :main_block do %>
   <dl>
     <dt><%= t('global.description') %></dt>
-    <dd>
-      <%= markdown model.description %>
-    </dd>
+    <dd class='markdown'><%= model.description %></dd>
   </dl>
   <dl>
     <dt><%= t('global.specification') %></dt>

@@ -20,7 +20,7 @@ namespace :scrinium_esm do
     # Add CoffeeScript and SCSS assets.
     file_path = "#{scrinium_root}/app/assets/javascripts/engine_requires.coffee"
     FileUtils.touch file_path if not File.exist? file_path
-    File.open(file_path) do |f|
+    File.open(file_path, 'a+') do |f|
       if not f.read.match('#= require scrinium_esm/application')
         print "[Notice]: Add CoffeeScript require line into <scrinium_root>/app/assets/javascripts/engine_requires.coffee.\n"
         f << "#= require scrinium_esm/application\n"
@@ -28,7 +28,7 @@ namespace :scrinium_esm do
     end
     file_path = "#{scrinium_root}/app/assets/stylesheets/engine_requires.scss"
     FileUtils.touch file_path if not File.exist? file_path
-    File.open(file_path) do |f|
+    File.open(file_path, 'a+') do |f|
       if not f.read.match('//= require scrinium_esm/application')
         print "[Notice]: Add SCSS require line into <scrinium_root>/app/assets/stylesheets/engine_requires.scss.\n"
         f << "//= require scrinium_esm/application\n"
@@ -37,7 +37,7 @@ namespace :scrinium_esm do
     # Add routes.
     file_path = "#{scrinium_root}/config/engine_routes.rb"
     FileUtils.touch file_path if not File.exist? file_path
-    File.open(file_path) do |f|
+    File.open(file_path, 'a+') do |f|
       if not f.read.match("mount ScriniumEsm::Engine, at: '/esm'")
         print "[Notice]: Add routes mount line into <scrinium_root>/config/engine_routes.rb.\n"
         f << "mount ScriniumEsm::Engine, at: '/esm'\n"

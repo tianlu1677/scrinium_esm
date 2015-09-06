@@ -5,6 +5,7 @@ module ScriniumEsm
     belongs_to :experimentable, polymorphic: true
     acts_as_taggable
     acts_as_taggable_on :categories
+    has_many :collections, as: :collectable, dependent: :destroy
 
     TypeMap = {
       'AMIP' => 'ScriniumEsm::AtmModel',
@@ -22,5 +23,13 @@ module ScriniumEsm
       7 => I18n.t('experiment.action_types.change_space_resolution'),
       8 => I18n.t('experiment.action_types.change_time_step_size')
     }
+
+    def user
+      User.find(self.contact_id)
+    end
+
+    def title
+      self.name
+    end
   end
 end

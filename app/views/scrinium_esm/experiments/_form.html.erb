@@ -1,5 +1,5 @@
 <div class='experiment-form'>
-  <%= simple_form_for @experiment do |f| %>
+  <%= simple_form_for [current_user, @experiment] do |f| %>
     <div class='row'>
       <div class='col-md-6'>
         <dl>

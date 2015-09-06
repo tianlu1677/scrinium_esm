@@ -15,7 +15,7 @@
     <% experiments.each do |e| %>
       <% model = get_experimentable(e) %>
       <tr>
-        <td><%= link_to e.name, e %></td>
+        <td><%= link_to e.name, [e.user, e] %></td>
         <td><%= get_experiment_type e %></td>
         <td><%= link_to model.short_name, model %></td>
         <td><%= link_to User.find(e.contact_id).name, main_app.user_path(e.contact_id) %></td>
@@ -24,11 +24,11 @@
           <td>
             <% if is_super_admin?(current_user) %>
               <%=
-                link_to t('action.edit'), [:edit, e],
+                link_to t('action.edit'), [:edit, current_user, e],
                 class: 'button btn-xs', 'data-no-turbolink': true
               %>
               <%=
-                link_to t('action.delete'), e,
+                link_to t('action.delete'), [current_user, e],
                 method: :delete,
                 data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.experiment')) },
                 class: 'button btn-xs btn-danger'

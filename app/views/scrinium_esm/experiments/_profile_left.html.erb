@@ -14,7 +14,11 @@
   <li>
     <%=
       link_to fa_icon('edit', text: t('action.edit')),
-      [:edit, @experiment], 'data-no-turbolink': true
+      [:edit, @experiment.user, @experiment], 'data-no-turbolink': true
     %>
   </li>
+  <%=
+    render partial: 'collections/collect_button',
+    locals: { collectable: @experiment }
+  %>
 </ul>

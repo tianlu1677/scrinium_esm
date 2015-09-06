@@ -1,5 +1,5 @@
 <% content_for :title, @experiment.name %>
-<% add_breadcrumb @experiment.name, url_for(@experiment) %>
+<% add_breadcrumb @experiment.name, url_for([@experiment.user, @experiment]) %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
@@ -8,9 +8,7 @@
 <% content_for :main_block do %>
   <dl>
     <dt><%= t('global.basic_info') %></dt>
-    <dd>
-      <%= markdown @experiment.description %>
-    </dd>
+    <dd class='markdown'><%= @experiment.description %></dd>
   </dl>
   <dl>
     <dt><%= t('experiment.actions') %></dt>
