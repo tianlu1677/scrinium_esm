@@ -84,11 +84,10 @@ $(document).on 'page:change', ->
     """
 
   $('a[id|=delete-action]').click ->
-    alert 'hhhh'
     randomString = $(this).attr('id').split('-')[2]
     $('tr#'+randomString).remove()
 
-  $('input[type=submit]').click ->
+  $('#submit-experiment').click ->
     action_types = $('tbody').children().map(->
       value = $(this).children().html()
       Object.keys(ActionTypeMap).filter((k) ->

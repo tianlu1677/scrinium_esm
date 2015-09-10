@@ -1,5 +1,5 @@
 <% content_for :title, t('action.edit')+t('scrinium_esm.experiment') %>
-<% content_for :head do %>
+<% content_for :javascript do %>
   <script type='text/javascript' charset='utf-8'>
     var ActionTypeMap = <%= ScriniumEsm::Experiment::ActionTypeMap.to_json.html_safe %>
   </script>

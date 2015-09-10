@@ -154,9 +154,9 @@
       </tbody>
     </table>
     <% if @experiment.id %>
-      <%= f.button :submit, t('action.edit'), class: 'button float-right' %>
+      <%= f.button :submit, t('action.edit'), class: 'button float-right', id: 'submit-experiment' %>
     <% else %>
-      <%= f.button :submit, t('action.add'), class: 'button float-right' %>
+      <%= f.button :submit, t('action.add'), class: 'button float-right', id: 'submit-experiment' %>
     <% end %>
   <% end %>
 </div>

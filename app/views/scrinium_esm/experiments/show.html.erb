@@ -29,4 +29,16 @@
       </table>
     </dd>
   </dl>
+  <dl>
+    <dt></dt>
+    <dd>
+      <%=
+        render partial: 'comments/list',
+        locals: {
+          app: scrinium_esm,
+          commentable: @experiment
+        }
+      %>
+    </dd>
+  </dl>
 <% end %>
