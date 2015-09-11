@@ -88,6 +88,8 @@ zh-CN:
       compiler_option_new_value: 新的编译选项
       new_space_resolution: 新的空间分辨率
       new_time_step_size: 新的时间步长
+    log: 试验日志
+    info: 试验信息
 
   activerecord:
     errors:

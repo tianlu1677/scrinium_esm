@@ -14,6 +14,7 @@ ScriniumEsm::Engine.routes.draw do
   end
   resources :users do
     resources :experiments, except: :index, concerns: [ :collectable, :commentable ]
+    get '/experiments/:id/add_log' => 'experiments#add_log', as: :add_experiment_log
   end
   get '/experiments' => 'experiments#index'
   resources :coupled_models

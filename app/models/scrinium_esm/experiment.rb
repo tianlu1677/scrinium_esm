@@ -32,5 +32,17 @@ module ScriniumEsm
     def title
       self.name
     end
+
+    def logs
+      # 删除内容为空的日志。
+      self.log_ids.each do |i|
+        next if not Article.exists? i
+        a = Article.find(i)
+        a.destroy if a.content.empty?
+      end
+      # 检查日志是否还存在，否则从log_ids中删除之。
+      self.update(log_ids: self.log_ids.delete_if { |i| not Article.exists? i })
+      Article.find(self.log_ids)
+    end
   end
 end

@@ -2,7 +2,8 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class ExperimentsController < ApplicationController
-    before_action :set_experiment, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, except: [:index, :show]
+    before_action :set_experiment, only: [:show, :edit, :update, :destroy, :add_log]
 
     # GET /experiments
     def index
@@ -48,6 +49,21 @@ module ScriniumEsm
       redirect_to experiments_url, notice: t('message.destroy_success', thing: t('scrinium_esm.experiment'))
     end
 
+    def add_log
+      log = Article.new({
+        title: "#{@experiment.name} - #{I18n.t('logs')} ##{@experiment.log_ids.size+1}",
+        category_list: [I18n.t('logs')],
+        user_id: current_user.id
+      })
+      if not log.save
+        # TODO: 处理错误。
+      end
+      if not @experiment.update({ log_ids: @experiment.log_ids << log.id })
+        # TODO: 处理错误。
+      end
+      redirect_to main_app.edit_user_article_path(current_user, log)
+    end
+
     private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -69,7 +85,8 @@ module ScriniumEsm
                                          :tag_list,
                                          { category_list: [] },
                                          :experimentable_id,
-                                         :experimentable_type)
+                                         :experimentable_type,
+                                         { log_ids: [] })
     end
   end
 end

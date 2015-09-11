@@ -2,6 +2,14 @@
 # All this logic will automatically be available in application.js.
 
 $(document).on 'page:change', ->
+  # 切换“试验信息”和“试验日志”.
+  $('a#info').click ->
+    $('div#info').show()
+    $('div#logs').hide()
+  $('a#logs').click (e) ->
+    $('div#info').hide()
+    $('div#logs').show()
+
   atmModelIdInput = $('div#input-atm-model-id')
   ocnModelIdInput = $('div#input-ocn-model-id')
   coupledModelIdInput = $('div#input-coupled-model-id')
