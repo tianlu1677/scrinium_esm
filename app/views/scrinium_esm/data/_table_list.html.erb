@@ -1,0 +1,20 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th width="100"><%= t('data.name') %></th>
+      <th width="300"><%= t('data.type') %></th>
+      <th width="200"><%= t('global.create_time') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.each do |d| %>
+      <tr>
+        <td>
+          <%= link_to d.name, scrinium_esm.datum_path(d) %>
+        </td>
+        <td><%= d.datum_type %></td>
+        <td><%= d.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -22,4 +22,5 @@ ScriniumEsm::Engine.routes.draw do
   resources :lnd_models
   resources :ocn_models
   resources :atm_models
+  resources :data
 end

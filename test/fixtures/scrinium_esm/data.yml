@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  datum_type: 1
+  source: MyString
+  homepage: MyString
+  localstore: MyString
+  contact_id: 1
+
+two:
+  name: MyString
+  datum_type: 1
+  source: MyString
+  homepage: MyString
+  localstore: MyString
+  contact_id: 1

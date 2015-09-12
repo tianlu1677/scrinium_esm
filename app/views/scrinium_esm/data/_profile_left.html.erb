@@ -1,0 +1,8 @@
+<ul class='left-side-list'>
+  <li><%= @datum.name %></li>
+  <li><%= t('data.type') %>: <%= @datum.datum_type %></li>
+  <li><%= t('global.contact') %>: <%= link_to @datum.contact.name, main_app.user_path(@datum.contact) %></li>
+  <% if is_super_admin_or_admin?(current_user) %>
+    <li><%= link_to fa_icon('edit', text: t('action.edit')), scrinium_esm.edit_datum_path(@datum) %></li>
+  <% end %>
+</ul>

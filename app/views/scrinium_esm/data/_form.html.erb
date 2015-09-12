@@ -1,0 +1,58 @@
+<div class='data-form'>
+  <%= simple_form_for @datum do |f| %>
+    <%=
+      f.input :name,
+      label: false,
+      required: true,
+      placeholder: t('data.name')
+    %>
+    <%=
+      f.input :description,
+      label: false,
+      required: true,
+      placeholder: t('data.description'),
+      as: :text
+    %>
+    <%=
+      f.input :datum_type,
+      label: false,
+      required: true,
+      collection: ScriniumEsm::Datum.datum_types,
+      selected: ScriniumEsm::Datum.datum_types[@datum.datum_type]
+    %>
+    <%=
+      f.input :datum_format,
+      label: false,
+      required: true,
+      collection: ScriniumEsm::Datum.datum_formats,
+      selected: ScriniumEsm::Datum.datum_formats[@datum.datum_format]
+    %>
+    <%=
+      f.input :home_page,
+      label: false,
+      placeholder: t('data.home_page')
+    %>
+    <%=
+      f.input :local_store,
+      label: false,
+      placeholder: t('data.local_store')
+    %>
+    <%=
+      f.input :contact_id,
+      label: false,
+      required: true,
+      collection: [@datum.contact_id],
+      input_html: {
+        id: 'input-user-name',
+        data: {
+          placeholder: t('global.contact')
+        }
+      }
+    %>
+    <% if @datum.id %>
+      <%= f.button :submit, t('action.edit'), class: 'button float-right', id: 'submit-datum' %>
+    <% else %>
+      <%= f.button :submit, t('action.add'), class: 'button float-right', id: 'submit-datum' %>
+    <% end %>
+  <% end %>
+</div>
