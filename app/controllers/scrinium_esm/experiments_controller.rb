@@ -51,8 +51,8 @@ module ScriniumEsm
 
     def add_log
       log = Article.new({
-        title: "#{@experiment.name} - #{I18n.t('logs')} ##{@experiment.log_ids.size+1}",
-        category_list: [I18n.t('logs')],
+        title: "#{@experiment.name} - #{I18n.t('experiment.log')} ##{@experiment.log_ids.size+1}",
+        category_list: [I18n.t('experiment.log')],
         user_id: current_user.id
       })
       if not log.save
