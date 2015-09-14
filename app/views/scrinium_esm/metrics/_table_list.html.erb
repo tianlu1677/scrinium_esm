@@ -1,0 +1,24 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th width="100"><%= t('global.short_name') %></th>
+      <th width="300"><%= t('global.name') %></th>
+      <th width="100"><%= t('global.contact') %></th>
+      <th width="200"><%= t('global.create_time') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% metrics.each do |m| %>
+      <tr>
+        <td>
+          <%= link_to m.short_name, scrinium_esm.user_metric_path(m.contact, m) %>
+        </td>
+        <td><%= m.name %></td>
+        <td>
+          <%= link_to m.contact.name, main_app.user_path(m.contact) %>
+        </td>
+        <td><%= m.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

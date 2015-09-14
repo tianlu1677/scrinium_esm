@@ -1,0 +1,55 @@
+<% content_for :title, @metric.short_name %>
+<% add_breadcrumb @metric.short_name, scrinium_esm.user_metric_path(@metric.contact, @metric) %>
+
+<% content_for :left_side do %>
+  <%= render 'profile_left' %>
+<% end %>
+
+<% content_for :main_block do %>
+  <div>
+    <ul class='nav nav-tabs' role='tablist'>
+      <li role='presentation' class='active'>
+        <a href='#info' aria-controls='metric' role='tab' data-toggle='tab' id='info'>
+          <%= t('metric.info') %>
+        </a>
+      </li>
+      <li role='presentation'>
+        <a href='#resources' aria-controls='resources' role='tab' data-toggle='tab' id='resources'>
+          <%= t('metric.resource') %>
+        </a>
+      </li>
+    </ul>
+    <div class='tab-content'>
+      <div role='tabpanel' class='tab-pane active' id='info'>
+        <dl>
+          <dt><%= t('global.basic_info') %></dt>
+          <dd class='markdown'><%= @metric.description %></dd>
+        </dl>
+        <dl>
+          <dt></dt>
+          <dd>
+            <%=
+              render partial: 'comments/list',
+              locals: {
+                app: scrinium_esm,
+                commentable: @metric
+              }
+            %>
+          </dd>
+        </dl>
+      </div>
+      <div role='tabpanel' class='tab-pane' id='resources'>
+        <div class='float-right'>
+          <%=
+            link_to t('action.add'),
+            scrinium_esm.user_add_metric_resource_path(current_user, @metric),
+            class: 'button'
+          %>
+        </div>
+        <%=
+          render partial: 'resources/table_list',
+          locals: { resources: @metric.resources }
+        %>
+      </div>
+    </div>
+<% end %>

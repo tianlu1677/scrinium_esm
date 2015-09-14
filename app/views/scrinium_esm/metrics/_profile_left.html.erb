@@ -1,0 +1,15 @@
+<ul class='left-side-list'>
+  <li><%= @metric.name %></li>
+  <li>
+    <%= t('global.contact') %>:
+    <%= link_to @metric.contact.name, main_app.user_path(@metric.contact) %>
+  </li>
+  <% if is_super_admin_or_admin?(current_user) %>
+    <li>
+      <%=
+        link_to fa_icon('edit', text: t('action.edit')),
+        scrinium_esm.edit_user_metric_path(current_user, @metric)
+      %>
+    </li>
+  <% end %>
+</ul>

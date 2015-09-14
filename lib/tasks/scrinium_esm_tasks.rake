@@ -34,6 +34,13 @@ namespace :scrinium_esm do
         f << "//= require scrinium_esm/application\n"
       end
     end
+    # 添加例子seeds。
+    file_path = "#{scrinium_root}/db/seeds/engine/scrinium_esm.rb"
+    seeds = File.open("#{scrinium_esm_root}/db/seeds/examples.rb").read
+    File.open(file_path, 'w') do |f|
+      print "[Notice]: Add example seeds into <scrinium_root>/db/seeds/engine/scrinium_esm.rb.\n"
+      f << seeds
+    end
     # Add routes.
     file_path = "#{scrinium_root}/config/engine_routes.rb"
     FileUtils.touch file_path if not File.exist? file_path

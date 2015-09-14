@@ -7,9 +7,5 @@ module ScriniumEsm
         helper ScriniumEsm::ViewComponentsHelper
       end
     end
-
-    initializer :register_engine do |app|
-      RailsEnginesHelper.register :scrinium_esm
-    end
   end
 end

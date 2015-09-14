@@ -3,6 +3,7 @@ zh-CN:
     model: 模式
     experiment: 试验
     data: 数据
+    metric: 评估指标
 
   model:
     short_name: 模式简称
@@ -117,6 +118,10 @@ zh-CN:
     contact_is_empty: 请指定联系人！
     name_is_empty: 请指定数据名称！
 
+  metric:
+    info: 指标信息
+    resource: 指标资源
+
   activerecord:
     errors:
       models:
@@ -147,3 +152,13 @@ zh-CN:
               blank: 未设置试验类型！
             experimentable_id:
               blank: 未设置试验模式！
+        scrinium_esm/metric:
+          attributes:
+            name:
+              blank: 未设置指标名称！
+              taken: 已经存在相同名称的指标！
+            short_name:
+              blank: 未设置指准简称！
+              taken: 已经存在相同简称的指标！
+            contact_id:
+              blank: 未指定联系人！

@@ -4,18 +4,17 @@
 */
 
 .experiment-form {
- padding-top: 30px;
- max-width: 100%;
- margin: auto;
- h3 {
+  max-width: 100%;
+  margin: auto;
+  h3 {
    margin-top: 0;
    margin-bottom: 20px;
- }
- textarea.text {
+  }
+  textarea.text {
    height: 200px;
    max-width: 100%;
    width: 100%;
- }
+  }
 }
 
 .action-list {

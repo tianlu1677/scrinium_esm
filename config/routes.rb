@@ -1,6 +1,7 @@
 # TODO: 找到一种更为合适的方法解决CollectionsController加载问题。
 ScriniumEsm::CollectionsController = CollectionsController
 ScriniumEsm::CommentsController = CommentsController
+ScriniumEsm::ResourcesController = ResourcesController
 
 ScriniumEsm::Engine.routes.draw do
   # NOTE: 需要和主应用中的concerns保持一致。
@@ -12,11 +13,18 @@ ScriniumEsm::Engine.routes.draw do
     resources :comments, except: [ :new, :show ]
     get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
   end
+  concern :resourceable do
+    resources :resources, concerns: [ :collectable, :commentable ]
+  end
   resources :users do
     resources :experiments, except: :index, concerns: [ :collectable, :commentable ]
     get '/experiments/:id/add_log' => 'experiments#add_log', as: :add_experiment_log
+    resources :metrics, except: :index, concerns: [ :resourceable, :collectable, :commentable ]
+    get '/metrics/:id/add_resource' => 'metrics#add_resource', as: :add_metric_resource
+    resources :diagnostic_results, concerns: [ :collectable, :commentable ]
   end
   get '/experiments' => 'experiments#index'
+  get '/metrics' => 'metrics#index'
   resources :coupled_models
   resources :sea_ice_models
   resources :lnd_models
