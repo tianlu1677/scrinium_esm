@@ -78,7 +78,6 @@ module ScriniumEsm
       params.require(:metric).permit(:name,
                                      :short_name,
                                      :description,
-                                     { resource_ids: [] },
                                      :contact_id,
                                      :tag_list,
                                      { category_list: [] })

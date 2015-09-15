@@ -5,7 +5,7 @@
       <th width="100"><%= t('scrinium_esm.metric') %></th>
       <th width="100"><%= t('global.contact') %></th>
       <th width="200"><%= t('global.create_time') %></th>
-      <% if is_super_admin_or_admin?(current_user) or act_act %>
+      <% if is_super_admin_or_admin?(current_user) or can_act %>
         <th width="200"><%= t('actions') %></th>
       <% end %>
     </tr>
@@ -20,7 +20,7 @@
           <%= link_to d.contact.name, main_app.user_path(d.contact) %>
         </td>
         <td><%= d.created_at %></td>
-        <% if is_super_admin_or_admin?(current_user) or act_act %>
+        <% if is_super_admin_or_admin?(current_user) or can_act %>
           <td>
             <%=
               link_to t('action.delete'),

@@ -3,7 +3,6 @@ class CreateScriniumEsmDiagnosticResults < ActiveRecord::Migration
     create_table :scrinium_esm_diagnostic_results do |t|
       t.belongs_to :metric
       t.belongs_to :experiment
-      t.integer :resource_ids, array: true, default: []
       t.integer :contact_id
 
       t.timestamps null: false

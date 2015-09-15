@@ -4,7 +4,6 @@ class CreateScriniumEsmMetrics < ActiveRecord::Migration
       t.string :name, index: true
       t.string :short_name, index: true
       t.text :description
-      t.integer :resource_ids, array: :true, default: []
       t.integer :contact_id
       t.attachment :logo
 
