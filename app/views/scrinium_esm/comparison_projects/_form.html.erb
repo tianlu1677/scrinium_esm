@@ -1,0 +1,37 @@
+<div class='comparison-project-form'>
+  <%= simple_form_for [ current_user, @comparison_project ] do |f| %>
+    <%=
+      f.input :name,
+      label: false,
+      placeholder: t('global.name')
+    %>
+    <%=
+      f.input :short_name,
+      label: false,
+      placeholder: t('global.short_name')
+    %>
+    <%=
+      f.input :description,
+      label: false,
+      placeholder: t('global.description'),
+      as: :text
+    %>
+    <%=
+      f.input :contact_id,
+      label: false,
+      required: true,
+      collection: [ @comparison_project.contact_id ],
+      input_html: {
+        id: 'input-user-name',
+        data: {
+          placeholder: t('global.contact')
+        }
+      }
+    %>
+    <% if @comparison_project.id %>
+      <%= f.button :submit, t('action.edit'), class: 'button float-right', id: 'submit-experiment' %>
+    <% else %>
+      <%= f.button :submit, t('action.add'), class: 'button float-right', id: 'submit-experiment' %>
+    <% end %>
+  <% end %>
+</div>

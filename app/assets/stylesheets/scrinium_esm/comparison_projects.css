@@ -1,0 +1,16 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+.comparison-project-form {
+  max-width: 320px;
+  margin: auto;
+  h3 {
+   margin-top: 0;
+   margin-bottom: 20px;
+  }
+  textarea.text {
+   height: 200px;
+  }
+}

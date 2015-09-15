@@ -1,0 +1,51 @@
+<% content_for :title, @comparison_project.short_name %>
+<% add_breadcrumb @comparison_project.short_name, [ scrinium_esm, @comparison_project.contact, @comparison_project ] %>
+
+<% content_for :left_side do %>
+  <%= render 'profile_left' %>
+<% end %>
+
+<% content_for :main_block do %>
+  <div>
+    <ul class='nav nav-tabs' role='tablist'>
+      <li role='presentation' class='active'>
+        <a href='#info' aria-controls='comparison_project' role='tab' data-toggle='tab' id='info'>
+          <%= t('comparison_project.info') %>
+        </a>
+      </li>
+      <li role='presentation'>
+        <a href='#resources' aria-controls='resources' role='tab' data-toggle='tab' id='resources'>
+          <%= t('comparison_project.resource') %>
+        </a>
+      </li>
+    </ul>
+    <div class='tab-content'>
+      <div role='tabpanel' class='tab-pane active' id='info'>
+        <dl>
+          <dt><%= t('global.basic_info') %></dt>
+          <dd class='markdown'><%= @comparison_project.description %></dd>
+        </dl>
+        <dl>
+          <dt></dt>
+          <dd>
+            <%=
+              render partial: 'comments/list',
+              locals: {
+                app: scrinium_esm,
+                commentable: @comparison_project
+              }
+            %>
+          </dd>
+        </dl>
+      </div>
+      <div role='tabpanel' class='tab-pane' id='resources'>
+        <%=
+          render partial: 'resources/table_list',
+          locals: {
+            app: scrinium_esm,
+            resources: @comparison_project.resources
+          }
+        %>
+      </div>
+    </div>
+<% end %>

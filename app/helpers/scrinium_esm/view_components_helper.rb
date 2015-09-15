@@ -8,7 +8,10 @@ module ScriniumEsm
           t('scrinium_esm.metric') => scrinium_esm.metrics_path
         },
         t('scrinium_esm.experiment') => scrinium_esm.experiments_path,
-        t('scrinium_esm.data') => scrinium_esm.data_path
+        t('scrinium_esm.data') => scrinium_esm.data_path,
+        t('scrinium_esm.project') => {
+          t('scrinium_esm.comparison_project') => scrinium_esm.comparison_projects_path
+        }
       }
     end
   end

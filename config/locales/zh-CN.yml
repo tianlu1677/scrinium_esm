@@ -5,6 +5,8 @@ zh-CN:
     data: 数据
     metric: 评估指标
     diagnostic_result: 诊断结果
+    comparison_project: 模式比较计划
+    project: 计划
 
   model:
     short_name: 模式简称
@@ -123,6 +125,10 @@ zh-CN:
   metric:
     info: 指标信息
     resource: 指标资源
+
+  comparison_project:
+    info: 计划信息
+    resource: 计划资源
 
   activerecord:
     errors:

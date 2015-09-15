@@ -24,9 +24,11 @@ ScriniumEsm::Engine.routes.draw do
     resources :metrics, except: :index, concerns: [ :resourceable, :collectable, :commentable ]
     get '/metrics/:id/add_resource' => 'metrics#add_resource', as: :add_metric_resource
     resources :diagnostic_results, concerns: [ :resourceable, :collectable, :commentable ]
+    resources :comparison_projects, except: :index, concerns: [ :resourceable, :collectable, :commentable ]
   end
   get '/experiments' => 'experiments#index'
   get '/metrics' => 'metrics#index'
+  get '/comparison_projects' => 'comparison_projects#index'
   resources :coupled_models
   resources :sea_ice_models
   resources :lnd_models

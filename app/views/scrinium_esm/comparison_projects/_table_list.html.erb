@@ -1,0 +1,24 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th width="100"><%= t('global.short_name') %></th>
+      <th width="300"><%= t('global.name') %></th>
+      <th width="100"><%= t('global.contact') %></th>
+      <th width="200"><%= t('global.create_time') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% comparison_projects.each do |c| %>
+      <tr>
+        <td>
+          <%= link_to c.short_name, [ scrinium_esm, c.contact, c ] %>
+        </td>
+        <td><%= c.name %></td>
+        <td>
+          <%= link_to c.contact.name, [ main_app, c.contact ] %>
+        </td>
+        <td><%= c.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
