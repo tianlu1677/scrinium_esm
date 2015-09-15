@@ -26,6 +26,14 @@
     </li>
     <li>
       <%=
+        link_to fa_icon('coffee', text: t('action.add')+t('global.log')),
+        user_add_experiment_log_path(current_user, @experiment),
+        id: 'add-log',
+        style: 'display: none;'
+      %>
+    </li>
+    <li>
+      <%=
         link_to fa_icon('cube', text: t('action.add')+t('scrinium_esm.diagnostic_result')),
         scrinium_esm.new_user_experiment_diagnostic_result_path(current_user, @experiment),
         id: 'add-diagnostic-result',

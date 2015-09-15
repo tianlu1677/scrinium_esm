@@ -1,12 +1,3 @@
-<div class='right'>
-  <% if current_user %>
-    <%=
-      link_to t('action.add'),
-      user_add_experiment_log_path(current_user, @experiment),
-      class: 'button'
-    %>
-  <% end %>
-</div>
 <%=
   render partial: 'articles/table_list',
   locals: { articles: @experiment.logs }

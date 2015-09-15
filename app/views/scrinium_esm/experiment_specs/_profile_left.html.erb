@@ -1,0 +1,37 @@
+<ul class='left-side-list'>
+  <li><%= @experiment_spec.name %></li>
+  <li>
+    <%= t('global.contact') %>:
+    <%=
+      link_to @experiment_spec.contact.name,
+      [ main_app, @experiment_spec.contact ]
+    %>
+  </li>
+  <% if is_super_admin_or_admin?(current_user) %>
+    <li>
+      <%=
+        link_to fa_icon('edit', text: t('action.edit')),
+        [
+          scrinium_esm,
+          :edit,
+          current_user,
+          @experiment_spec.comparison_project,
+          @experiment_spec
+        ]
+      %>
+    </li>
+    <li>
+      <%=
+        link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
+        [
+          scrinium_esm,
+          :new,
+          current_user,
+          @experiment_spec,
+          :resource
+        ],
+        id: 'add-resource', style: 'display: none;'
+      %>
+    </li>
+  <% end %>
+</ul>

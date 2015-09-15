@@ -2,20 +2,23 @@
 # All this logic will automatically be available in application.js.
 
 $(document).on 'page:change', ->
-  # 切换“试验信息”和“试验日志”.
+  # 切换“信息”、“日志”和“诊断结果”。
   $('a#info').click ->
     $('div#info').show()
     $('div#logs').hide()
+    $('#add-log').hide()
     $('div#diagnostic_results').hide()
     $('#add-diagnostic-result').hide()
   $('a#logs').click ->
     $('div#info').hide()
     $('div#logs').show()
+    $('#add-log').show()
     $('div#diagnostic_results').hide()
     $('#add-diagnostic-result').hide()
   $('a#diagnostic_results').click ->
     $('div#info').hide()
     $('div#logs').hide()
+    $('#add-log').hide()
     $('div#diagnostic_results').show()
     $('#add-diagnostic-result').show()
 

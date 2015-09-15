@@ -1,5 +1,13 @@
-<% content_for :title, @comparison_project.short_name %>
-<% add_breadcrumb @comparison_project.short_name, [ scrinium_esm, @comparison_project.contact, @comparison_project ] %>
+<% content_for :title, @experiment_spec.short_name %>
+<%
+  add_breadcrumb @experiment_spec.short_name,
+  [
+    scrinium_esm,
+    @experiment_spec.contact,
+    @experiment_spec.comparison_project,
+    @experiment_spec
+  ]
+%>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
@@ -9,7 +17,7 @@
   <div>
     <ul class='nav nav-tabs' role='tablist'>
       <li role='presentation' class='active'>
-        <a href='#info' aria-controls='comparison_project' role='tab' data-toggle='tab' id='info'>
+        <a href='#info' aria-controls='info' role='tab' data-toggle='tab' id='info'>
           <%= t('global.info') %>
         </a>
       </li>
@@ -18,17 +26,12 @@
           <%= t('scrinium.resource') %>
         </a>
       </li>
-      <li role='presentation'>
-        <a href='#experiment-specs' aria-controls='experiment-specs' role='tab' data-toggle='tab' id='experiment-specs'>
-          <%= t('scrinium_esm.experiment_spec') %>
-        </a>
-      </li>
     </ul>
     <div class='tab-content'>
       <div role='tabpanel' class='tab-pane active' id='info'>
         <dl>
           <dt><%= t('global.basic_info') %></dt>
-          <dd class='markdown'><%= @comparison_project.description %></dd>
+          <dd class='markdown'><%= @experiment_spec.description %></dd>
         </dl>
         <dl>
           <dt></dt>
@@ -37,7 +40,7 @@
               render partial: 'comments/list',
               locals: {
                 app: scrinium_esm,
-                commentable: @comparison_project
+                commentable: @experiment_spec
               }
             %>
           </dd>
@@ -48,15 +51,7 @@
           render partial: 'resources/table_list',
           locals: {
             app: scrinium_esm,
-            resources: @comparison_project.resources
-          }
-        %>
-      </div>
-      <div role='tabpanel' class='tab-pane' id='experiment-specs'>
-        <%=
-          render partial: 'scrinium_esm/experiment_specs/table_list',
-          locals: {
-            experiment_specs: @comparison_project.experiment_specs
+            resources: @experiment_spec.resources
           }
         %>
       </div>

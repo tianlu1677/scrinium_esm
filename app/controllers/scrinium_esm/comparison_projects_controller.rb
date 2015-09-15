@@ -58,7 +58,13 @@ module ScriniumEsm
 
     # Only allow a trusted parameter "white list" through.
     def comparison_project_params
-      params.require(:comparison_project).permit(:name, :short_name, :description, :contact_id)
+      params.require(:comparison_project).permit(:name,
+                                                 :logo,
+                                                 :short_name,
+                                                 :description,
+                                                 :contact_id,
+                                                 :tag_list,
+                                                 { category_list: [] })
     end
   end
 end

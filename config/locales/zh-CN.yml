@@ -7,6 +7,7 @@ zh-CN:
     diagnostic_result: 诊断结果
     comparison_project: 模式比较计划
     project: 计划
+    experiment_spec: 试验规范
 
   model:
     short_name: 模式简称
@@ -94,8 +95,6 @@ zh-CN:
       new_space_resolution: 新的空间分辨率
       new_time_step_size: 新的时间步长
     log: 试验日志
-    info: 试验信息
-    diagnostic_result: 诊断结果
 
   data:
     name: 数据名称

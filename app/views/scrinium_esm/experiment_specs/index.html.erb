@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Experiment Specs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Short name</th>
+      <th>Description</th>
+      <th>Contact</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @experiment_specs.each do |experiment_spec| %>
+      <tr>
+        <td><%= experiment_spec.name %></td>
+        <td><%= experiment_spec.short_name %></td>
+        <td><%= experiment_spec.description %></td>
+        <td><%= experiment_spec.contact_id %></td>
+        <td><%= link_to 'Show', experiment_spec %></td>
+        <td><%= link_to 'Edit', edit_experiment_spec_path(experiment_spec) %></td>
+        <td><%= link_to 'Destroy', experiment_spec, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Experiment spec', new_experiment_spec_path %>

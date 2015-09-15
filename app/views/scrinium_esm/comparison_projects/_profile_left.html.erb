@@ -21,5 +21,12 @@
         id: 'add-resource', style: 'display: none;'
       %>
     </li>
+    <li>
+      <%=
+        link_to fa_icon('file-text-o', text: t('action.add')+t('scrinium_esm.experiment_spec')),
+        scrinium_esm.new_user_comparison_project_experiment_spec_path(current_user, @comparison_project),
+        id: 'add-experiment-spec', style: 'display: none;'
+      %>
+    </li>
   <% end %>
 </ul>
