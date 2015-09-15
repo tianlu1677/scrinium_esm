@@ -19,8 +19,13 @@
         </a>
       </li>
       <li role='presentation'>
-        <a href='#diagnostic_results' aria-controls='diagnostic_results' role='tab' data-toggle='tab' id='diagnostic_results'>
+        <a href='#diagnostic-results' aria-controls='diagnostic-results' role='tab' data-toggle='tab' id='diagnostic-results'>
           <%= t('scrinium_esm.diagnostic_result') %>
+        </a>
+      </li>
+      <li role='presentation'>
+        <a href='#ensemble-members' aria-controls='ensemble-members' role='tab' data-toggle='tab' id='ensemble-members'>
+          <%= t('experiment.ensemble_member') %>
         </a>
       </li>
     </ul>
@@ -31,8 +36,11 @@
       <div role='tabpanel' class='tab-pane' id='logs'>
         <%= render 'logs' %>
       </div>
-      <div role='tabpanel' class='tab-pane' id='diagnostic_results'>
+      <div role='tabpanel' class='tab-pane' id='diagnostic-results'>
         <%= render 'diagnostic_results' %>
+      </div>
+      <div role='tabpanel' class='tab-pane' id='ensemble-members'>
+        <%= render 'ensemble_members' %>
       </div>
     </div>
   </div>

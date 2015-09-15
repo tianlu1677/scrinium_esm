@@ -8,6 +8,8 @@ module ScriniumEsm
     has_many :collections, as: :collectable, dependent: :destroy
     has_many :comments, as: :commentable, dependent: :destroy
     has_many :diagnostic_results, dependent: :destroy
+    has_many :experiment_ensembles
+    has_many :members, through: :experiment_ensembles
 
     TypeMap = {
       'AMIP' => 'ScriniumEsm::AtmModel',

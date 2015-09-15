@@ -28,6 +28,19 @@ module ScriniumEsm
       @experiment = Experiment.new(experiment_params)
 
       if @experiment.save
+        # 添加集合成员。
+        match = session[:previous_url].match(/\/experiments\/new\?experiment_id=(\d+)/)
+        experiment_id = match ? match[1] : nil
+        if experiment_id
+          experiment_ensemble = ScriniumEsm::ExperimentEnsemble.new(
+            experiment_id: experiment_id,
+            member_id: @experiment.id
+          )
+          if not experiment_ensemble.save
+            # TODO: 处理错误！
+          end
+        end
+
         redirect_to [@experiment.user, @experiment], notice: t('message.create_success', thing: t('scrinium_esm.experiment'))
       else
         render :new

@@ -36,8 +36,14 @@
       <%=
         link_to fa_icon('cube', text: t('action.add')+t('scrinium_esm.diagnostic_result')),
         scrinium_esm.new_user_experiment_diagnostic_result_path(current_user, @experiment),
-        id: 'add-diagnostic-result',
-        style: 'display: none;'
+        id: 'add-diagnostic-result', style: 'display: none;'
+      %>
+    </li>
+    <li>
+      <%=
+        link_to fa_icon('plus-square', text: t('action.add')+t('experiment.ensemble_member')),
+        new_user_experiment_path(current_user, experiment_id: @experiment.id),
+        id: 'add-ensemble-member', style: 'display: none;'
       %>
     </li>
   <% end %>
