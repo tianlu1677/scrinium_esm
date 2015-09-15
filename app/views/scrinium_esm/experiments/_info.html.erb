@@ -1,0 +1,35 @@
+<dl>
+  <dt><%= t('global.basic_info') %></dt>
+  <dd class='markdown'><%= @experiment.description %></dd>
+</dl>
+<dl>
+  <dt><%= t('experiment.actions') %></dt>
+  <dd>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th width='100'></th>
+          <th width='100'></th>
+          <th width='100'></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @experiment.action_types.zip(@experiment.action_subjects).each do |t, s| %>
+          <%= render partial: 'action', locals: { type: t, subject: s, readonly: true } %>
+        <% end %>
+      </tbody>
+    </table>
+  </dd>
+</dl>
+<dl>
+  <dt></dt>
+  <dd>
+    <%=
+      render partial: 'comments/list',
+      locals: {
+        app: scrinium_esm,
+        commentable: @experiment
+      }
+    %>
+  </dd>
+</dl>

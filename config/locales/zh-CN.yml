@@ -4,6 +4,7 @@ zh-CN:
     experiment: 试验
     data: 数据
     metric: 评估指标
+    diagnostic_result: 诊断结果
 
   model:
     short_name: 模式简称
@@ -92,6 +93,7 @@ zh-CN:
       new_time_step_size: 新的时间步长
     log: 试验日志
     info: 试验信息
+    diagnostic_result: 诊断结果
 
   data:
     name: 数据名称
@@ -162,3 +164,10 @@ zh-CN:
               taken: 已经存在相同简称的指标！
             contact_id:
               blank: 未指定联系人！
+        scrinium_esm/diagnostic_result:
+          attributes:
+            contact_id:
+              blank: 未指定联系人！
+            metric_id:
+              taken: 已经添加过该指标结果！
+              inclusion: 未指定指标！

@@ -1,0 +1,12 @@
+<% content_for :title, t('scrinium_esm.diagnostic_result') %>
+<%
+  add_breadcrumb t('scrinium_esm.diagnostic_result'),
+  scrinium_esm.user_experiment_diagnostic_results_path(@user, @experiment)
+%>
+
+<% content_for :main_block do %>
+  <%=
+    render partial: 'scrinium_esm/diagnostic_results/table_list',
+    locals: { diagnostic_results: @experiment.diagnostic_results }
+  %>
+<% end %>

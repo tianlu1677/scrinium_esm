@@ -10,13 +10,29 @@
       <% end %>
     </ul>
   </li>
-  <li><%= t('global.contact') %>: <%= link_to User.find(@experiment.contact_id).name, main_app.user_path(@experiment.contact_id) %></li>
   <li>
+    <%= t('global.contact') %>:
     <%=
-      link_to fa_icon('edit', text: t('action.edit')),
-      [:edit, @experiment.user, @experiment], 'data-no-turbolink': true
+      link_to User.find(@experiment.contact_id).name,
+      main_app.user_path(@experiment.contact_id)
     %>
   </li>
+  <% if is_super_admin_or_admin?(current_user) or current_user == @experiment.user %>
+    <li>
+      <%=
+        link_to fa_icon('edit', text: t('action.edit')),
+        [:edit, @experiment.user, @experiment], 'data-no-turbolink': true
+      %>
+    </li>
+    <li>
+      <%=
+        link_to fa_icon('cube', text: t('action.add')+t('scrinium_esm.diagnostic_result')),
+        scrinium_esm.new_user_experiment_diagnostic_result_path(current_user, @experiment),
+        id: 'add-diagnostic-result',
+        style: 'display: none;'
+      %>
+    </li>
+  <% end %>
   <%=
     render partial: 'collections/collect_button',
     locals: { collectable: @experiment }

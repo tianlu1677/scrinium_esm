@@ -6,9 +6,18 @@ $(document).on 'page:change', ->
   $('a#info').click ->
     $('div#info').show()
     $('div#logs').hide()
-  $('a#logs').click (e) ->
+    $('div#diagnostic_results').hide()
+    $('#add-diagnostic-result').hide()
+  $('a#logs').click ->
     $('div#info').hide()
     $('div#logs').show()
+    $('div#diagnostic_results').hide()
+    $('#add-diagnostic-result').hide()
+  $('a#diagnostic_results').click ->
+    $('div#info').hide()
+    $('div#logs').hide()
+    $('div#diagnostic_results').show()
+    $('#add-diagnostic-result').show()
 
   atmModelIdInput = $('div#input-atm-model-id')
   ocnModelIdInput = $('div#input-ocn-model-id')

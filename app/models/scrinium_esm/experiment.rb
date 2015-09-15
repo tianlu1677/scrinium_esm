@@ -7,6 +7,7 @@ module ScriniumEsm
     acts_as_taggable_on :categories
     has_many :collections, as: :collectable, dependent: :destroy
     has_many :comments, as: :commentable, dependent: :destroy
+    has_many :diagnostic_results, dependent: :destroy
 
     TypeMap = {
       'AMIP' => 'ScriniumEsm::AtmModel',

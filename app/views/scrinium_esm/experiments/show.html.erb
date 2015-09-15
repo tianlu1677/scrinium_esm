@@ -18,59 +18,21 @@
           <%= t('experiment.log') %>
         </a>
       </li>
+      <li role='presentation'>
+        <a href='#diagnostic_results' aria-controls='diagnostic_results' role='tab' data-toggle='tab' id='diagnostic_results'>
+          <%= t('experiment.diagnostic_result') %>
+        </a>
+      </li>
     </ul>
     <div class='tab-content'>
       <div role='tabpanel' class='tab-pane active' id='info'>
-        <dl>
-          <dt><%= t('global.basic_info') %></dt>
-          <dd class='markdown'><%= @experiment.description %></dd>
-        </dl>
-        <dl>
-          <dt><%= t('experiment.actions') %></dt>
-          <dd>
-            <table class='table'>
-              <thead>
-                <tr>
-                  <th width='100'></th>
-                  <th width='100'></th>
-                  <th width='100'></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @experiment.action_types.zip(@experiment.action_subjects).each do |t, s| %>
-                  <%= render partial: 'action', locals: { type: t, subject: s, readonly: true } %>
-                <% end %>
-              </tbody>
-            </table>
-          </dd>
-        </dl>
-        <dl>
-          <dt></dt>
-          <dd>
-            <%=
-              render partial: 'comments/list',
-              locals: {
-                app: scrinium_esm,
-                commentable: @experiment
-              }
-            %>
-          </dd>
-        </dl>
+        <%= render 'info' %>
       </div>
       <div role='tabpanel' class='tab-pane' id='logs'>
-        <div class='right'>
-          <% if current_user %>
-            <%=
-              link_to t('action.add'),
-              user_add_experiment_log_path(current_user, @experiment),
-              class: 'button btn-xs'
-            %>
-          <% end %>
-        </div>
-        <%=
-          render partial: 'articles/table_list',
-          locals: { articles: @experiment.logs }
-        %>
+        <%= render 'logs' %>
+      </div>
+      <div role='tabpanel' class='tab-pane' id='diagnostic_results'>
+        <%= render 'diagnostic_results' %>
       </div>
     </div>
   </div>

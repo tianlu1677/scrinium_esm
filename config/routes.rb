@@ -17,11 +17,13 @@ ScriniumEsm::Engine.routes.draw do
     resources :resources, concerns: [ :collectable, :commentable ]
   end
   resources :users do
-    resources :experiments, except: :index, concerns: [ :collectable, :commentable ]
+    resources :experiments, except: :index, concerns: [ :collectable, :commentable ] do
+      resources :diagnostic_results, concerns: [ :resourceable, :collectable, :commentable ]
+    end
     get '/experiments/:id/add_log' => 'experiments#add_log', as: :add_experiment_log
     resources :metrics, except: :index, concerns: [ :resourceable, :collectable, :commentable ]
     get '/metrics/:id/add_resource' => 'metrics#add_resource', as: :add_metric_resource
-    resources :diagnostic_results, concerns: [ :collectable, :commentable ]
+    resources :diagnostic_results, concerns: [ :resourceable, :collectable, :commentable ]
   end
   get '/experiments' => 'experiments#index'
   get '/metrics' => 'metrics#index'

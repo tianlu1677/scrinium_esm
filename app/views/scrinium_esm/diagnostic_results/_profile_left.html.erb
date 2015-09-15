@@ -1,0 +1,28 @@
+<ul class='left-side-list'>
+  <li>
+    <%= t('scrinium_esm.experiment') %>:
+    <%= @experiment.name %>
+  </li>
+  <li>
+    <%= t('scrinium_esm.metric') %>:
+    <%= @diagnostic_result.metric.name %>
+  </li>
+  <li>
+    <%= t('global.contact') %>:
+    <%= link_to @diagnostic_result.contact.name, main_app.user_path(@diagnostic_result.contact) %>
+  </li>
+  <% if is_super_admin_or_admin?(current_user) %>
+    <li>
+      <%=
+        link_to fa_icon('edit', text: t('action.edit')),
+        scrinium_esm.edit_user_experiment_diagnostic_result_path(current_user, @experiment, @diagnostic_result)
+      %>
+    </li>
+    <li>
+      <%=
+        link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
+        scrinium_esm.new_user_experiment_diagnostic_result_resource_path(current_user, @experiment, @diagnostic_result)
+      %>
+    </li>
+  <% end %>
+</ul>
