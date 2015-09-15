@@ -11,5 +11,18 @@
         scrinium_esm.edit_user_metric_path(current_user, @metric)
       %>
     </li>
+    <li>
+      <%=
+        link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
+        [
+          scrinium_esm,
+          :new,
+          current_user,
+          @metric,
+          :resource
+        ],
+        id: 'add-resource', style: 'display: none;'
+      %>
+    </li>
   <% end %>
 </ul>

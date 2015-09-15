@@ -6,6 +6,8 @@ $(document).on 'page:change', ->
   $('a#info').click ->
     $('div#info').show()
     $('div#resources').hide()
+    $('#add-resource').hide()
   $('a#resources').click ->
     $('div#info').hide()
     $('div#resources').show()
+    $('#add-resource').show()

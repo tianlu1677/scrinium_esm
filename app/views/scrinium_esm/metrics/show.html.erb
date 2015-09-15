@@ -10,12 +10,12 @@
     <ul class='nav nav-tabs' role='tablist'>
       <li role='presentation' class='active'>
         <a href='#info' aria-controls='metric' role='tab' data-toggle='tab' id='info'>
-          <%= t('metric.info') %>
+          <%= t('global.info') %>
         </a>
       </li>
       <li role='presentation'>
         <a href='#resources' aria-controls='resources' role='tab' data-toggle='tab' id='resources'>
-          <%= t('metric.resource') %>
+          <%= t('scrinium.resource') %>
         </a>
       </li>
     </ul>
@@ -39,16 +39,12 @@
         </dl>
       </div>
       <div role='tabpanel' class='tab-pane' id='resources'>
-        <div class='float-right'>
-          <%=
-            link_to t('action.add'),
-            scrinium_esm.user_add_metric_resource_path(current_user, @metric),
-            class: 'button'
-          %>
-        </div>
         <%=
           render partial: 'resources/table_list',
-          locals: { resources: @metric.resources }
+          locals: {
+            app: scrinium_esm,
+            resources: @metric.resources
+          }
         %>
       </div>
     </div>

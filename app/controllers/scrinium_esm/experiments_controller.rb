@@ -29,7 +29,7 @@ module ScriniumEsm
 
       if @experiment.save
         # 添加集合成员。
-        match = session[:previous_url].match(/\/experiments\/new\?experiment_id=(\d+)/)
+        match = session[:previous_url].last.match(/\/experiments\/new\?experiment_id=(\d+)/)
         experiment_id = match ? match[1] : nil
         if experiment_id
           experiment_ensemble = ScriniumEsm::ExperimentEnsemble.new(
