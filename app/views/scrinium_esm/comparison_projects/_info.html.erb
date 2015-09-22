@@ -1,0 +1,16 @@
+<dl>
+  <dt><%= t('global.basic_info') %></dt>
+  <dd class='markdown'><%= @comparison_project.description %></dd>
+</dl>
+<dl>
+  <dt></dt>
+  <dd>
+    <%=
+      render partial: 'comments/list',
+      locals: {
+        app: scrinium_esm,
+        commentable: @comparison_project
+      }
+    %>
+  </dd>
+</dl>

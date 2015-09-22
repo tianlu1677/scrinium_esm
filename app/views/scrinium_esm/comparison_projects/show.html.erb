@@ -6,59 +6,23 @@
 <% end %>
 
 <% content_for :main_block do %>
-  <div>
-    <ul class='nav nav-tabs' role='tablist'>
-      <li role='presentation' class='active'>
-        <a href='#info' aria-controls='comparison_project' role='tab' data-toggle='tab' id='info'>
-          <%= t('global.info') %>
-        </a>
-      </li>
-      <li role='presentation'>
-        <a href='#resources' aria-controls='resources' role='tab' data-toggle='tab' id='resources'>
-          <%= t('scrinium.resource') %>
-        </a>
-      </li>
-      <li role='presentation'>
-        <a href='#experiment-specs' aria-controls='experiment-specs' role='tab' data-toggle='tab' id='experiment-specs'>
-          <%= t('scrinium_esm.experiment_spec') %>
-        </a>
-      </li>
-    </ul>
-    <div class='tab-content'>
-      <div role='tabpanel' class='tab-pane active' id='info'>
-        <dl>
-          <dt><%= t('global.basic_info') %></dt>
-          <dd class='markdown'><%= @comparison_project.description %></dd>
-        </dl>
-        <dl>
-          <dt></dt>
-          <dd>
-            <%=
-              render partial: 'comments/list',
-              locals: {
-                app: scrinium_esm,
-                commentable: @comparison_project
-              }
-            %>
-          </dd>
-        </dl>
-      </div>
-      <div role='tabpanel' class='tab-pane' id='resources'>
-        <%=
-          render partial: 'resources/table_list',
-          locals: {
-            app: scrinium_esm,
-            resources: @comparison_project.resources
-          }
-        %>
-      </div>
-      <div role='tabpanel' class='tab-pane' id='experiment-specs'>
-        <%=
-          render partial: 'scrinium_esm/experiment_specs/table_list',
-          locals: {
-            experiment_specs: @comparison_project.experiment_specs
-          }
-        %>
-      </div>
-    </div>
+  <%=
+    render partial: 'layouts/navtab',
+    locals: {
+      tabs: {
+        info: [
+          t('global.info'),
+          render('info')
+        ],
+        experiment_specs: [
+          t('scrinium_esm.experiment_spec'),
+          render(partial: 'scrinium_esm/experiment_specs/table_list', locals: { experiment_specs: @comparison_project.experiment_specs })
+        ],
+        resources: [
+          t('scrinium.resource'),
+          render(partial: 'resources/table_list', locals: { app: scrinium_esm, resources: @comparison_project.resources })
+        ]
+      }
+    }
+  %>
 <% end %>

@@ -1,0 +1,16 @@
+<dl>
+  <dt><%= t('global.basic_info') %></dt>
+  <dd class='markdown'><%= @metric.description %></dd>
+</dl>
+<dl>
+  <dt></dt>
+  <dd>
+    <%=
+      render partial: 'comments/list',
+      locals: {
+        app: scrinium_esm,
+        commentable: @metric
+      }
+    %>
+  </dd>
+</dl>

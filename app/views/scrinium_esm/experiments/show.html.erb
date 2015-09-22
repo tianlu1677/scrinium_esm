@@ -6,42 +6,27 @@
 <% end %>
 
 <% content_for :main_block do %>
-  <div>
-    <ul class='nav nav-tabs' role='tablist'>
-      <li role='presentation' class='active'>
-        <a href='#info' aria-controls='experiment' role='tab' data-toggle='tab' id='info'>
-          <%= t('global.info') %>
-        </a>
-      </li>
-      <li role='presentation'>
-        <a href='#logs' aria-controls='logs' role='tab' data-toggle='tab' id='logs'>
-          <%= t('global.log') %>
-        </a>
-      </li>
-      <li role='presentation'>
-        <a href='#diagnostic-results' aria-controls='diagnostic-results' role='tab' data-toggle='tab' id='diagnostic-results'>
-          <%= t('scrinium_esm.diagnostic_result') %>
-        </a>
-      </li>
-      <li role='presentation'>
-        <a href='#ensemble-members' aria-controls='ensemble-members' role='tab' data-toggle='tab' id='ensemble-members'>
-          <%= t('experiment.ensemble_member') %>
-        </a>
-      </li>
-    </ul>
-    <div class='tab-content'>
-      <div role='tabpanel' class='tab-pane active' id='info'>
-        <%= render 'info' %>
-      </div>
-      <div role='tabpanel' class='tab-pane' id='logs'>
-        <%= render 'logs' %>
-      </div>
-      <div role='tabpanel' class='tab-pane' id='diagnostic-results'>
-        <%= render 'diagnostic_results' %>
-      </div>
-      <div role='tabpanel' class='tab-pane' id='ensemble-members'>
-        <%= render 'ensemble_members' %>
-      </div>
-    </div>
-  </div>
+  <%=
+    render partial: 'layouts/navtab',
+    locals: {
+      tabs: {
+        info: [
+          t('global.info'),
+          render('info')
+        ],
+        logs: [
+          t('global.log'),
+          render('logs')
+        ],
+        diagnostic_results: [
+          t('scrinium_esm.diagnostic_result'),
+          render('diagnostic_results')
+        ],
+        ensemble_members: [
+          t('experiment.ensemble_member'),
+          render('ensemble_members')
+        ]
+      }
+    }
+  %>
 <% end %>

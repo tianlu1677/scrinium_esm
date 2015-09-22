@@ -122,10 +122,6 @@ zh-CN:
     contact_is_empty: 请指定联系人！
     name_is_empty: 请指定数据名称！
 
-  metric:
-    info: 指标信息
-    resource: 指标资源
-
   comparison_project:
     info: 计划信息
     resource: 计划资源
