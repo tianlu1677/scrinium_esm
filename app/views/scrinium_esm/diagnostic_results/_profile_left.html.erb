@@ -21,7 +21,7 @@
     <li>
       <%=
         link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
-        scrinium_esm.new_user_experiment_diagnostic_result_resource_path(current_user, @experiment, @diagnostic_result)
+        scrinium_esm.new_user_diagnostic_result_resource_path(current_user, @diagnostic_result)
       %>
     </li>
   <% end %>

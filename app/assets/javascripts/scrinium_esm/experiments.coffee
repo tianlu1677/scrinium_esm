@@ -5,7 +5,7 @@ $(document).on 'page:change', ->
   if /\/experiments\/\d+$/.test(location)
     turnOnTab
       info: []
-      logs: []
+      logs: [ 'add-log' ]
       diagnostic_results: [ 'add-diagnostic-result' ]
       ensemble_members: [ 'add-ensemble-member' ]
   else if /\/experiments\/(new|\d+\/edit)$/.test(location)
