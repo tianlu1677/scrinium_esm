@@ -5,7 +5,7 @@
     render partial: 'scrinium_esm/commons/model_list',
     locals: { models: ScriniumEsm::SeaIceModel.all }
   %>
-  <% if is_super_admin?(current_user) %>
+  <% if true %>
     <%= link_to t('action.add'), new_sea_ice_model_path, class: 'button right' %>
   <% end %>
 <% end %>

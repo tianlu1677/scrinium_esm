@@ -24,7 +24,7 @@
 %>
 <div class='row'>
   <div class='col-md-4'>
-    <%= f.input :simulation_region, require: true %>
+    <%= f.input :simulation_region %>
   </div>
   <div class='col-md-4'>
     <%= f.input :simulation_type %>
@@ -34,9 +34,8 @@
       f.input :contact_id,
       label: false,
       required: true,
-      collection: [model.contact_id],
+      collection: User.all,
       input_html: {
-        id: 'input-user-name',
         data: {
           placeholder: t('global.contact')
         }

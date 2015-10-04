@@ -6,7 +6,7 @@
       <th width='50'><%= t('scrinium_esm.model') %></th>
       <th width='100'><%= t('global.contact') %></th>
       <th width='200'><%= t('global.create_time') %></th>
-      <% if is_super_admin_or_admin?(current_user) %>
+      <% if true %>
         <th width='100'><%= t('actions') %></th>
       <% end %>
     </tr>
@@ -20,7 +20,7 @@
         <td><%= link_to model.short_name, model %></td>
         <td><%= link_to User.find(e.contact_id).username, main_app.user_path(e.contact_id) %></td>
         <td><%= e.created_at %></td>
-        <% if is_super_admin_or_admin?(current_user) %>
+        <% if true %>
           <td>
             <% if is_super_admin?(current_user) %>
               <%=

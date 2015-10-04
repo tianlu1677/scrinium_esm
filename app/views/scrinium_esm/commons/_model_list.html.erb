@@ -5,7 +5,7 @@
       <th width='300'><%= t('model.name') %></th>
       <th width='100'><%= t('global.contact') %></th>
       <th width='200'><%= t('global.create_time') %></th>
-      <% if is_super_admin_or_admin?(current_user) %>
+      <% if true %>
         <th width='200'><%= t('actions') %></th>
       <% end %>
     </tr>
@@ -17,9 +17,9 @@
           <%= link_to m.short_name, m %>
         </td>
         <td><%= m.name %></td>
-        <td><%= link_to User.find(m.contact_id).name, main_app.user_path(m.contact_id) %></td>
+        <td><%= link_to User.find(m.contact_id).username, main_app.user_path(m.contact_id) %></td>
         <td><%= m.created_at %></td>
-        <% if is_super_admin_or_admin?(current_user) %>
+        <% if true %>
           <td>
             <% if is_super_admin?(current_user) %>
               <%=

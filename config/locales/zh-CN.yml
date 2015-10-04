@@ -9,6 +9,12 @@ zh-CN:
     project: 计划
     experiment_spec: 试验规范
 
+  enumerize:
+    scrinium_esm/atm_model:
+      simulation_region:
+        global: 全球
+        regional: 区域
+
   model:
     short_name: 模式简称
     name: 模式全称
@@ -127,49 +133,94 @@ zh-CN:
     resource: 计划资源
 
   activerecord:
+    models:
+      scrinium_esm/atm_model: 大气模式
+    attributes:
+      scrinium_esm/atm_model:
+        name: 模式名称
+        simulation_region: 模拟区域
+        short_name:
+        contact_id:
+      scrinium_esm/ocn_model:
+        attributes:
+          name:
+            taken: 已经存在相同名称的海洋环流模式！
+          short_name:
+            taken: 已经存在相同简称的海洋环流模式！
+          contact_id:
+            blank: 未指定联系人！
+      scrinium_esm/experiment:
+        attributes:
+          name:
+            blank: 未设置试验名称！
+            taken: 已经存在相同名称的试验！
+          contact_id:
+            blank: 未指定联系人！
+          experimentable_type:
+            blank: 未设置试验类型！
+          experimentable_id:
+            blank: 未设置试验模式！
+      scrinium_esm/metric:
+        attributes:
+          name:
+            blank: 未设置指标名称！
+            taken: 已经存在相同名称的指标！
+          short_name:
+            blank: 未设置指准简称！
+            taken: 已经存在相同简称的指标！
+          contact_id:
+            blank: 未指定联系人！
+      scrinium_esm/diagnostic_result:
+        attributes:
+          contact_id:
+            blank: 未指定联系人！
+          metric_id:
+            taken: 已经添加过该指标结果！
+            inclusion: 未指定指标！
+
     errors:
-      models:
-        scrinium_esm/atm_model:
-          attributes:
-            name:
-              taken: 已经存在相同名称的大气环流模式！
-            short_name:
-              taken: 已经存在相同简称的大气环流模式！
-            contact_id:
-              blank: 未指定联系人！
-        scrinium_esm/ocn_model:
-          attributes:
-            name:
-              taken: 已经存在相同名称的海洋环流模式！
-            short_name:
-              taken: 已经存在相同简称的海洋环流模式！
-            contact_id:
-              blank: 未指定联系人！
-        scrinium_esm/experiment:
-          attributes:
-            name:
-              blank: 未设置试验名称！
-              taken: 已经存在相同名称的试验！
-            contact_id:
-              blank: 未指定联系人！
-            experimentable_type:
-              blank: 未设置试验类型！
-            experimentable_id:
-              blank: 未设置试验模式！
-        scrinium_esm/metric:
-          attributes:
-            name:
-              blank: 未设置指标名称！
-              taken: 已经存在相同名称的指标！
-            short_name:
-              blank: 未设置指准简称！
-              taken: 已经存在相同简称的指标！
-            contact_id:
-              blank: 未指定联系人！
-        scrinium_esm/diagnostic_result:
-          attributes:
-            contact_id:
-              blank: 未指定联系人！
-            metric_id:
-              taken: 已经添加过该指标结果！
-              inclusion: 未指定指标！
+        models:
+          scrinium_esm/atm_model:
+            attributes:
+              name:
+                taken: 已经存在相同名称的大气环流模式！
+              short_name:
+                taken: 已经存在相同简称的大气环流模式！
+              contact_id:
+                blank: 未指定联系人！
+          scrinium_esm/ocn_model:
+            attributes:
+              name:
+                taken: 已经存在相同名称的海洋环流模式！
+              short_name:
+                taken: 已经存在相同简称的海洋环流模式！
+              contact_id:
+                blank: 未指定联系人！
+          scrinium_esm/experiment:
+            attributes:
+              name:
+                blank: 未设置试验名称！
+                taken: 已经存在相同名称的试验！
+              contact_id:
+                blank: 未指定联系人！
+              experimentable_type:
+                blank: 未设置试验类型！
+              experimentable_id:
+                blank: 未设置试验模式！
+          scrinium_esm/metric:
+            attributes:
+              name:
+                blank: 未设置指标名称！
+                taken: 已经存在相同名称的指标！
+              short_name:
+                blank: 未设置指准简称！
+                taken: 已经存在相同简称的指标！
+              contact_id:
+                blank: 未指定联系人！
+          scrinium_esm/diagnostic_result:
+            attributes:
+              contact_id:
+                blank: 未指定联系人！
+              metric_id:
+                taken: 已经添加过该指标结果！
+                inclusion: 未指定指标！

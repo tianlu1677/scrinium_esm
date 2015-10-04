@@ -35,9 +35,8 @@
                   f.input :contact_id,
                   label: false,
                   required: true,
-                  collection: [@experiment.contact_id],
+                  collection: User.all,
                   input_html: {
-                    id: 'input-user-name',
                     data: {
                       placeholder: t('global.contact')
                     }
