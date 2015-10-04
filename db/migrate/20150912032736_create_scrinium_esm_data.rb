@@ -3,7 +3,7 @@ class CreateScriniumEsmData < ActiveRecord::Migration
     create_table :scrinium_esm_data do |t|
       t.string  :name, index: true
       t.text    :description
-      t.attachment :logo
+      t.string :logo
       t.integer :datum_type
       t.integer :datum_format
       t.string  :source

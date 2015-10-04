@@ -5,7 +5,6 @@ module ScriniumEsm
     belongs_to :experimentable, polymorphic: true
     acts_as_taggable
     acts_as_taggable_on :categories
-    has_many :collections, as: :collectable, dependent: :destroy
     has_many :comments, as: :commentable, dependent: :destroy
     has_many :diagnostic_results, dependent: :destroy
     has_many :experiment_ensembles

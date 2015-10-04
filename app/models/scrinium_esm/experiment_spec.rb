@@ -2,11 +2,7 @@ module ScriniumEsm
   class ExperimentSpec < ActiveRecord::Base
     has_many :resources, as: :resourceable, dependent: :destroy
     has_many :comments, as: :commentable, dependent: :destroy
-    has_many :collections, as: :collectable, dependent: :destroy
     belongs_to :comparison_project
-
-    has_attached_file :logo, styles: { medium: '150x150', thumb: '100x100', small: '20x20' }
-    validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
     acts_as_taggable
     acts_as_taggable_on :categories

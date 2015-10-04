@@ -5,7 +5,7 @@ class CreateScriniumEsmComparisonProjects < ActiveRecord::Migration
       t.string :short_name, index: true
       t.text :description
       t.integer :contact_id
-      t.attachment :logo
+      t.string :logo
 
       t.timestamps null: false
     end

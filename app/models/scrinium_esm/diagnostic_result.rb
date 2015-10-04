@@ -2,7 +2,6 @@ module ScriniumEsm
   class DiagnosticResult < ActiveRecord::Base
     has_many :resources, as: :resourceable, dependent: :destroy
     has_many :comments, as: :commentable, dependent: :destroy
-    has_many :collections, as: :collectable, dependent: :destroy
     belongs_to :metric
     belongs_to :experiment
     acts_as_taggable
