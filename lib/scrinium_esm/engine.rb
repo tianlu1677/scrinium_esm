@@ -7,5 +7,11 @@ module ScriniumEsm
         helper ScriniumEsm::ViewComponentsHelper
       end
     end
+
+    initializer 'scrinium_esm.action_controller' do |app|
+      ActiveSupport.on_load :action_controller do
+        helper ScriniumEsm::ApplicationHelper
+      end
+    end
   end
 end
