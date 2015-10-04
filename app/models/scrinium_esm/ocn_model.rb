@@ -1,5 +1,7 @@
 module ScriniumEsm
   class OcnModel < ActiveRecord::Base
+    extend Enumerize
+
     validates :name, uniqueness: true
     validates :short_name, uniqueness: true
     validates :contact_id, presence: true

@@ -17,7 +17,7 @@
           <%= link_to d.metric.short_name, scrinium_esm.user_experiment_diagnostic_result_path(d.contact, d.experiment, d) %>
         </td>
         <td>
-          <%= link_to d.contact.name, main_app.user_path(d.contact) %>
+          <%= link_to d.contact.username, main_app.user_path(d.contact) %>
         </td>
         <td><%= d.created_at %></td>
         <% if is_super_admin_or_admin?(current_user) or can_act %>

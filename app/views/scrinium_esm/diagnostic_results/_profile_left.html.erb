@@ -9,7 +9,7 @@
   </li>
   <li>
     <%= t('global.contact') %>:
-    <%= link_to @diagnostic_result.contact.name, main_app.user_path(@diagnostic_result.contact) %>
+    <%= link_to @diagnostic_result.contact.username, main_app.user_path(@diagnostic_result.contact) %>
   </li>
   <% if is_super_admin_or_admin?(current_user) %>
     <li>

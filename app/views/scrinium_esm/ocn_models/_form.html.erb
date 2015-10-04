@@ -28,20 +28,10 @@
             %>
             <div class='row'>
               <div class='col-md-6'>
-                <%=
-                  f.input :horizontal_mesh,
-                  label: t('model.horizontal_mesh'),
-                  collection: ScriniumEsm::OcnModel.horizontal_meshes,
-                  selected: ScriniumEsm::OcnModel.horizontal_meshes[@ocn_model.horizontal_mesh]
-                %>
+                <%= f.input :horizontal_mesh %>
               </div>
               <div class='col-md-6'>
-                <%=
-                  f.input :vertical_coordinate,
-                  label: t('model.vertical_coordinate'),
-                  collection: ScriniumEsm::OcnModel.vertical_coordinates,
-                  selected: ScriniumEsm::OcnModel.vertical_coordinates[@ocn_model.vertical_coordinate]
-                %>
+                <%= f.input :vertical_coordinate %>
               </div>
             </div>
           </dd>
