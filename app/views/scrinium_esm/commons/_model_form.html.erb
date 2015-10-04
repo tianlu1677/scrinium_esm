@@ -24,22 +24,10 @@
 %>
 <div class='row'>
   <div class='col-md-4'>
-    <%=
-      f.input :simulation_region,
-      label: t('model.simulation_region'),
-      required: true,
-      collection: model.class.simulation_regions,
-      selected: model.class.simulation_regions[model.simulation_region]
-    %>
+    <%= f.input :simulation_region %>
   </div>
   <div class='col-md-4'>
-    <%=
-      f.input :simulation_type,
-      label: t('model.simulation_type'),
-      required: true,
-      collection: model.class.simulation_types,
-      selected: model.class.simulation_types[model.simulation_type]
-    %>
+    <%= f.input :simulation_type %>
   </div>
   <div class='col-md-4'>
     <%=

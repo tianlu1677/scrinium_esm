@@ -7,23 +7,17 @@ module ScriniumEsm
 
     has_many :experiments, as: :experimentable, dependent: :destroy
 
-    enum simulation_region: [
-      :global,
-      :regional
-    ].map { |x| I18n.t("model.simulation_regions.#{x}") }
-    enum simulation_type: [
-      :climate,
-      :weather
-    ].map { |x| I18n.t("model.simulation_types.#{x}") }
-    enum horizontal_mesh: [
+    enumerize :simulation_region, in: [ :global, :regional ]
+    enumerize :simulation_type, in: [ :climate, :weather ]
+    enumerize :horizontal_mesh, in: [
       :lat_lon,
       :tripole,
       :rotation
-    ].map { |x| I18n.t("ocn_model.horizontal_meshes.#{x}") }
-    enum vertical_coordinate: [
+    ]
+    enumerize :vertical_coordinate, in: [
       :height,
       :hybrid_sigma_height,
       :isopycnic
-    ].map { |x| I18n.t("ocn_model.vertical_coordinates.#{x}") }
+    ]
   end
 end

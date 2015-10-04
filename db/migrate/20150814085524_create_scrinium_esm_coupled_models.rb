@@ -7,8 +7,8 @@ class CreateScriniumEsmCoupledModels < ActiveRecord::Migration
       t.string :repository_url
       t.text :description
       t.string :affiliation
-      t.integer :simulation_region
-      t.integer :simulation_type
+      t.string :simulation_region
+      t.string :simulation_type
 
       t.timestamps null: false
     end

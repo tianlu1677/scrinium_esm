@@ -7,12 +7,11 @@ class CreateScriniumEsmOcnModels < ActiveRecord::Migration
       t.string :repository_url
       t.text :description
       t.string :affiliation
-      t.integer :simulation_region
-      t.integer :simulation_type
-      # Atmosphere model specific columns.
-      t.integer :horizontal_mesh
-      t.integer :vertical_coordinate
-      t.integer :vertical_mesh
+      t.string :simulation_region
+      t.string :simulation_type
+      t.string :horizontal_mesh
+      t.string :vertical_coordinate
+      t.string :vertical_mesh
       t.string  :dynamical_core_scheme
       t.string  :advection_scheme
 
