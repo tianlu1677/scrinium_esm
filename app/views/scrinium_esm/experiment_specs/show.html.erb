@@ -1,19 +1,10 @@
 <% content_for :title, @experiment_spec.short_name %>
-<%
-  add_breadcrumb @experiment_spec.short_name,
-  [
-    scrinium_esm,
-    @experiment_spec.contact,
-    @experiment_spec.comparison_project,
-    @experiment_spec
-  ]
-%>
 
-<% content_for :left_side do %>
+<% content_for :left do %>
   <%= render 'profile_left' %>
 <% end %>
 
-<% content_for :main_block do %>
+<% content_for :main do %>
   <%=
     render partial: 'layouts/navtab',
     locals: {

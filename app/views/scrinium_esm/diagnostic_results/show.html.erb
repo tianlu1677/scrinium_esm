@@ -1,14 +1,10 @@
 <% content_for :title, @diagnostic_result.metric.short_name %>
-<%
-  add_breadcrumb @diagnostic_result.metric.short_name,
-  scrinium_esm.user_experiment_diagnostic_result_path(@diagnostic_result.contact, @experiment, @diagnostic_result)
-%>
 
-<% content_for :left_side do %>
+<% content_for :left do %>
   <%= render 'profile_left' %>
 <% end %>
 
-<% content_for :main_block do %>
+<% content_for :main do %>
   <%=
     render partial: 'resources/list',
     locals: {

@@ -1,11 +1,10 @@
 <% content_for :title, @comparison_project.short_name %>
-<% add_breadcrumb @comparison_project.short_name, [ scrinium_esm, @comparison_project.contact, @comparison_project ] %>
 
-<% content_for :left_side do %>
+<% content_for :left do %>
   <%= render 'profile_left' %>
 <% end %>
 
-<% content_for :main_block do %>
+<% content_for :main do %>
   <%=
     render partial: 'layouts/navtab',
     locals: {

@@ -1,7 +1,6 @@
 <% content_for :title, t('models.atm') %>
-<% add_breadcrumb t('models.atm'), atm_models_path, on_nav_bar: true %>
 
-<% content_for :main_block do %>
+<% content_for :main do %>
   <%=
     render partial: 'scrinium_esm/commons/model_list',
     locals: { models: ScriniumEsm::AtmModel.all }
