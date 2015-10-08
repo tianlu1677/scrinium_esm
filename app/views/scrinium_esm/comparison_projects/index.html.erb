@@ -10,7 +10,7 @@
     render partial: 'scrinium_esm/comparison_projects/table_list',
     locals: { comparison_projects: ScriniumEsm::ComparisonProject.all }
   %>
-  <% if is_super_admin?(current_user) %>
+  <% if can? :create, ScriniumEsm::ComparisonProject %>
     <%=
       link_to t('action.add'),
       scrinium_esm.new_user_comparison_project_path(current_user),

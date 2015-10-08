@@ -58,9 +58,6 @@ module ScriniumEsm
 
     # Only allow a trusted parameter "white list" through.
     def atm_model_params
-      transform_params params, :atm_model,
-        [:simulation_region, :simulation_type, :horizontal_mesh,
-         :vertical_coordinate, :vertical_mesh]
       params.require(:atm_model).permit(:name,
                                         :short_name,
                                         :description,

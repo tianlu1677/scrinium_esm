@@ -6,7 +6,7 @@
     render partial: 'scrinium_esm/data/table_list',
     locals: { data: ScriniumEsm::Datum.all }
   %>
-  <% if is_super_admin?(current_user) %>
+  <% if can? :create, ScriniumEsm::Datum %>
     <%= link_to t('action.add'), scrinium_esm.new_datum_path, class: 'button float-right' %>
   <% end %>
 <% end %>

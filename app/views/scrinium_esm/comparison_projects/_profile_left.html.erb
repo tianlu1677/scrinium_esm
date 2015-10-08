@@ -7,7 +7,7 @@
       [ main_app, @comparison_project.contact ]
     %>
   </li>
-  <% if is_super_admin_or_admin?(current_user) %>
+  <% if can? :update, @comparison_project %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
@@ -26,6 +26,16 @@
         link_to fa_icon('file-text-o', text: t('action.add')+t('scrinium_esm.experiment_spec')),
         scrinium_esm.new_user_comparison_project_experiment_spec_path(current_user, @comparison_project),
         id: 'add-experiment-spec', style: 'display: none;'
+      %>
+    </li>
+  <% end %>
+  <% if can? :delete, @comparison_project %>
+    <li>
+      <%=
+        link_to fa_icon('trash', text: t('action.delete')),
+        [ scrinium_esm, current_user, @comparison_project ],
+        method: :delete,
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.comparison_project')) }
       %>
     </li>
   <% end %>

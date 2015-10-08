@@ -4,7 +4,7 @@
     <%= t('global.contact') %>:
     <%= link_to @metric.contact.name, main_app.user_path(@metric.contact) %>
   </li>
-  <% if is_super_admin_or_admin?(current_user) %>
+  <% if can? :update, @metric %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
@@ -22,6 +22,16 @@
           :resource
         ],
         id: 'add-resource', style: 'display: none;'
+      %>
+    </li>
+  <% end %>
+  <% if can? :delete, @metric %>
+    <li>
+      <%=
+        link_to fa_icon('trash', text: t('action.delete')),
+        [ scrinium_esm, current_user, @metric ],
+        method: :delete,
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.metric')) }
       %>
     </li>
   <% end %>

@@ -5,32 +5,15 @@
       <th width='300'><%= t('model.name') %></th>
       <th width='100'><%= t('global.contact') %></th>
       <th width='200'><%= t('global.create_time') %></th>
-      <% if is_super_admin_or_admin?(current_user) %>
-        <th width='200'><%= t('actions') %></th>
-      <% end %>
     </tr>
   </thead>
   <tbody>
     <% models.each do |m| %>
       <tr>
-        <td>
-          <%= link_to m.short_name, m %>
-        </td>
+        <td><%= link_to m.short_name, m %></td>
         <td><%= m.name %></td>
         <td><%= link_to User.find(m.contact_id).name, main_app.user_path(m.contact_id) %></td>
         <td><%= m.created_at %></td>
-        <% if is_super_admin_or_admin?(current_user) %>
-          <td>
-            <% if is_super_admin?(current_user) %>
-              <%=
-                link_to t('action.delete'), m,
-                method: :delete,
-                data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.model')) },
-                class: 'button btn-xs btn-danger'
-              %>
-            <% end %>
-          </td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>

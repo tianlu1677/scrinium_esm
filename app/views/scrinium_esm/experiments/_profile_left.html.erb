@@ -17,11 +17,11 @@
       main_app.user_path(@experiment.contact_id)
     %>
   </li>
-  <% if is_super_admin_or_admin?(current_user) or current_user == @experiment.user %>
+  <% if can? :update, @experiment %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
-        [:edit, @experiment.user, @experiment], 'data-no-turbolink': true
+        [:edit, @experiment.user, @experiment], :'data-no-turbolink' => true
       %>
     </li>
     <li>
@@ -47,8 +47,20 @@
       %>
     </li>
   <% end %>
-  <%=
-    render partial: 'collections/collect_button',
-    locals: { collectable: @experiment }
-  %>
+  <% if can? :delete, @experiment %>
+    <li>
+      <%=
+        link_to fa_icon('trash', text: t('action.delete')),
+        [ scrinium_esm, current_user, @experiment ],
+        method: :delete,
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.experiment')) }
+      %>
+    </li>
+  <% end %>
+  <li>
+    <%=
+      render partial: 'collections/collect_button',
+      locals: { collectable: @experiment }
+    %>
+  </li>
 </ul>

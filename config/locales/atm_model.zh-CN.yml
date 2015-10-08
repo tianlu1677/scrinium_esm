@@ -1,0 +1,42 @@
+zh-CN:
+  enumerize:
+    scrinium_esm/atm_model:
+      simulation_region:
+        global: 全球
+        regional: 区域
+      simulation_type:
+        climate: 气候
+        weather: 天气
+      horizontal_mesh:
+        lat_lon: 经纬网格
+        cubed_sphere: 球面立方网格
+      vertical_coordinate:
+        classic_sigma_pressure: 经典𝜎气压垂直坐标
+        hybrid_sigma_pressure: 混合𝜎气压垂直坐标
+        float_lagrangian_pressure: 浮动拉格朗日气压垂直坐标
+
+  atm_model:
+    simulation_region: 模拟区域
+    simulation_type: 模拟类型
+    horizontal_mesh: 水平网格
+    vertical_coordinate: 垂直网格
+    is_hydrostatic: 精力平衡假设
+    is_shallow: 浅层假设
+    physics_parameterizations:
+      radiation_scheme: 辐射参数化方案
+      convection_scheme: 对流参数化方案
+      microphysics_scheme: 云微微物理参数化方案
+      planet_boundary_layer_scheme: 边界层参数化方案
+      gravity_drag_scheme: 重力波拖曳参数化方案
+
+  activerecord:
+    errors:
+      models:
+        scrinium_esm/atm_model:
+          attributes:
+            name:
+              taken: 已经存在相同名称的大气环流模式！
+            short_name:
+              taken: 已经存在相同简称的大气环流模式！
+            contact_id:
+              blank: 未指定联系人！

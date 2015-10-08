@@ -8,7 +8,7 @@ $(document).on 'page:change', ->
       logs: [ 'add-log' ]
       diagnostic_results: [ 'add-diagnostic-result' ]
       ensemble_members: [ 'add-ensemble-member' ]
-  else if /\/experiments\/(new|\d+\/edit)$/.test(location)
+  else if /\/experiments\/(new|\d+\/edit)/.test(location)
     atmModelIdInput = $('div#input-atm-model-id')
     ocnModelIdInput = $('div#input-ocn-model-id')
     coupledModelIdInput = $('div#input-coupled-model-id')

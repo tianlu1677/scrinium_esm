@@ -6,7 +6,7 @@
     render partial: 'scrinium_esm/commons/model_list',
     locals: { models: ScriniumEsm::AtmModel.all }
   %>
-  <% if is_super_admin?(current_user) %>
+  <% if can? :add, ScriniumEsm::AtmModel %>
     <%= link_to t('action.add'), new_atm_model_path, class: 'button float-right' %>
   <% end %>
 <% end %>

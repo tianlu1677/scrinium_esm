@@ -7,7 +7,7 @@
       [ main_app, @experiment_spec.contact ]
     %>
   </li>
-  <% if is_super_admin_or_admin?(current_user) %>
+  <% if can? :update, @experiment_spec %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
@@ -31,6 +31,16 @@
           :resource
         ],
         id: 'add-resource', style: 'display: none;'
+      %>
+    </li>
+  <% end %>
+  <% if can? :delete, @experiment_spec %>
+    <li>
+      <%=
+        link_to fa_icon('trash', text: t('action.delete')),
+        [ scrinium_esm, current_user, @experiment_spec ],
+        method: :delete,
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.experiment_spec')) }
       %>
     </li>
   <% end %>

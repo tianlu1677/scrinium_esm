@@ -2,14 +2,15 @@ module ScriniumEsm
   class Experiment < ActiveRecord::Base
     validates :name, uniqueness: { scope: :experimentable_id }
     validates :name, :contact_id, :experimentable_id, :experimentable_type, presence: true
+
     belongs_to :experimentable, polymorphic: true
-    acts_as_taggable
-    acts_as_taggable_on :categories
-    has_many :collections, as: :collectable, dependent: :destroy
     has_many :comments, as: :commentable, dependent: :destroy
     has_many :diagnostic_results, dependent: :destroy
     has_many :experiment_ensembles
     has_many :members, through: :experiment_ensembles
+
+    acts_as_taggable
+    acts_as_taggable_on :categories
 
     TypeMap = {
       'AMIP' => 'ScriniumEsm::AtmModel',

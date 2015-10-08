@@ -58,9 +58,6 @@ module ScriniumEsm
 
     # Only allow a trusted parameter "white list" through.
     def ocn_model_params
-      transform_params params, :ocn_model,
-        [:simulation_region, :simulation_type, :horizontal_mesh,
-         :vertical_coordinate, :vertical_mesh]
       params.require(:ocn_model).permit(:name,
                                         :short_name,
                                         :contact_id,

@@ -1,0 +1,35 @@
+zh-CN:
+  enumerize:
+    scrinium_esm/ocn_model:
+      simulation_region:
+        global: 全球
+        regional: 区域
+      simulation_type:
+        climate: 气候
+        weather: 天气
+      horizontal_mesh:
+        lat_lon: 经纬网格
+        tripole: 三级网格
+        rotation: 旋转网格
+      vertical_coordinate:
+        height: 高度垂直坐标
+        hybrid_sigma_height: 混合𝜎高度垂直坐标
+        isopycnic: 等密度垂直坐标
+
+  ocn_model:
+    simulation_region: 模拟区域
+    simulation_type: 模拟类型
+    horizontal_mesh: 水平网格
+    vertical_coordinate: 垂直网格
+
+  activerecord:
+    errors:
+      models:
+        scrinium_esm/ocn_model:
+          attributes:
+            name:
+              taken: 已经存在相同名称的海洋环流模式！
+            short_name:
+              taken: 已经存在相同简称的海洋环流模式！
+            contact_id:
+              blank: 未指定联系人！

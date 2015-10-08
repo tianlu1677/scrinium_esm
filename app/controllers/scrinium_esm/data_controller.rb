@@ -59,7 +59,7 @@ module ScriniumEsm
 
     # Only allow a trusted parameter "white list" through.
     def datum_params
-      transform_params params, :datum, [:datum_type, :datum_format]
+      transform_params params, :datum, :datum_type, :datum_format
       params.require(:datum).permit(:name,
                                     :logo,
                                     :datum_type,

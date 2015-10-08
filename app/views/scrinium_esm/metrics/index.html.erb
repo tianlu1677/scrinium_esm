@@ -6,7 +6,11 @@
     render partial: 'scrinium_esm/metrics/table_list',
     locals: { metrics: ScriniumEsm::Metric.all }
   %>
-  <% if is_super_admin?(current_user) %>
-    <%= link_to t('action.add'), scrinium_esm.new_user_metric_path(current_user), class: 'button float-right' %>
+  <% if can? :create, ScriniumEsm::Metric %>
+    <%=
+      link_to t('action.add'),
+      scrinium_esm.new_user_metric_path(current_user),
+      class: 'button float-right'
+    %>
   <% end %>
 <% end %>

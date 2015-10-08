@@ -1,7 +1,7 @@
 # TODO: 找到一种更为合适的方法解决CollectionsController加载问题。
-ScriniumEsm::CollectionsController = CollectionsController
-ScriniumEsm::CommentsController = CommentsController
-ScriniumEsm::ResourcesController = ResourcesController
+ScriniumEsm::CollectionsController = CollectionsController if not defined? ScriniumEsm::CollectionsController
+ScriniumEsm::CommentsController = CommentsController if not defined? ScriniumEsm::CommentsController
+ScriniumEsm::ResourcesController = ResourcesController if not defined? ScriniumEsm::ResourcesController
 
 ScriniumEsm::Engine.routes.draw do
   # NOTE: 需要和主应用中的concerns保持一致。

@@ -2,7 +2,22 @@
   <li><%= @datum.name %></li>
   <li><%= t('data.type') %>: <%= @datum.datum_type %></li>
   <li><%= t('global.contact') %>: <%= link_to @datum.contact.name, main_app.user_path(@datum.contact) %></li>
-  <% if is_super_admin_or_admin?(current_user) %>
-    <li><%= link_to fa_icon('edit', text: t('action.edit')), scrinium_esm.edit_datum_path(@datum) %></li>
+  <% if can? :update, @datum %>
+    <li>
+      <%=
+        link_to fa_icon('edit', text: t('action.edit')),
+        scrinium_esm.edit_datum_path(@datum)
+      %>
+    </li>
+  <% end %>
+  <% if can? :delete, @datum %>
+    <li>
+      <%=
+        link_to fa_icon('trash', text: t('action.delete')),
+        [ scrinium_esm, @datum ],
+        method: :delete,
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.data')) }
+      %>
+    </li>
   <% end %>
 </ul>
