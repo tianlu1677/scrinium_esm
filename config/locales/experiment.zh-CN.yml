@@ -1,0 +1,23 @@
+zh-CN:
+  scrinium_esm:
+    experiment: 试验
+
+  enumerize:
+    scrinium_esm/experiment:
+      experiment_type:
+        amip: AMIP
+        omip: OMIP
+        cmip: CMIP
+
+  activerecord:
+    errors:
+      models:
+        scrinium_esm/experiment:
+          attributes:
+            name:
+              taken: 已经存在相同名称的模式试验！
+            contact_id:
+              blank: 未指定联系人！
+            experiment_type:
+              blank: 未设定试验类型！
+              inclusion: 未设定试验类型！

@@ -1,0 +1,18 @@
+<dl>
+  <dt>
+    <div class='center'>
+      <ul class='clean-list'>
+        <li style='display: inline;'><a id='use-experiment-action-table-list'><%= fa_icon 'list' %></a></li>
+        <li style='display: inline;'><a id='use-experiment-action-block-list'><%= fa_icon 'th' %></a></li>
+      </ul>
+    </div>
+  </dt>
+  <dd>
+    <div id='experiment-action-table-list'>
+      <%= render 'scrinium_esm/experiment_actions/table_list', experiment_actions: experiment_actions %>
+    </div>
+    <div id='experiment-action-block-list' style='display: none;'>
+      <%= render 'scrinium_esm/experiment_actions/block_list', experiment_actions: experiment_actions %>
+    </div>
+  </dd>
+</dl>

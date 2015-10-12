@@ -7,6 +7,7 @@ ScriniumEsm::AtmModel.create(
 ScriniumEsm::Experiment.create(
   name: '测试试验',
   contact_id: 1,
+  experiment_type: 'amip',
   experimentable_type: 'ScriniumEsm::AtmModel',
   experimentable_id: 1
 )

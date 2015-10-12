@@ -1,0 +1,20 @@
+zh-CN:
+  scrinium_esm:
+    experiment_action: 试验操作
+
+  experiment_action:
+    object: 操作对象
+    type: 操作类型
+
+  enumerize:
+    scrinium_esm/experiment_action:
+      action_type:
+        change: 改变
+        add: 添加
+        delete: 删除
+      action_object:
+        parameter: 参数
+        compiler: 编译器
+        compiler_option: 编译选项
+        code: 程序
+        parallel_setting: 并行设置

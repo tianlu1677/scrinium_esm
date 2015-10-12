@@ -1,6 +1,6 @@
 <ul class='left-side-list'>
   <li><%= @experiment.name %></li>
-  <li><%= "#{t('experiment.type')}: #{get_experiment_type @experiment}" %></li>
+  <li><%= "#{t('experiment.type')}: #{@experiment.experiment_type.text}" %></li>
   <li>
     <ul class='left-side-list'>
       <% @experiment.categories.each do |t| %>

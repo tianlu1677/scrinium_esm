@@ -1,162 +1,128 @@
 <div class='experiment-form'>
   <%= simple_form_for [current_user, @experiment] do |f| %>
-    <div class='row'>
-      <div class='col-md-6'>
-        <dl>
-          <dt><%= t('global.basic_info') %></dt>
-          <dd>
+    <dl>
+      <dt><%= t('global.basic_info') %></dt>
+      <dd>
+        <%=
+          f.input :name,
+          label: false,
+          placeholder: t('experiment.name'),
+          required: true
+        %>
+        <%=
+          f.input :category_list,
+          label: false,
+          collection: @experiment.categories.map { |t| t.name },
+          input_html: {
+            multiple: 'multiple',
+            data: {
+              placeholder: t('experiment.placeholder.categories')
+            }
+          }
+        %>
+        <%=
+          f.input :description,
+          label: false,
+          placeholder: t('experiment.description'),
+          required: true,
+          as: :text
+        %>
+        <div class='row'>
+          <div class='col-md-3'>
             <%=
-              f.input :name,
+              f.input :contact_id,
               label: false,
-              placeholder: t('experiment.name'),
-              required: true
-            %>
-            <%=
-              f.input :category_list,
-              label: false,
-              collection: @experiment.categories.map { |t| t.name },
+              required: true,
+              collection: [@experiment.contact_id],
               input_html: {
-                multiple: 'multiple',
+                id: 'input-user-name',
                 data: {
-                  placeholder: t('experiment.placeholder.categories')
+                  placeholder: t('global.contact')
                 }
               }
             %>
+          </div>
+          <div class='col-md-3' id='input-experiment-type'>
             <%=
-              f.input :description,
-              label: false,
-              placeholder: t('experiment.description'),
-              required: true,
-              as: :text
+              f.input :experiment_type, label: false,
+              input_html: { id: 'input-experiment-type' }
             %>
-            <div class='row'>
-              <div class='col-md-3'>
-                <%=
-                  f.input :contact_id,
-                  label: false,
-                  required: true,
-                  collection: [@experiment.contact_id],
-                  input_html: {
-                    id: 'input-user-name',
-                    data: {
-                      placeholder: t('global.contact')
-                    }
-                  }
-                %>
-              </div>
-              <div class='col-md-3' id='input-experiment-type'>
-                <%=
-                  f.input :experimentable_type,
-                  label: false,
-                  collection: ScriniumEsm::Experiment::TypeMap.keys,
-                  include_blank: true,
-                  selected: get_experiment_type(@experiment),
-                  input_html: {
-                    id: 'input-experiment-type'
-                  }
-                %>
-              </div>
-              <div class='col-md-3' id='input-atm-model-id'
-              <% if @experiment.experimentable_type == 'ScriniumEsm::AtmModel' %>
-                >
-              <% else %>
-                style='display:none'>
-              <% end %>
-                <%=
-                  f.input :experimentable_id,
-                  label: false,
-                  collection: ScriniumEsm::AtmModel.all,
-                  include_blank: true,
-                  selected: get_experimentable_id(@experiment),
-                  label_method: :short_name,
-                  value_method: :id,
-                  input_html: {
-                    id: 'input-atm-model-id'
-                  }
-                %>
-              </div>
-              <div class='col-md-3' id='input-ocn-model-id'
-              <% if @experiment.experimentable_type == 'ScriniumEsm::OcnModel' %>
-                >
-              <% else %>
-                style='display:none'>
-              <% end %>
-                <%=
-                  f.input :experimentable_id,
-                  label: false,
-                  collection: ScriniumEsm::OcnModel.all,
-                  include_blank: true,
-                  selected: get_experimentable_id(@experiment),
-                  label_method: :short_name,
-                  value_method: :id,
-                  input_html: {
-                    id: 'input-ocn-model-id'
-                  }
-                %>
-              </div>
-              <div class='col-md-3' id='input-coupled-model-id'
-              <% if @experiment.experimentable_type == 'ScriniumEsm::CoupledModel' %>
-                >
-              <% else %>
-                style='display:none'>
-              <% end %>
-                <%=
-                  f.input :experimentable_id,
-                  label: false,
-                  collection: ScriniumEsm::CoupledModel.all,
-                  include_blank: true,
-                  selected: get_experimentable_id(@experiment),
-                  label_method: :short_name,
-                  value_method: :id,
-                  input_html: {
-                    id: 'input-coupled-model-id'
-                  }
-                %>
-              </div>
-            </div>
-          </dd>
-        </dl>
-      </div>
-      <div class='col-md-6'>
-        <dl>
-          <dt><%= t('experiment.actions') %></dt>
-          <dd>
-            <div class='panel panel-default'>
-              <div class='panel-heading'>
-                <select id='select-action-type'>
-                  <option></option>
-                  <% ScriniumEsm::Experiment::ActionTypeMap.each do |k, v| %>
-                    <option value='<%= k %>'><%= v %></option>
-                  <% end %>
-                </select>
-                <a class='button btn-xs float-right' id='save-action'><%= t('action.save') %></a>
-              </div>
-              <div class='panel-body' id='edit-action-subject'></div>
-            </div>
-          </dd>
-        </dl>
-      </div>
-    </div>
-    <table class='table'>
-      <thead>
-        <tr>
-          <th width='100'></th>
-          <th width='100'></th>
-          <th width='100'></th>
-          <th width='30'></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @experiment.action_types.zip(@experiment.action_subjects).each do |t, s| %>
-          <%= render partial: 'action', locals: { type: t, subject: s } %>
+          </div>
+          <div class='col-md-3' id='input-atm-model-id'
+          <% if @experiment.experimentable_type == 'ScriniumEsm::AtmModel' %>
+            >
+          <% else %>
+            style='display:none'>
+          <% end %>
+            <%=
+              f.input :experimentable_id,
+              label: false,
+              collection: ScriniumEsm::AtmModel.all,
+              include_blank: true,
+              selected: @experiment.experimentable_id,
+              label_method: :short_name,
+              value_method: :id,
+              input_html: {
+                id: 'input-atm-model-id'
+              }
+            %>
+          </div>
+          <div class='col-md-3' id='input-ocn-model-id'
+          <% if @experiment.experimentable_type == 'ScriniumEsm::OcnModel' %>
+            >
+          <% else %>
+            style='display:none'>
+          <% end %>
+            <%=
+              f.input :experimentable_id,
+              label: false,
+              collection: ScriniumEsm::OcnModel.all,
+              include_blank: true,
+              selected: @experiment.experimentable_id,
+              label_method: :short_name,
+              value_method: :id,
+              input_html: {
+                id: 'input-ocn-model-id'
+              }
+            %>
+          </div>
+          <div class='col-md-3' id='input-coupled-model-id'
+          <% if @experiment.experimentable_type == 'ScriniumEsm::CoupledModel' %>
+            >
+          <% else %>
+            style='display:none'>
+          <% end %>
+            <%=
+              f.input :experimentable_id,
+              label: false,
+              collection: ScriniumEsm::CoupledModel.all,
+              include_blank: true,
+              selected: @experiment.experimentable_id,
+              label_method: :short_name,
+              value_method: :id,
+              input_html: {
+                id: 'input-coupled-model-id'
+              }
+            %>
+          </div>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt><%= t('scrinium_esm.experiment_action') %></dt>
+      <dd>
+        <%= f.simple_fields_for :experiment_actions, @experiment.experiment_actions.sort_by { |x| x.order } do |g| %>
+          <%= render 'experiment_action_field', f: g %>
         <% end %>
-        <tr id='action-placeholder'></tr>
-      </tbody>
-    </table>
-    <% if @experiment.id %>
-      <%= f.button :submit, t('action.edit'), class: 'button float-right', id: 'submit-experiment' %>
-    <% else %>
-      <%= f.button :submit, t('action.add'), class: 'button float-right', id: 'submit-experiment' %>
-    <% end %>
+      </dd>
+    </dl>
+    <div class='right'>
+      <%= link_to_add_field t('action.add')+t('scrinium_esm.experiment_action'), f, :experiment_actions, class: 'button' %>
+      <% if @experiment.id %>
+        <%= f.button :submit, t('action.edit')+t('scrinium_esm.experiment'), class: 'button', id: 'submit-experiment' %>
+      <% else %>
+        <%= f.button :submit, t('action.add')+t('scrinium_esm.experiment'), class: 'button', id: 'submit-experiment' %>
+      <% end %>
+    </div>
   <% end %>
 </div>

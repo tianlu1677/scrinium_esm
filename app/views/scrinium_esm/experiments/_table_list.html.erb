@@ -9,14 +9,14 @@
     </tr>
   </thead>
   <tbody>
-    <% experiments.each do |e| %>
-      <% model = get_experimentable(e) %>
+    <% experiments.each do |experiment| %>
+      <% model = experiment.experimentable %>
       <tr>
-        <td><%= link_to e.name, [e.user, e] %></td>
-        <td><%= get_experiment_type e %></td>
+        <td><%= link_to experiment.name, [ experiment.user, experiment ] %></td>
+        <td><%= experiment.experiment_type.text %></td>
         <td><%= link_to model.short_name, model %></td>
-        <td><%= link_to User.find(e.contact_id).name, main_app.user_path(e.contact_id) %></td>
-        <td><%= e.created_at %></td>
+        <td><%= link_to User.find(experiment.contact_id).name, main_app.user_path(experiment.contact_id) %></td>
+        <td><%= experiment.created_at %></td>
       </tr>
     <% end %>
   </tbody>

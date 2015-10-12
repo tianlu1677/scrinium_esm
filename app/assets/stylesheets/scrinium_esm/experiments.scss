@@ -4,16 +4,10 @@
 */
 
 .experiment-form {
-  max-width: 100%;
+  max-width: 480px;
   margin: auto;
-  h3 {
-   margin-top: 0;
-   margin-bottom: 20px;
-  }
   textarea.text {
    height: 200px;
-   max-width: 100%;
-   width: 100%;
   }
 }
 

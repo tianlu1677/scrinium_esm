@@ -1,7 +1,6 @@
 zh-CN:
   scrinium_esm:
     model: 模式
-    experiment: 试验
     data: 数据
     metric: 评估指标
     diagnostic_result: 诊断结果

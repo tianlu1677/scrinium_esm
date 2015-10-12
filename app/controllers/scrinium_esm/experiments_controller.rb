@@ -5,25 +5,20 @@ module ScriniumEsm
     before_action :authenticate_user!, except: [:index, :show]
     before_action :set_experiment, only: [:show, :edit, :update, :destroy, :add_log]
 
-    # GET /experiments
     def index
       @experiments = Experiment.all
     end
 
-    # GET /experiments/1
     def show
     end
 
-    # GET /experiments/new
     def new
       @experiment = Experiment.new
     end
 
-    # GET /experiments/1/edit
     def edit
     end
 
-    # POST /experiments
     def create
       @experiment = Experiment.new(experiment_params)
 
@@ -38,25 +33,38 @@ module ScriniumEsm
           )
           if not experiment_ensemble.save
             # TODO: 处理错误！
+            debugger
           end
         end
-
-        redirect_to [@experiment.user, @experiment], notice: t('message.create_success', thing: t('scrinium_esm.experiment'))
+        redirect_to [ @experiment.user, @experiment ], notice: t('message.create_success', thing: t('scrinium_esm.experiment'))
       else
         render :new
       end
     end
 
-    # PATCH/PUT /experiments/1
     def update
       if @experiment.update(experiment_params)
+        # 删除用户删除的试验操作。
+        @experiment.experiment_actions.each do |action|
+          if not params[:experiment][:experiment_actions_attributes]
+            @experiment.experiment_actions.delete action
+            action.destroy
+            next
+          end
+          params[:experiment][:experiment_actions_attributes].map { |x| x.last }.each do |p|
+            if p[:id] == action.id.to_s and p.keys.size == 1
+              @experiment.experiment_actions.delete action
+              action.destroy
+              break
+            end
+          end
+        end
         redirect_to [@experiment.user, @experiment], notice: t('message.update_success', thing: t('scrinium_esm.experiment'))
       else
         render :edit
       end
     end
 
-    # DELETE /experiments/1
     def destroy
       @experiment.destroy
       redirect_to experiments_url, notice: t('message.destroy_success', thing: t('scrinium_esm.experiment'))
@@ -66,9 +74,10 @@ module ScriniumEsm
       log = Article.new({
         title: "#{@experiment.name} - #{I18n.t('experiment.log')} ##{@experiment.log_ids.size+1}",
         category_list: [I18n.t('experiment.log')],
-        user_id: current_user.id
+        user_id: current_user.id,
+        privacy: 'public'
       })
-      if not log.save
+      if not log.save!
         # TODO: 处理错误。
       end
       if not @experiment.update({ log_ids: @experiment.log_ids << log.id })
@@ -79,27 +88,31 @@ module ScriniumEsm
 
     private
 
-    # Use callbacks to share common setup or constraints between actions.
     def set_experiment
       @experiment = Experiment.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def experiment_params
-      params[:experiment][:experimentable_type] =
-        ScriniumEsm::Experiment::TypeMap[params[:experiment][:experimentable_type]]
-      params[:experiment][:action_types] = params[:action_types] ? params[:action_types].split(',') : []
-      params[:experiment][:action_subjects] = params[:action_subjects] ? params[:action_subjects].split(',') : []
+      params[:experiment][:experimentable_type] = ScriniumEsm::Experiment::ModelType[params[:experiment][:experiment_type].to_sym]
       params.require(:experiment).permit(:name,
                                          :description,
                                          :contact_id,
-                                         { action_types: [] },
-                                         { action_subjects: [] },
                                          :tag_list,
                                          { category_list: [] },
+                                         :experiment_type,
                                          :experimentable_id,
                                          :experimentable_type,
-                                         { log_ids: [] })
+                                         { log_ids: [] },
+                                         experiment_actions_attributes: [
+                                           :id,
+                                           :action_object,
+                                           :action_type,
+                                           :content1,
+                                           :content2,
+                                           :content3,
+                                           :content4,
+                                           :content5
+                                         ])
     end
   end
 end

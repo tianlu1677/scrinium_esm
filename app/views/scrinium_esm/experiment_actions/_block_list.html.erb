@@ -1,0 +1,20 @@
+<div class='row'>
+  <% experiment_actions.each do |action| %>
+    <div class='col-md-4 col-sm-6 col-xs-12'>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= action.action_type.text %><%= action.action_object.text %>
+        </div>
+        <div class="panel-body">
+          <ul class='clean-list'>
+            <li><%= action.content1 %></li>
+            <li><%= action.content2 %></li>
+            <li><%= action.content3 %></li>
+            <li><%= action.content4 %></li>
+            <li><%= action.content5 %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

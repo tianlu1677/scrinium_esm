@@ -2,25 +2,7 @@
   <dt><%= t('global.basic_info') %></dt>
   <dd class='markdown'><%= @experiment.description %></dd>
 </dl>
-<dl>
-  <dt><%= t('experiment.actions') %></dt>
-  <dd>
-    <table class='table'>
-      <thead>
-        <tr>
-          <th width='100'></th>
-          <th width='100'></th>
-          <th width='100'></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @experiment.action_types.zip(@experiment.action_subjects).each do |t, s| %>
-          <%= render partial: 'action', locals: { type: t, subject: s, readonly: true } %>
-        <% end %>
-      </tbody>
-    </table>
-  </dd>
-</dl>
+<%= render 'scrinium_esm/experiment_actions/list', experiment_actions: @experiment.experiment_actions %>
 <dl>
   <dt></dt>
   <dd>

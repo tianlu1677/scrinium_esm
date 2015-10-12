@@ -1,0 +1,54 @@
+<fieldset class='experiment-action-field'>
+  <div class='panel panel-default'>
+    <div class='panel-body'>
+      <div class='row'>
+        <div class='col-md-4'>
+          <%= link_to fa_icon('arrow-circle-o-up 2x'), '#', class: 'move_up_field' %>
+          <%= link_to fa_icon('arrow-circle-o-down 2x'), '#', class: 'move_down_field' %>
+        </div>
+        <div class='col-md-4'>
+          <%= f.input :action_object, label:false, input_html: { class: 'select-action-object' } %>
+        </div>
+        <div class='col-md-4'>
+          <%= f.input :action_type, label: false, input_html: { class: 'select-action-type' } %>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-4'>
+          <% if not f.object.content1 or f.object.content1.empty? %>
+            <%= f.input :content1, label: false, input_html: { style: 'display: none;' } %>
+          <% else %>
+            <%= f.input :content1, label: false %>
+          <% end %>
+        </div>
+        <div class='col-md-4'>
+          <% if not f.object.content2 or f.object.content2.empty? %>
+            <%= f.input :content2, label: false, input_html: { style: 'display: none;' } %>
+          <% else %>
+            <%= f.input :content2, label: false %>
+          <% end %>
+        </div>
+        <div class='col-md-4'>
+          <% if not f.object.content3 or f.object.content3.empty? %>
+            <%= f.input :content3, label: false, input_html: { style: 'display: none;' } %>
+          <% else %>
+            <%= f.input :content3, label: false %>
+          <% end %>
+        </div>
+      </div>
+      <% if not f.object.content4 or f.object.content4.empty? %>
+        <%= f.input :content4, label: false, input_html: { style: 'display: none;' } %>
+      <% else %>
+        <%= f.input :content4, label: false %>
+      <% end %>
+      <% if not f.object.content5 or f.object.content5.empty? %>
+        <%= f.input :content5, label: false, input_html: { style: 'display: none;' } %>
+      <% else %>
+        <%= f.input :content5, label: false %>
+      <% end %>
+      <div class='right'>
+        <%= link_to t('action.delete'), '#', class: 'button btn-xs btn-danger remove_field' %>
+      </div>
+    </div>
+  </div>
+</fieldset>

@@ -1,0 +1,22 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th width="100"><%= t('experiment_action.object') %></th>
+      <th width="100"><%= t('experiment_action.type') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% experiment_actions.each do |action| %>
+      <tr>
+        <td><%= action.action_object.text %>: <%= action.content1 %></td>
+        <% if action.action_type == 'change' %>
+          <% if action.content4.empty? %>
+            <td><%= action.action_type.text %>: <%= action.content2 %> <%= fa_icon 'arrow-right' %> <%= action.content3 %> </td>
+          <% else %>
+            <td><%= action.action_type.text %>: <%= action.content4 %> <%= fa_icon 'arrow-right' %> <%= action.content5 %> </td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
