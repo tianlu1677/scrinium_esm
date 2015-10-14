@@ -8,19 +8,13 @@
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
-        scrinium_esm.edit_user_metric_path(current_user, @metric)
+        [ scrinium_esm, :edit, @metric ]
       %>
     </li>
     <li>
       <%=
         link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
-        [
-          scrinium_esm,
-          :new,
-          current_user,
-          @metric,
-          :resource
-        ],
+        [ scrinium_esm, :new, @metric, :resource ],
         id: 'add-resource', style: 'display: none;'
       %>
     </li>
@@ -29,7 +23,7 @@
     <li>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),
-        [ scrinium_esm, current_user, @metric ],
+        [ scrinium_esm, @metric ],
         method: :delete,
         data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.metric')) }
       %>

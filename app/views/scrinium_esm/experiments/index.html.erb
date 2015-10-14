@@ -7,6 +7,6 @@
     locals: { experiments: ScriniumEsm::Experiment.all }
   %>
   <% if can? :create, ScriniumEsm::Experiment %>
-    <%= link_to t('action.add'), new_user_experiment_path(current_user), class: 'button float-right' %>
+    <%= link_to t('action.add'), new_experiment_path, class: 'button float-right' %>
   <% end %>
 <% end %>

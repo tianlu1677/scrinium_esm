@@ -11,7 +11,7 @@
     <% diagnostic_results.each do |d| %>
       <tr>
         <td>
-          <%= link_to d.metric.short_name, scrinium_esm.user_experiment_diagnostic_result_path(d.contact, d.experiment, d) %>
+          <%= link_to d.metric.short_name, scrinium_esm.diagnostic_result_path(d) %>
         </td>
         <td>
           <%= link_to d.contact.name, main_app.user_path(d.contact) %>

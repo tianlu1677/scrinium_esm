@@ -4,13 +4,5 @@
 </dl>
 <dl>
   <dt></dt>
-  <dd>
-    <%=
-      render partial: 'comments/list',
-      locals: {
-        app: scrinium_esm,
-        commentable: @comparison_project
-      }
-    %>
-  </dd>
+  <dd><%= render 'comments/list', app: scrinium_esm, commentable: @comparison_project %></dd>
 </dl>

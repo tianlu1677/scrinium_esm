@@ -1,5 +1,5 @@
 <% content_for :title, @comparison_project.short_name %>
-<% add_breadcrumb @comparison_project.short_name, [ scrinium_esm, @comparison_project.contact, @comparison_project ] %>
+<% add_breadcrumb @comparison_project.short_name, [ scrinium_esm, @comparison_project ] %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
@@ -7,22 +7,20 @@
 
 <% content_for :main_block do %>
   <%=
-    render partial: 'layouts/navtab',
-    locals: {
-      tabs: {
-        info: [
-          t('global.info'),
-          render('info')
-        ],
-        experiment_specs: [
-          t('scrinium_esm.experiment_spec'),
-          render(partial: 'scrinium_esm/experiment_specs/table_list', locals: { experiment_specs: @comparison_project.experiment_specs })
-        ],
-        resources: [
-          t('scrinium.resource'),
-          render(partial: 'resources/table_list', locals: { app: scrinium_esm, resources: @comparison_project.resources })
-        ]
-      }
+    render 'layouts/navtab',
+    tabs: {
+      info: [
+        t('global.info'),
+        render('info')
+      ],
+      experiment_specs: [
+        t('scrinium_esm.experiment_spec'),
+        render('scrinium_esm/experiment_specs/table_list', experiment_specs: @comparison_project.experiment_specs)
+      ],
+      resources: [
+        t('scrinium.resource'),
+        render('resources/table_list', app: scrinium_esm, resources: @comparison_project.resources)
+      ]
     }
   %>
 <% end %>

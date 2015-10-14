@@ -12,7 +12,7 @@
     <% experiments.each do |experiment| %>
       <% model = experiment.experimentable %>
       <tr>
-        <td><%= link_to experiment.name, [ experiment.user, experiment ] %></td>
+        <td><%= link_to experiment.name, experiment %></td>
         <td><%= experiment.experiment_type.text %></td>
         <td><%= link_to model.short_name, model %></td>
         <td><%= link_to User.find(experiment.contact_id).name, main_app.user_path(experiment.contact_id) %></td>

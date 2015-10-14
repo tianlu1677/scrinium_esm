@@ -4,6 +4,7 @@ ScriniumEsm::CommentsController = CommentsController if not defined? ScriniumEsm
 ScriniumEsm::ResourcesController = ResourcesController if not defined? ScriniumEsm::ResourcesController
 
 ScriniumEsm::Engine.routes.draw do
+  # Concerns from main app -----------------------------------------------------
   # NOTE: 需要和主应用中的concerns保持一致。
   concern :collectable do
     get '/collect', controller: 'collections', action: 'collect', as: :collect
@@ -16,26 +17,26 @@ ScriniumEsm::Engine.routes.draw do
   concern :resourceable do
     resources :resources, concerns: [ :collectable, :commentable ]
   end
-  resources :users do
-    resources :experiments, except: :index, concerns: [ :collectable, :commentable ] do
-      resources :diagnostic_results
-    end
-    get '/experiments/:id/add_log' => 'experiments#add_log', as: :add_experiment_log
-    resources :metrics, except: :index, concerns: [ :resourceable, :collectable, :commentable ]
-    get '/metrics/:id/add_resource' => 'metrics#add_resource', as: :add_metric_resource
-    resources :comparison_projects, except: :index, concerns: [ :resourceable, :collectable, :commentable ] do
-      resources :experiment_specs
-    end
-    resources :diagnostic_results, concerns: [ :resourceable, :collectable, :commentable ]
-    resources :experiment_specs, concerns: [ :resourceable, :collectable, :commentable ]
-  end
-  get '/experiments' => 'experiments#index'
+  # Experiment -----------------------------------------------------------------
+  resources :experiments, concerns: [ :collectable, :commentable ]
+  get '/experiments/:id/add_log' => 'experiments#add_log', as: :add_experiment_log
+  # Diagnostic Result ----------------------------------------------------------
+  resources :diagnostic_results, concerns: [ :resourceable, :collectable, :commentable ]
+  # Metric ---------------------------------------------------------------------
   get '/metrics' => 'metrics#index'
-  get '/comparison_projects' => 'comparison_projects#index'
+  # Comparison Projects --------------------------------------------------------
+  resources :comparison_projects, concerns: [ :resourceable, :collectable, :commentable ] do
+    resources :experiment_specs
+  end
+  resources :experiment_specs, concerns: [ :resourceable, :collectable, :commentable ]
+  # Metrics --------------------------------------------------------------------
+  resources :metrics, except: :index, concerns: [ :resourceable, :collectable, :commentable ]
+  # Models ---------------------------------------------------------------------
   resources :coupled_models
   resources :sea_ice_models
   resources :lnd_models
   resources :ocn_models
   resources :atm_models
+  # Data -----------------------------------------------------------------------
   resources :data
 end

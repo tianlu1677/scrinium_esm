@@ -31,12 +31,9 @@ module ScriniumEsm
             experiment_id: experiment_id,
             member_id: @experiment.id
           )
-          if not experiment_ensemble.save
-            # TODO: 处理错误！
-            debugger
-          end
+          experiment_ensemble.save!
         end
-        redirect_to [ @experiment.user, @experiment ], notice: t('message.create_success', thing: t('scrinium_esm.experiment'))
+        redirect_to @experiment, notice: t('message.create_success', thing: t('scrinium_esm.experiment'))
       else
         render :new
       end
@@ -59,7 +56,7 @@ module ScriniumEsm
             end
           end
         end
-        redirect_to [@experiment.user, @experiment], notice: t('message.update_success', thing: t('scrinium_esm.experiment'))
+        redirect_to @experiment, notice: t('message.update_success', thing: t('scrinium_esm.experiment'))
       else
         render :edit
       end
@@ -77,13 +74,9 @@ module ScriniumEsm
         user_id: current_user.id,
         privacy: 'public'
       })
-      if not log.save!
-        # TODO: 处理错误。
-      end
-      if not @experiment.update({ log_ids: @experiment.log_ids << log.id })
-        # TODO: 处理错误。
-      end
-      redirect_to main_app.edit_user_article_path(current_user, log)
+      log.save!
+      @experiment.update!({ log_ids: @experiment.log_ids << log.id })
+      redirect_to main_app.edit_article_path(log)
     end
 
     private

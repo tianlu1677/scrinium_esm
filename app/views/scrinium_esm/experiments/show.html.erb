@@ -1,5 +1,5 @@
 <% content_for :title, @experiment.name %>
-<% add_breadcrumb @experiment.name, url_for([@experiment.user, @experiment]) %>
+<% add_breadcrumb @experiment.name, experiment_path(@experiment) %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>

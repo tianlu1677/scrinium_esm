@@ -21,13 +21,13 @@
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
-        [:edit, @experiment.user, @experiment], :'data-no-turbolink' => true
+        edit_experiment_path(@experiment), :'data-no-turbolink' => true
       %>
     </li>
     <li>
       <%=
         link_to fa_icon('coffee', text: t('action.add')+t('global.log')),
-        user_add_experiment_log_path(current_user, @experiment),
+        add_experiment_log_path(@experiment),
         id: 'add-log',
         style: 'display: none;'
       %>
@@ -35,14 +35,14 @@
     <li>
       <%=
         link_to fa_icon('cube', text: t('action.add')+t('scrinium_esm.diagnostic_result')),
-        scrinium_esm.new_user_experiment_diagnostic_result_path(current_user, @experiment),
+        scrinium_esm.new_diagnostic_result_path(experiment_id: @experiment.id),
         id: 'add-diagnostic-result', style: 'display: none;'
       %>
     </li>
     <li>
       <%=
         link_to fa_icon('plus-square', text: t('action.add')+t('experiment.ensemble_member')),
-        new_user_experiment_path(current_user, experiment_id: @experiment.id),
+        new_experiment_path(experiment_id: @experiment.id),
         id: 'add-ensemble-member', style: 'display: none;'
       %>
     </li>
@@ -51,7 +51,7 @@
     <li>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),
-        [ scrinium_esm, current_user, @experiment ],
+        [ scrinium_esm, @experiment ],
         method: :delete,
         data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.experiment')) }
       %>

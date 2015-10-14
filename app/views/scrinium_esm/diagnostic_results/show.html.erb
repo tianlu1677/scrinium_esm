@@ -1,7 +1,7 @@
 <% content_for :title, @diagnostic_result.metric.short_name %>
 <%
   add_breadcrumb @diagnostic_result.metric.short_name,
-  scrinium_esm.user_experiment_diagnostic_result_path(@diagnostic_result.contact, @experiment, @diagnostic_result)
+  scrinium_esm.diagnostic_result_path(@diagnostic_result)
 %>
 
 <% content_for :left_side do %>

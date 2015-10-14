@@ -1,5 +1,5 @@
 <% content_for :title, @metric.short_name %>
-<% add_breadcrumb @metric.short_name, scrinium_esm.user_metric_path(@metric.contact, @metric) %>
+<% add_breadcrumb @metric.short_name, [ scrinium_esm, @metric ] %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
@@ -7,18 +7,16 @@
 
 <% content_for :main_block do %>
   <%=
-    render partial: 'layouts/navtab',
-    locals: {
-      tabs: {
-        info: [
-          t('global.info'),
-          render('info')
-        ],
-        resources: [
-          t('scrinium.resource'),
-          render(partial: 'resources/table_list', locals: { app: scrinium_esm, resources: @metric.resources })
-        ]
-      }
+    render 'layouts/navtab',
+    tabs: {
+      info: [
+        t('global.info'),
+        render('info')
+      ],
+      resources: [
+        t('scrinium.resource'),
+        render('resources/list', app: scrinium_esm, resources: @metric.resources)
+      ]
     }
   %>
 <% end %>

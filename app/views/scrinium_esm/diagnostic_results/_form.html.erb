@@ -1,5 +1,5 @@
 <div class='metric-form'>
-  <%= simple_form_for [ current_user, @experiment, @diagnostic_result ] do |f| %>
+  <%= simple_form_for @diagnostic_result do |f| %>
     <%=
       f.association :metric,
       label: false,

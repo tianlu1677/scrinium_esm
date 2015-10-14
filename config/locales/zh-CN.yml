@@ -59,31 +59,6 @@ zh-CN:
       new_time_step_size: 新的时间步长
     log: 试验日志
 
-  data:
-    name: 数据名称
-    description: 数据描述
-    home_page: 数据主页
-    local_store: 本地存储位置
-    type: 数据类型
-    types:
-      station_data: 台站数据
-      reanalysis_data: 再分析数据
-      satellite_data: 卫星数据
-      model_data: 模式数据
-      cmip5_data: CMIP5数据
-      invalid: 数据类型
-    type_is_empty: 请指定数据类型！
-    formats:
-      grib: GRIB
-      netcdf: NetCDF
-      hdf4: HDF4
-      hdf5: HDF5
-      binary: 二进制数据
-      invalid: 数据格式
-    format_is_empty: 请指定数据格式！
-    contact_is_empty: 请指定联系人！
-    name_is_empty: 请指定数据名称！
-
   comparison_project:
     info: 计划信息
     resource: 计划资源

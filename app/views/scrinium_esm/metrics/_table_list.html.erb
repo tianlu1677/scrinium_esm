@@ -8,16 +8,16 @@
     </tr>
   </thead>
   <tbody>
-    <% metrics.each do |m| %>
+    <% metrics.each do |metric| %>
       <tr>
         <td>
-          <%= link_to m.short_name, scrinium_esm.user_metric_path(m.contact, m) %>
+          <%= link_to metric.short_name, [ scrinium_esm, metric ] %>
         </td>
-        <td><%= m.name %></td>
+        <td><%= metric.name %></td>
         <td>
-          <%= link_to m.contact.name, main_app.user_path(m.contact) %>
+          <%= link_to metric.contact.name, [ main_app, metric.contact ] %>
         </td>
-        <td><%= m.created_at %></td>
+        <td><%= metric.created_at %></td>
       </tr>
     <% end %>
   </tbody>

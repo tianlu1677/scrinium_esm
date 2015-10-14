@@ -2,14 +2,10 @@
 <% add_breadcrumb t('scrinium_esm.metric'), scrinium_esm.metrics_path, on_nav_bar: true %>
 
 <% content_for :main_block do %>
-  <%=
-    render partial: 'scrinium_esm/metrics/table_list',
-    locals: { metrics: ScriniumEsm::Metric.all }
-  %>
+  <%= render 'scrinium_esm/metrics/table_list', metrics: ScriniumEsm::Metric.all %>
   <% if can? :create, ScriniumEsm::Metric %>
     <%=
-      link_to t('action.add'),
-      scrinium_esm.new_user_metric_path(current_user),
+      link_to t('action.add'), [ scrinium_esm, :new, :metric ],
       class: 'button float-right'
     %>
   <% end %>

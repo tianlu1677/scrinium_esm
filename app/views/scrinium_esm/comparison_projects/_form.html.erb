@@ -1,21 +1,8 @@
 <div class='comparison-project-form'>
-  <%= simple_form_for [ current_user, @comparison_project ] do |f| %>
-    <%=
-      f.input :name,
-      label: false,
-      placeholder: t('global.name')
-    %>
-    <%=
-      f.input :short_name,
-      label: false,
-      placeholder: t('global.short_name')
-    %>
-    <%=
-      f.input :description,
-      label: false,
-      placeholder: t('global.description'),
-      as: :text
-    %>
+  <%= simple_form_for @comparison_project do |f| %>
+    <%= f.input :name, label: false, placeholder: t('global.name') %>
+    <%= f.input :short_name, label: false, placeholder: t('global.short_name') %>
+    <%= f.input :description, label: false, placeholder: t('global.description'), as: :text %>
     <%=
       f.input :contact_id,
       label: false,

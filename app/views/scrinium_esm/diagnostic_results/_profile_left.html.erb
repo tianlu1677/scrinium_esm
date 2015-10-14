@@ -1,7 +1,7 @@
 <ul class='left-side-list'>
   <li>
     <%= t('scrinium_esm.experiment') %>:
-    <%= @experiment.name %>
+    <%= @diagnostic_result.experiment.name %>
   </li>
   <li>
     <%= t('scrinium_esm.metric') %>:
@@ -15,13 +15,13 @@
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
-        scrinium_esm.edit_user_experiment_diagnostic_result_path(current_user, @experiment, @diagnostic_result)
+        [ scrinium_esm, :edit, @diagnostic_result ]
       %>
     </li>
     <li>
       <%=
         link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
-        scrinium_esm.new_user_diagnostic_result_resource_path(current_user, @diagnostic_result)
+        [ scrinium_esm, :new, @diagnostic_result, :resource ]
       %>
     </li>
   <% end %>
@@ -29,7 +29,7 @@
     <li>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),
-        [ scrinium_esm, current_user, @experiment, @diagnostic_result ],
+        [ scrinium_esm, @diagnostic_result ],
         method: :delete,
         data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.diagnostic_result')) }
       %>

@@ -49,23 +49,6 @@ module ScriniumEsm
       redirect_to metrics_url, notice: t('message.destroy_success', thing: t('scrinium_esm.metric'))
     end
 
-    def add_resource
-      resource = Resource.new({
-        name: "#{@metric.short_name} - #{I18n.t('scrinium.resource')} ##{@metric.resources.size+1}",
-        category_list: [I18n.t('metric.resource')],
-        user_id: current_user.id,
-        resourceable_type: @metric.class,
-        resourceable_id: @metric.id
-      })
-      if not resource.save
-        # TODO: 处理错误。
-      end
-      if not @metric.update({ resource_ids: @metric.resource_ids << resource.id })
-        # TODO: 处理错误。
-      end
-      redirect_to main_app.edit_user_resource_path(current_user, resource)
-    end
-
     private
 
     # Use callbacks to share common setup or constraints between actions.

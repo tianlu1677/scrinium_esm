@@ -1,5 +1,5 @@
 <div class='experiment-form'>
-  <%= simple_form_for [current_user, @experiment] do |f| %>
+  <%= simple_form_for @experiment do |f| %>
     <dl>
       <dt><%= t('global.basic_info') %></dt>
       <dd>
