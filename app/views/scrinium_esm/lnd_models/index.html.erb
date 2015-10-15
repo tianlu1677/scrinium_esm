@@ -6,7 +6,7 @@
     render partial: 'scrinium_esm/commons/model_list',
     locals: { models: ScriniumEsm::LndModel.all }
   %>
-  <% if can? :create, ScriniumEsm::LndModel %>
+  <% if policy(ScriniumEsm::LndModel).create? %>
     <%= link_to t('action.add'), new_lnd_model_path, class: 'button float-right' %>
   <% end %>
 <% end %>

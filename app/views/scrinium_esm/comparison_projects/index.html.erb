@@ -10,7 +10,7 @@
     render 'scrinium_esm/comparison_projects/table_list',
     comparison_projects: ScriniumEsm::ComparisonProject.all
   %>
-  <% if can? :create, ScriniumEsm::ComparisonProject %>
+  <% if policy(ScriniumEsm::ComparisonProject).create? %>
     <%=
       link_to t('action.add'),
       scrinium_esm.new_comparison_project_path,

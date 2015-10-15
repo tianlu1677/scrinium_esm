@@ -3,7 +3,7 @@
   <li><%= t('data.type') %>: <%= @datum.datum_type.text %></li>
   <li><%= t('data.format') %>: <%= @datum.datum_format.text %></li>
   <li><%= t('global.contact') %>: <%= link_to @datum.contact.name, main_app.user_path(@datum.contact) %></li>
-  <% if can? :update, @datum %>
+  <% if policy(@datum).update? %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
@@ -11,12 +11,11 @@
       %>
     </li>
   <% end %>
-  <% if can? :delete, @datum %>
+  <% if policy(@datum).destroy? %>
     <li>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),
-        [ scrinium_esm, @datum ],
-        method: :delete,
+        [ scrinium_esm, @datum ], method: :delete,
         data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.data')) }
       %>
     </li>

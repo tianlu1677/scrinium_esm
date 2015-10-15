@@ -1,7 +1,11 @@
 ScriniumEsm::AtmModel.create(
   name: 'Grid-point Atmospheric Model IAP/LASG',
   short_name: 'GAMIL',
-  contact_id: 1
+  contact_id: 1,
+  simulation_region: 'global',
+  simulation_type: 'climate',
+  horizontal_mesh: 'lat_lon',
+  vertical_coordinate: 'classic_sigma_pressure'
 )
 
 ScriniumEsm::Experiment.create(

@@ -3,7 +3,7 @@
 
 <% content_for :main_block do %>
   <%= render 'scrinium_esm/metrics/table_list', metrics: ScriniumEsm::Metric.all %>
-  <% if can? :create, ScriniumEsm::Metric %>
+  <% if policy(ScriniumEsm::Metric).create? %>
     <%=
       link_to t('action.add'), [ scrinium_esm, :new, :metric ],
       class: 'button float-right'

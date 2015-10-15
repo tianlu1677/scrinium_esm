@@ -7,7 +7,7 @@
       [ main_app, @comparison_project.contact ]
     %>
   </li>
-  <% if can? :update, @comparison_project %>
+  <% if policy(@comparison_project).update? %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
@@ -29,12 +29,11 @@
       %>
     </li>
   <% end %>
-  <% if can? :delete, @comparison_project %>
+  <% if policy(@comparison_project).destroy? %>
     <li>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),
-        [ scrinium_esm, @comparison_project ],
-        method: :delete,
+        [ scrinium_esm, @comparison_project ], method: :delete,
         data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.comparison_project')) }
       %>
     </li>

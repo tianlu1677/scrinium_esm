@@ -7,7 +7,7 @@
       [ main_app, @experiment_spec.contact ]
     %>
   </li>
-  <% if can? :update, @experiment_spec %>
+  <% if policy(@experiment_spec).update? %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
@@ -34,7 +34,7 @@
       %>
     </li>
   <% end %>
-  <% if can? :delete, @experiment_spec %>
+  <% if policy(@experiment_spec).destroy? %>
     <li>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),

@@ -11,7 +11,7 @@
     <%= t('global.contact') %>:
     <%= link_to @diagnostic_result.contact.name, main_app.user_path(@diagnostic_result.contact) %>
   </li>
-  <% if can? :update, @diagnostic_result %>
+  <% if policy(@diagnostic_result).update? %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
@@ -25,7 +25,7 @@
       %>
     </li>
   <% end %>
-  <% if can? :delete, @diagnostic_result %>
+  <% if policy(@diagnostic_result).destroy? %>
     <li>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),

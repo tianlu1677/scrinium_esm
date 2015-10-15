@@ -6,7 +6,7 @@
     render partial: 'table_list',
     locals: { experiments: ScriniumEsm::Experiment.all }
   %>
-  <% if can? :create, ScriniumEsm::Experiment %>
+  <% if policy(ScriniumEsm::Experiment).create? %>
     <%= link_to t('action.add'), new_experiment_path, class: 'button float-right' %>
   <% end %>
 <% end %>

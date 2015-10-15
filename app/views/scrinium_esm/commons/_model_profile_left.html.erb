@@ -4,9 +4,15 @@
     <%= t('global.contact') %>:
     <%= link_to User.find(model.contact_id).name, main_app.user_path(model.contact_id) %>
   </li>
-  <% if can? :update, model %>
-    <li>
-      <%= link_to fa_icon('edit', text: t('action.edit')), [:edit, model] %>
-    </li>
-  <% end %>
+  <li>
+    <% if policy(model).update? %>
+      <%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, model ] %>
+    <% end %>
+    <% if policy(model).destroy? %>
+      <%=
+        link_to fa_icon('trash', text: t('action.delete')), model, method: :delete,
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.ocn_model')) }
+      %>
+    <% end %>
+  </li>
 </ul>
