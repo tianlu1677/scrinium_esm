@@ -17,6 +17,8 @@ zh-CN:
     advection_scheme: 平流方案
     physics_parameterization: 物理参数化
     scheme_name: 方案名称
+    simulation_region: 模拟区域
+    simulation_type: 模拟类型
 
   models:
     atm: 大气环流模式

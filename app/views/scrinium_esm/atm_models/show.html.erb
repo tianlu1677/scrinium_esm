@@ -1,70 +1,66 @@
 <% content_for :specification do %>
-  <div class='col-md-8'>
-    <dl>
-      <dt><%= t('model.dynamical_core_scheme') %></dt>
-      <dd>
-        <table class='table'>
-          <tbody>
-            <tr>
-              <td><%= t('model.dynamical_core_scheme')+t('model.scheme_name') %></td>
-              <td><%= @atm_model.dynamical_core_scheme %></td>
-            </tr>
-            <tr>
-              <td><%= t('model.advection_scheme')+t('model.scheme_name') %></td>
-              <td><%= @atm_model.advection_scheme %></td>
-            </tr>
-            <tr>
-              <td><%= t('model.horizontal_mesh') %></td>
-              <td><%= @atm_model.horizontal_mesh %></td>
-            </tr>
-            <tr>
-              <td><%= t('model.vertical_coordinate') %></td>
-              <td><%= @atm_model.vertical_coordinate %></td>
-            </tr>
-            <tr>
-              <td><%= t('atm_model.is_hydrostatic') %></td>
-              <td><%= t("global.#{@atm_model.is_hydrostatic}_") %></td>
-            </tr>
-            <tr>
-              <td><%= t('atm_model.is_shallow') %></td>
-              <td><%= t("global.#{@atm_model.is_shallow}_") %></td>
-            </tr>
-          </tbody>
-        </table>
-      </dd>
-    </dl>
-  </div>
-  <div class='col-md-6'>
-    <dl>
-      <dt><%= t('model.physics_parameterization') %></dt>
-      <dd>
-        <table class='table'>
-          <tbody>
-            <tr>
-              <td><%= t('atm_model.physics_parameterizations.radiation_scheme') %></td>
-              <td><%= @atm_model.radiation_scheme %></td>
-            </tr>
-            <tr>
-              <td><%= t('atm_model.physics_parameterizations.convection_scheme') %></td>
-              <td><%= @atm_model.convection_scheme %></td>
-            </tr>
-            <tr>
-              <td><%= t('atm_model.physics_parameterizations.microphysics_scheme') %></td>
-              <td><%= @atm_model.microphysics_scheme %></td>
-            </tr>
-            <tr>
-              <td><%= t('atm_model.physics_parameterizations.planet_boundary_layer_scheme') %></td>
-              <td><%= @atm_model.planet_boundary_layer_scheme %></td>
-            </tr>
-            <tr>
-              <td><%= t('atm_model.physics_parameterizations.gravity_drag_scheme') %></td>
-              <td><%= @atm_model.gravity_drag_scheme %></td>
-            </tr>
-          </tbody>
-        </table>
-      </dd>
-    </dl>
-  </div>
+  <dl>
+    <dt><%= t('model.dynamical_core_scheme') %></dt>
+    <dd>
+      <table class='table'>
+        <tbody>
+          <tr>
+            <td><%= t('model.dynamical_core_scheme')+t('model.scheme_name') %></td>
+            <td><%= @atm_model.dynamical_core_scheme %></td>
+          </tr>
+          <tr>
+            <td><%= t('model.advection_scheme')+t('model.scheme_name') %></td>
+            <td><%= @atm_model.advection_scheme %></td>
+          </tr>
+          <tr>
+            <td><%= t('model.horizontal_mesh') %></td>
+            <td><%= @atm_model.horizontal_mesh.text %></td>
+          </tr>
+          <tr>
+            <td><%= t('model.vertical_coordinate') %></td>
+            <td><%= @atm_model.vertical_coordinate.text %></td>
+          </tr>
+          <tr>
+            <td><%= t('atm_model.is_hydrostatic') %></td>
+            <td><%= t("global.#{@atm_model.is_hydrostatic}_") %></td>
+          </tr>
+          <tr>
+            <td><%= t('atm_model.is_shallow') %></td>
+            <td><%= t("global.#{@atm_model.is_shallow}_") %></td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
+  <dl>
+    <dt><%= t('model.physics_parameterization') %></dt>
+    <dd>
+      <table class='table'>
+        <tbody>
+          <tr>
+            <td><%= t('atm_model.physics_parameterizations.radiation_scheme') %></td>
+            <td><%= @atm_model.radiation_scheme %></td>
+          </tr>
+          <tr>
+            <td><%= t('atm_model.physics_parameterizations.convection_scheme') %></td>
+            <td><%= @atm_model.convection_scheme %></td>
+          </tr>
+          <tr>
+            <td><%= t('atm_model.physics_parameterizations.microphysics_scheme') %></td>
+            <td><%= @atm_model.microphysics_scheme %></td>
+          </tr>
+          <tr>
+            <td><%= t('atm_model.physics_parameterizations.planet_boundary_layer_scheme') %></td>
+            <td><%= @atm_model.planet_boundary_layer_scheme %></td>
+          </tr>
+          <tr>
+            <td><%= t('atm_model.physics_parameterizations.gravity_drag_scheme') %></td>
+            <td><%= @atm_model.gravity_drag_scheme %></td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
 <% end %>
 
 <%= render partial: 'scrinium_esm/commons/model_show',

@@ -16,28 +16,24 @@
   <dl>
     <dt><%= t('global.specification') %></dt>
     <dd>
-      <div class='row'>
-        <div class='col-md-4'>
-          <dl>
-            <dt><%= t('global.basic_info') %></dt>
-            <dd>
-              <table class='table'>
-                <tbody>
-                  <tr>
-                    <td><%= t('model.simulation_region') %></td>
-                    <td><%= model.simulation_region %></td>
-                  </tr>
-                  <tr>
-                    <td><%= t('model.simulation_type') %></td>
-                    <td><%= model.simulation_type %></td>
-                  </tr>
-                </tbody>
-              </table>
-            </dd>
-          </dl>
-        </div>
-        <%= content_for :specification %>
-      </div>
+      <dl>
+        <dt><%= t('global.basic_info') %></dt>
+        <dd>
+          <table class='table'>
+            <tbody>
+              <tr>
+                <td><%= t('model.simulation_region') %></td>
+                <td><%= model.simulation_region.text %></td>
+              </tr>
+              <tr>
+                <td><%= t('model.simulation_type') %></td>
+                <td><%= model.simulation_type.text %></td>
+              </tr>
+            </tbody>
+          </table>
+        </dd>
+      </dl>
+      <%= content_for :specification %>
     </dd>
   </dl>
 <% end %>
