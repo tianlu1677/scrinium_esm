@@ -32,6 +32,7 @@ ScriniumEsm::Engine.routes.draw do
   # Metrics --------------------------------------------------------------------
   resources :metrics, except: :index, concerns: [ :resourceable, :collectable, :commentable ]
   # Models ---------------------------------------------------------------------
+  get '/models', to: 'models#index'
   resources :coupled_models
   resources :sea_ice_models
   resources :lnd_models
