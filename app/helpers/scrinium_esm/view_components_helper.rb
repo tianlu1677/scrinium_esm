@@ -1,18 +1,13 @@
 module ScriniumEsm
   module ViewComponentsHelper
     def scrinium_esm_navbar_items
-      {
-        t('scrinium_esm.model') => {
-          t('models.atm') => scrinium_esm.atm_models_path,
-          t('models.ocn') => scrinium_esm.ocn_models_path,
-          t('scrinium_esm.metric') => scrinium_esm.metrics_path
-        },
-        t('scrinium_esm.experiment') => scrinium_esm.experiments_path,
-        t('scrinium_esm.data') => scrinium_esm.data_path,
-        t('scrinium_esm.project') => {
-          t('scrinium_esm.comparison_project') => scrinium_esm.comparison_projects_path
+      if current_user and current_user.current_organization_id
+        return {
+          t('scrinium_esm.model') => scrinium_esm.models_path(organization_id: current_user.current_organization_id),
+          t('scrinium_esm.experiment') => scrinium_esm.experiments_path,
+          t('scrinium_esm.data') => scrinium_esm.data_path
         }
-      }
+      end
     end
   end
 end

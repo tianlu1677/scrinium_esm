@@ -6,6 +6,7 @@ class CreateScriniumEsmExperimentSpecs < ActiveRecord::Migration
       t.string :short_name, index: true
       t.string :description
       t.integer :contact_id
+      t.integer :organization_id
       t.attachment :logo
 
       t.timestamps null: false

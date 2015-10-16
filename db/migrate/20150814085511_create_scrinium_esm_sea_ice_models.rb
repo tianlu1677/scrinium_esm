@@ -4,6 +4,7 @@ class CreateScriniumEsmSeaIceModels < ActiveRecord::Migration
       t.string :name
       t.string :short_name
       t.integer :contact_id
+      t.integer :organization_id
       t.string :repository_url
       t.text :description
       t.string :affiliation

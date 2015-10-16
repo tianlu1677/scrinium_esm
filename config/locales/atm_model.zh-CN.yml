@@ -1,4 +1,7 @@
 zh-CN:
+  scrinium_esm:
+    atm_model: 大气环流模式
+
   enumerize:
     scrinium_esm/atm_model:
       simulation_region:

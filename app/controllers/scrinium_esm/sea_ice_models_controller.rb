@@ -61,6 +61,7 @@ module ScriniumEsm
       params.require(:sea_ice_model).permit(:name,
                                             :short_name,
                                             :contact_id,
+                                            :organization_id,
                                             :repository_url,
                                             :description,
                                             :affiliation,

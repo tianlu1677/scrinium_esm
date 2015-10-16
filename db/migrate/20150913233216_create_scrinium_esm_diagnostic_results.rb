@@ -4,6 +4,7 @@ class CreateScriniumEsmDiagnosticResults < ActiveRecord::Migration
       t.belongs_to :metric
       t.belongs_to :experiment
       t.integer :contact_id
+      t.integer :organization_id
 
       t.timestamps null: false
     end

@@ -10,6 +10,7 @@ class CreateScriniumEsmData < ActiveRecord::Migration
       t.string :home_page
       t.string :local_store
       t.integer :contact_id
+      t.integer :organization_id
 
       t.timestamps null: false
     end

@@ -58,6 +58,7 @@ module ScriniumEsm
                                                 :short_name,
                                                 :description,
                                                 :contact_id,
+                                                :organization_id,
                                                 :tag_list,
                                                 { category_list: [] },
                                                 :experiment_id,

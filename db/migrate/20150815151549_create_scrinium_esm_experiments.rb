@@ -4,6 +4,7 @@ class CreateScriniumEsmExperiments < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.integer :contact_id
+      t.integer :organization_id
       t.string :experiment_type
       t.references :experimentable, polymorphic: true
       t.integer :log_ids, array: true, default: []

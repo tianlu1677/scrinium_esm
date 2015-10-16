@@ -5,6 +5,7 @@ class CreateScriniumEsmAtmModels < ActiveRecord::Migration
       t.string :short_name
       t.text :description
       t.integer :contact_id
+      t.integer :organization_id
       t.string :repository_url
       t.string :affiliation
       t.string :simulation_region

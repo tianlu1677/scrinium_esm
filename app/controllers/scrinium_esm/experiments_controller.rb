@@ -90,6 +90,7 @@ module ScriniumEsm
       params.require(:experiment).permit(:name,
                                          :description,
                                          :contact_id,
+                                         :organization_id,
                                          :tag_list,
                                          { category_list: [] },
                                          :experiment_type,
