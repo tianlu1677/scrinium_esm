@@ -1,5 +1,5 @@
 module ScriniumEsm
-  class SeaIceModelPolicy < ApplicationPolicy
+  class SeaIceModelPolicy < ScriniumEsm::ApplicationPolicy
     def create?
       login? and organization
     end

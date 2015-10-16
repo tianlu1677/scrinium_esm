@@ -1,5 +1,5 @@
 module ScriniumEsm
-  class ComparisonProjectPolicy < ApplicationPolicy
+  class ComparisonProjectPolicy < ScriniumEsm::ApplicationPolicy
     def create?
       login? and organization
     end

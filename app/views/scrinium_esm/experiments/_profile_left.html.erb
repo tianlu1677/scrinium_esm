@@ -17,7 +17,7 @@
       main_app.user_path(@experiment.contact_id)
     %>
   </li>
-  <% if can? :update, @experiment %>
+  <% if policy(@experiment).update? %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
@@ -47,7 +47,7 @@
       %>
     </li>
   <% end %>
-  <% if can? :delete, @experiment %>
+  <% if policy(@experiment).destroy? %>
     <li>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),

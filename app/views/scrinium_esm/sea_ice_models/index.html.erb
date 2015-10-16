@@ -3,10 +3,10 @@
 
 <% content_for :main_block do %>
   <%=
-    render partial: 'scrinium_esm/commons/model_list',
-    locals: { models: ScriniumEsm::SeaIceModel.all }
+    render 'scrinium_esm/commons/model_list',
+    models: ScriniumEsm::SeaIceModel.all
   %>
-  <% if can? :create, ScriniumEsm::SeaIceModel %>
+  <% if policy(ScriniumEsm::SeaIceModel).create? %>
     <%= link_to t('action.add'), new_sea_ice_model_path, class: 'button float-right' %>
   <% end %>
 <% end %>

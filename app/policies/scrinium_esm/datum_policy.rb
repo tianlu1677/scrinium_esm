@@ -1,5 +1,5 @@
 module ScriniumEsm
-  class ExperimentPolicy < ScriniumEsm::ApplicationPolicy
+  class DatumPolicy < ScriniumEsm::ApplicationPolicy
     def create?
       login? and organization
     end

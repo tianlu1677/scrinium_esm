@@ -1,5 +1,5 @@
 module ScriniumEsm
-  class LndModelPolicy < ApplicationPolicy
+  class LndModelPolicy < ScriniumEsm::ApplicationPolicy
     def create?
       login? and organization
     end

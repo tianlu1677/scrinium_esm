@@ -1,5 +1,5 @@
 module ScriniumEsm
-  class MetricPolicy < ApplicationPolicy
+  class MetricPolicy < ScriniumEsm::ApplicationPolicy
     def create?
       login? and organization
     end

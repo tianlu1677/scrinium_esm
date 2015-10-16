@@ -1,5 +1,5 @@
 module ScriniumEsm
-  class CoupledModelPolicy < ApplicationPolicy
+  class CoupledModelPolicy < ScriniumEsm::ApplicationPolicy
     def create?
       login? and organization
     end

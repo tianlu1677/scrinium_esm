@@ -1,5 +1,5 @@
 module ScriniumEsm
-  class AtmModelPolicy < ApplicationPolicy
+  class AtmModelPolicy < ScriniumEsm::ApplicationPolicy
     def create?
       login? and organization
     end

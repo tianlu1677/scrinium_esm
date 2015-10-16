@@ -1,5 +1,5 @@
 module ScriniumEsm
-  class DiagnosticResultPolicy < ApplicationPolicy
+  class DiagnosticResultPolicy < ScriniumEsm::ApplicationPolicy
     def create?
       login? and organization
     end
