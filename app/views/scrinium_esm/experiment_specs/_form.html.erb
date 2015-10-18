@@ -1,38 +1,13 @@
 <div class='experiment-spec-form'>
-  <%= simple_form_for [ current_user, @comparison_project, @experiment_spec ] do |f| %>
+  <%= simple_form_for [ @comparison_project, @experiment_spec ] do |f| %>
     <%= f.hidden_field :comparison_project_id, value: @comparison_project.id %>
-    <%=
-      f.input :name,
-      label: false,
-      placeholder: t('global.name')
-    %>
-    <%=
-      f.input :short_name,
-      label: false,
-      placeholder: t('global.short_name')
-    %>
-    <%=
-      f.input :description,
-      label: false,
-      placeholder: t('global.description'),
-      as: :text
-    %>
-    <%=
-      f.input :contact_id,
-      label: false,
-      required: true,
+    <%= f.input :name, label: t('global.name') %>
+    <%= f.input :short_name, label: t('global.short_name') %>
+    <%= f.input :description, label: t('global.description'), as: :text %>
+    <%= f.input :contact_id, label: t('global.contact'),
       collection: [ @experiment_spec.contact_id ],
-      input_html: {
-        id: 'input-user-name',
-        data: {
-          placeholder: t('global.contact')
-        }
-      }
+      input_html: { id: 'input-user-name' }
     %>
-    <% if @experiment_spec.id %>
-      <%= f.button :submit, t('action.edit'), class: 'button float-right', id: 'submit-experiment' %>
-    <% else %>
-      <%= f.button :submit, t('action.add'), class: 'button float-right', id: 'submit-experiment' %>
-    <% end %>
+    <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>
 </div>

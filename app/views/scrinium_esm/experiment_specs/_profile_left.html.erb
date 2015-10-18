@@ -2,44 +2,26 @@
   <li><%= @experiment_spec.name %></li>
   <li>
     <%= t('global.contact') %>:
-    <%=
-      link_to @experiment_spec.contact.name,
-      [ main_app, @experiment_spec.contact ]
-    %>
+    <%= link_to @experiment_spec.contact.name, @experiment_spec.contact %>
   </li>
   <% if policy(@experiment_spec).update? %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
-        [
-          scrinium_esm,
-          :edit,
-          current_user,
-          @experiment_spec.comparison_project,
-          @experiment_spec
-        ]
+        [ :edit, @experiment_spec.comparison_project, @experiment_spec ]
       %>
     </li>
     <li>
       <%=
         link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
-        [
-          scrinium_esm,
-          :new,
-          current_user,
-          @experiment_spec,
-          :resource
-        ],
-        id: 'add-resource', style: 'display: none;'
+        [ :new, @experiment_spec, :resource ], id: 'add-resource', style: 'display: none;'
       %>
     </li>
   <% end %>
   <% if policy(@experiment_spec).destroy? %>
     <li>
       <%=
-        link_to fa_icon('trash', text: t('action.delete')),
-        [ scrinium_esm, current_user, @experiment_spec ],
-        method: :delete,
+        link_to fa_icon('trash', text: t('action.delete')), @experiment_spec, method: :delete,
         data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.experiment_spec')) }
       %>
     </li>

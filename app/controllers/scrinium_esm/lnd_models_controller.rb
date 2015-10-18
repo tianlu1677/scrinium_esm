@@ -28,7 +28,7 @@ module ScriniumEsm
       @lnd_model = LndModel.new(lnd_model_params)
 
       if @lnd_model.save
-        redirect_to @lnd_model, notice: t('message.create_success', thing: t('models.lnd'))
+        redirect_to @lnd_model, notice: t('message.create_success', thing: t('scrinium_esm.lnd_model'))
       else
         render :new
       end
@@ -37,7 +37,7 @@ module ScriniumEsm
     # PATCH/PUT /lnd_models/1
     def update
       if @lnd_model.update(lnd_model_params)
-        redirect_to @lnd_model, notice: t('message.update_success', thing: t('models.lnd'))
+        redirect_to @lnd_model, notice: t('message.update_success', thing: t('scrinium_esm.lnd_model'))
       else
         render :edit
       end
@@ -46,7 +46,7 @@ module ScriniumEsm
     # DELETE /lnd_models/1
     def destroy
       @lnd_model.destroy
-      redirect_to lnd_models_url, notice: t('message.destroy_success', thing: t('models.lnd'))
+      redirect_to lnd_models_url, notice: t('message.destroy_success', thing: t('scrinium_esm.lnd_model'))
     end
 
     private

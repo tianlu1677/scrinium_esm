@@ -2,16 +2,13 @@
   <dt><%= t('global.basic_info') %></dt>
   <dd class='markdown'><%= @experiment.description %></dd>
 </dl>
-<%= render 'scrinium_esm/experiment_actions/list', experiment_actions: @experiment.experiment_actions %>
+<%=
+  render 'scrinium_esm/experiment_actions/list',
+  experiment_actions: @experiment.experiment_actions.sort_by { |x| x.order }
+%>
 <dl>
   <dt></dt>
   <dd>
-    <%=
-      render partial: 'comments/list',
-      locals: {
-        app: scrinium_esm,
-        commentable: @experiment
-      }
-    %>
+    <%= render 'comments/list', app: scrinium_esm, commentable: @experiment %>
   </dd>
 </dl>

@@ -1,12 +1,7 @@
 <% content_for :title, @experiment_spec.short_name %>
 <%
   add_breadcrumb @experiment_spec.short_name,
-  [
-    scrinium_esm,
-    @experiment_spec.contact,
-    @experiment_spec.comparison_project,
-    @experiment_spec
-  ]
+  [ @experiment_spec.comparison_project, @experiment_spec ]
 %>
 
 <% content_for :left_side do %>
@@ -15,18 +10,16 @@
 
 <% content_for :main_block do %>
   <%=
-    render partial: 'layouts/navtab',
-    locals: {
-      tabs: {
-        info: [
-          t('global.info'),
-          render('info')
-        ],
-        resources: [
-          t('scrinium.resource'),
-          render(partial: 'resources/table_list', locals: { app: scrinium_esm, resources: @experiment_spec.resources })
-        ]
-      }
+    render 'layouts/navtab',
+    tabs: {
+      info: [
+        t('global.info'),
+        render('info')
+      ],
+      resources: [
+        t('scrinium.resource'),
+        render('resources/table_list', app: scrinium_esm, resources: @experiment_spec.resources)
+      ]
     }
   %>
 <% end %>

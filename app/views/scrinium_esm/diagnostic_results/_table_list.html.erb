@@ -1,4 +1,3 @@
-<% can_act ||= false %>
 <table class='table table-striped'>
   <thead>
     <tr>
@@ -8,15 +7,15 @@
     </tr>
   </thead>
   <tbody>
-    <% diagnostic_results.each do |d| %>
+    <% diagnostic_results.each do |result| %>
       <tr>
         <td>
-          <%= link_to d.metric.short_name, scrinium_esm.diagnostic_result_path(d) %>
+          <%= link_to result.metric.short_name, result %>
         </td>
         <td>
-          <%= link_to d.contact.name, main_app.user_path(d.contact) %>
+          <%= link_to result.contact.name, result.contact %>
         </td>
-        <td><%= d.created_at %></td>
+        <td><%= result.created_at %></td>
       </tr>
     <% end %>
   </tbody>

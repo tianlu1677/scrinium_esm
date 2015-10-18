@@ -8,16 +8,16 @@
     </tr>
   </thead>
   <tbody>
-    <% experiment_specs.each do |s| %>
+    <% experiment_specs.each do |spec| %>
       <tr>
         <td>
-          <%= link_to s.short_name, [ scrinium_esm, s.contact, s.comparison_project, s ] %>
+          <%= link_to spec.short_name, [ spec.comparison_project, spec ] %>
         </td>
-        <td><%= s.name %></td>
+        <td><%= spec.name %></td>
         <td>
-          <%= link_to s.contact.name, [ main_app, s.contact ] %>
+          <%= link_to spec.contact.name, spec.contact %>
         </td>
-        <td><%= s.created_at %></td>
+        <td><%= spec.created_at %></td>
       </tr>
     <% end %>
   </tbody>

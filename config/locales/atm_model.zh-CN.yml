@@ -21,6 +21,8 @@ zh-CN:
   atm_model:
     simulation_region: 模拟区域
     simulation_type: 模拟类型
+    dynamical_core_scheme: 动力框架方案
+    advection_scheme: 平流方案
     horizontal_mesh: 水平网格
     vertical_coordinate: 垂直网格
     is_hydrostatic: 精力平衡假设

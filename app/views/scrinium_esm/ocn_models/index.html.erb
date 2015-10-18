@@ -1,10 +1,9 @@
-<% content_for :title, t('models.ocn') %>
-<% add_breadcrumb t('models.ocn'), ocn_models_path, on_nav_bar: true %>
+<% content_for :title, t('scrinium_esm.ocn_model') %>
+<% add_breadcrumb t('scrinium_esm.ocn_model'), ocn_models_path, on_nav_bar: true %>
 
 <% content_for :main_block do %>
   <%=
-    render partial: 'scrinium_esm/commons/model_list',
-    locals: { models: ScriniumEsm::OcnModel.all }
+    render 'scrinium_esm/commons/model_list', models: ScriniumEsm::OcnModel.all
   %>
   <% if policy(ScriniumEsm::OcnModel).create? %>
     <%= link_to t('action.add'), new_ocn_model_path, class: 'button float-right' %>

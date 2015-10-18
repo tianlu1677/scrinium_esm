@@ -28,7 +28,7 @@ module ScriniumEsm
       @ocn_model = OcnModel.new(ocn_model_params)
 
       if @ocn_model.save
-        redirect_to @ocn_model, notice: t('message.create_success', thing: t('models.ocn'))
+        redirect_to @ocn_model, notice: t('message.create_success', thing: t('scrinium_esm.ocn_model'))
       else
         render :new
       end
@@ -37,7 +37,7 @@ module ScriniumEsm
     # PATCH/PUT /ocn_models/1
     def update
       if @ocn_model.update(ocn_model_params)
-        redirect_to @ocn_model, notice: t('message.update_success', thing: t('models.ocn'))
+        redirect_to @ocn_model, notice: t('message.update_success', thing: t('scrinium_esm.ocn_model'))
       else
         render :edit
       end
@@ -46,7 +46,7 @@ module ScriniumEsm
     # DELETE /ocn_models/1
     def destroy
       @ocn_model.destroy
-      redirect_to ocn_models_url, notice: t('message.destroy_success', thing: t('models.ocn'))
+      redirect_to ocn_models_url, notice: t('message.destroy_success', thing: t('scrinium_esm.ocn_model'))
     end
 
     private

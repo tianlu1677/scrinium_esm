@@ -21,5 +21,9 @@ module ScriniumEsm
       :hybrid_sigma_height,
       :isopycnic
     ]
+
+    def contact
+      User.find(self.contact_id)
+    end
   end
 end

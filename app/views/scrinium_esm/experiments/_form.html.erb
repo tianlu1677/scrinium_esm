@@ -3,52 +3,30 @@
     <dl>
       <dt><%= t('global.basic_info') %></dt>
       <dd>
-        <%=
-          f.input :name,
-          label: false,
-          placeholder: t('experiment.name'),
-          required: true
-        %>
+        <%= f.input :name, label: t('experiment.name') %>
         <%=
           f.input :category_list,
-          label: false,
+          label: t('experiment.categories'),
           collection: @experiment.categories.map { |t| t.name },
-          input_html: {
-            multiple: 'multiple',
-            data: {
-              placeholder: t('experiment.placeholder.categories')
-            }
-          }
+          input_html: { multiple: 'multiple' }
         %>
-        <%=
-          f.input :description,
-          label: false,
-          placeholder: t('experiment.description'),
-          required: true,
-          as: :text
-        %>
+        <%= f.input :description, label: t('experiment.description'), as: :text %>
         <div class='row'>
           <div class='col-md-3'>
             <%=
               f.input :contact_id,
-              label: false,
-              required: true,
+              label: t('global.contact'),
               collection: [@experiment.contact_id],
-              input_html: {
-                id: 'input-user-name',
-                data: {
-                  placeholder: t('global.contact')
-                }
-              }
+              input_html: { id: 'input-user-name' }
             %>
           </div>
           <div class='col-md-3' id='input-experiment-type'>
             <%=
-              f.input :experiment_type, label: false,
+              f.input :experiment_type, label: t('experiment.type'),
               input_html: { id: 'input-experiment-type' }
             %>
           </div>
-          <div class='col-md-3' id='input-atm-model-id'
+          <div class='col-md-4' id='input-atm-model-id'
           <% if @experiment.experimentable_type == 'ScriniumEsm::AtmModel' %>
             >
           <% else %>
@@ -56,18 +34,14 @@
           <% end %>
             <%=
               f.input :experimentable_id,
-              label: false,
+              label: t('scrinium_esm.atm_model'),
               collection: ScriniumEsm::AtmModel.all,
-              include_blank: true,
-              selected: @experiment.experimentable_id,
               label_method: :short_name,
               value_method: :id,
-              input_html: {
-                id: 'input-atm-model-id'
-              }
+              input_html: { id: 'input-atm-model-id' }
             %>
           </div>
-          <div class='col-md-3' id='input-ocn-model-id'
+          <div class='col-md-4' id='input-ocn-model-id'
           <% if @experiment.experimentable_type == 'ScriniumEsm::OcnModel' %>
             >
           <% else %>
@@ -75,18 +49,14 @@
           <% end %>
             <%=
               f.input :experimentable_id,
-              label: false,
+              label: t('scrinium_esm.ocn_model'),
               collection: ScriniumEsm::OcnModel.all,
-              include_blank: true,
-              selected: @experiment.experimentable_id,
               label_method: :short_name,
               value_method: :id,
-              input_html: {
-                id: 'input-ocn-model-id'
-              }
+              input_html: { id: 'input-ocn-model-id' }
             %>
           </div>
-          <div class='col-md-3' id='input-coupled-model-id'
+          <div class='col-md-4' id='input-coupled-model-id'
           <% if @experiment.experimentable_type == 'ScriniumEsm::CoupledModel' %>
             >
           <% else %>
@@ -94,15 +64,11 @@
           <% end %>
             <%=
               f.input :experimentable_id,
-              label: false,
+              label: t('scrinium_esm.coupled_model'),
               collection: ScriniumEsm::CoupledModel.all,
-              include_blank: true,
-              selected: @experiment.experimentable_id,
               label_method: :short_name,
               value_method: :id,
-              input_html: {
-                id: 'input-coupled-model-id'
-              }
+              input_html: { id: 'input-coupled-model-id' }
             %>
           </div>
         </div>
@@ -116,13 +82,10 @@
         <% end %>
       </dd>
     </dl>
-    <div class='right'>
-      <%= link_to_add_field t('action.add')+t('scrinium_esm.experiment_action'), f, :experiment_actions, class: 'button' %>
-      <% if @experiment.id %>
-        <%= f.button :submit, t('action.edit')+t('scrinium_esm.experiment'), class: 'button', id: 'submit-experiment' %>
-      <% else %>
-        <%= f.button :submit, t('action.add')+t('scrinium_esm.experiment'), class: 'button', id: 'submit-experiment' %>
-      <% end %>
-    </div>
+    <%=
+      link_to_add_field t('action.add')+t('scrinium_esm.experiment_action'),
+      f, :experiment_actions, class: 'button float-left'
+    %>
+    <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>
 </div>

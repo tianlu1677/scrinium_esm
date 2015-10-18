@@ -17,5 +17,9 @@ module ScriniumEsm
       :hybrid_sigma_pressure,
       :float_lagrangian_pressure
     ]
+
+    def contact
+      User.find(self.contact_id)
+    end
   end
 end

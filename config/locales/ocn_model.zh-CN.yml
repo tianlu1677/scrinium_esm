@@ -1,4 +1,7 @@
 zh-CN:
+  scrinium_esm:
+    ocn_model: 海洋环流模式
+
   enumerize:
     scrinium_esm/ocn_model:
       simulation_region:
@@ -19,6 +22,8 @@ zh-CN:
   ocn_model:
     simulation_region: 模拟区域
     simulation_type: 模拟类型
+    dynamical_core_scheme: 动力框架方案
+    advection_scheme: 平流方案
     horizontal_mesh: 水平网格
     vertical_coordinate: 垂直网格
 

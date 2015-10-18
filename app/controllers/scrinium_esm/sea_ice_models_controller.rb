@@ -28,7 +28,7 @@ module ScriniumEsm
       @sea_ice_model = SeaIceModel.new(sea_ice_model_params)
 
       if @sea_ice_model.save
-        redirect_to @sea_ice_model, notice: t('message.create_success', thing: t('models.sea_ice'))
+        redirect_to @sea_ice_model, notice: t('message.create_success', thing: t('scrinium_esm.sea_ice_model'))
       else
         render :new
       end
@@ -37,7 +37,7 @@ module ScriniumEsm
     # PATCH/PUT /sea_ice_models/1
     def update
       if @sea_ice_model.update(sea_ice_model_params)
-        redirect_to @sea_ice_model, notice: t('message.update_success', thing: t('models.sea_ice'))
+        redirect_to @sea_ice_model, notice: t('message.update_success', thing: t('scrinium_esm.sea_ice_model'))
       else
         render :edit
       end
@@ -46,7 +46,7 @@ module ScriniumEsm
     # DELETE /sea_ice_models/1
     def destroy
       @sea_ice_model.destroy
-      redirect_to sea_ice_models_url, notice: t('message.destroy_success', thing: t('models.sea_ice'))
+      redirect_to sea_ice_models_url, notice: t('message.destroy_success', thing: t('scrinium_esm.sea_ice_model'))
     end
 
     private

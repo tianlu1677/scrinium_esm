@@ -1,27 +1,12 @@
 <div class='metric-form'>
   <%= simple_form_for @diagnostic_result do |f| %>
-    <%=
-      f.association :metric,
-      label: false,
-      collection: ScriniumEsm::Metric.all << ScriniumEsm::Metric.new({ id: 0, name: t('scrinium_esm.metric') }),
-      selected: 0
-    %>
+    <%= f.association :metric, label: t('scrinium_esm.metric') %>
     <%=
       f.input :contact_id,
-      label: false,
-      required: true,
-      collection: [@diagnostic_result.contact_id],
-      input_html: {
-        id: 'input-user-name',
-        data: {
-          placeholder: t('global.contact')
-        }
-      }
+      label: t('global.contact'),
+      collection: [ @diagnostic_result.contact_id ],
+      input_html: { id: 'input-user-name' }
     %>
-    <% if @diagnostic_result.id %>
-      <%= f.button :submit, t('action.edit'), class: 'button float-right', id: 'submit-experiment' %>
-    <% else %>
-      <%= f.button :submit, t('action.add'), class: 'button float-right', id: 'submit-experiment' %>
-    <% end %>
+    <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>
 </div>

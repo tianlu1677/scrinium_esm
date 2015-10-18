@@ -8,12 +8,12 @@
     </tr>
   </thead>
   <tbody>
-    <% models.each do |m| %>
+    <% models.each do |model| %>
       <tr>
-        <td><%= link_to m.short_name, m %></td>
-        <td><%= m.name %></td>
-        <td><%= link_to User.find(m.contact_id).name, main_app.user_path(m.contact_id) %></td>
-        <td><%= m.created_at %></td>
+        <td><%= link_to model.short_name, model %></td>
+        <td><%= model.name %></td>
+        <td><%= link_to User.find(model.contact_id).name, model.contact %></td>
+        <td><%= model.created_at %></td>
       </tr>
     <% end %>
   </tbody>

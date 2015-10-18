@@ -13,28 +13,13 @@ zh-CN:
     name: 模式全称
     repository_url: 版本库地址
     affiliation: 所属单位
-    dynamical_core_scheme: 动力框架方案
-    advection_scheme: 平流方案
     physics_parameterization: 物理参数化
     scheme_name: 方案名称
     simulation_region: 模拟区域
     simulation_type: 模拟类型
 
-  models:
-    atm: 大气环流模式
-    ocn: 海洋环流模式
-    lnd: 陆面模式
-    sea_ice: 海冰模式
-    coupled: 耦合模式
-    esm: 地球系统模式
-
   experiment:
-    name: 试验名称
-    description: 试验简介
-    type: 试验类型
     actions: 试验操作
-    placeholder:
-      categories: 试验类别（如CMIP6）
     ensemble_member: 集合成员
     action_types:
       change_parameter: 修改参数

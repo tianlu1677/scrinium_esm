@@ -7,26 +7,24 @@
 
 <% content_for :main_block do %>
   <%=
-    render partial: 'layouts/navtab',
-    locals: {
-      tabs: {
-        info: [
-          t('global.info'),
-          render('info')
-        ],
-        logs: [
-          t('global.log'),
-          render('logs')
-        ],
-        diagnostic_results: [
-          t('scrinium_esm.diagnostic_result'),
-          render('diagnostic_results')
-        ],
-        ensemble_members: [
-          t('experiment.ensemble_member'),
-          render('ensemble_members')
-        ]
-      }
+    render 'layouts/navtab',
+    tabs: {
+      info: [
+        t('global.info'),
+        render('info')
+      ],
+      logs: [
+        t('global.log'),
+        render('logs')
+      ],
+      diagnostic_results: [
+        t('scrinium_esm.diagnostic_result'),
+        render('diagnostic_results')
+      ],
+      ensemble_members: [
+        t('experiment.ensemble_member'),
+        render('ensemble_members')
+      ]
     }
   %>
 <% end %>

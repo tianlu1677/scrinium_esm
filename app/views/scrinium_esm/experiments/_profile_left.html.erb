@@ -3,39 +3,34 @@
   <li><%= "#{t('experiment.type')}: #{@experiment.experiment_type.text}" %></li>
   <li>
     <ul class='left-side-list'>
-      <% @experiment.categories.each do |t| %>
+      <% @experiment.categories.each do |tag| %>
         <li><span class='label label-default'>
-          <%= t.name %>
+          <%= tag.name %>
         </span></li>
       <% end %>
     </ul>
   </li>
   <li>
     <%= t('global.contact') %>:
-    <%=
-      link_to User.find(@experiment.contact_id).name,
-      main_app.user_path(@experiment.contact_id)
-    %>
+    <%= link_to @experiment.contact.name, @experiment.contact %>
   </li>
   <% if policy(@experiment).update? %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
-        edit_experiment_path(@experiment), :'data-no-turbolink' => true
+        [ :edit, @experiment ], :'data-no-turbolink' => true
       %>
     </li>
     <li>
       <%=
         link_to fa_icon('coffee', text: t('action.add')+t('global.log')),
-        add_experiment_log_path(@experiment),
-        id: 'add-log',
-        style: 'display: none;'
+        [ :add, @experiment, :log ], id: 'add-log', style: 'display: none;'
       %>
     </li>
     <li>
       <%=
         link_to fa_icon('cube', text: t('action.add')+t('scrinium_esm.diagnostic_result')),
-        scrinium_esm.new_diagnostic_result_path(experiment_id: @experiment.id),
+        new_diagnostic_result_path(experiment_id: @experiment.id),
         id: 'add-diagnostic-result', style: 'display: none;'
       %>
     </li>
@@ -51,16 +46,12 @@
     <li>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),
-        [ scrinium_esm, @experiment ],
-        method: :delete,
+        @experiment, method: :delete,
         data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.experiment')) }
       %>
     </li>
   <% end %>
   <li>
-    <%=
-      render partial: 'collections/collect_button',
-      locals: { collectable: @experiment }
-    %>
+    <%= render 'collections/collect_button', collectable: @experiment %>
   </li>
 </ul>

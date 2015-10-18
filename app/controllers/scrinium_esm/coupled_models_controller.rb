@@ -28,7 +28,7 @@ module ScriniumEsm
       @coupled_model = CoupledModel.new(coupled_model_params)
 
       if @coupled_model.save
-        redirect_to @coupled_model, notice: t('message.create_success', thing: t('models.coupled'))
+        redirect_to @coupled_model, notice: t('message.create_success', thing: t('scrinium_esm.coupled_model'))
       else
         render :new
       end
@@ -37,7 +37,7 @@ module ScriniumEsm
     # PATCH/PUT /coupled_models/1
     def update
       if @coupled_model.update(coupled_model_params)
-        redirect_to @coupled_model, notice: t('message.update_success', thing: t('models.coupled'))
+        redirect_to @coupled_model, notice: t('message.update_success', thing: t('scrinium_esm.coupled_model'))
       else
         render :edit
       end
@@ -46,7 +46,7 @@ module ScriniumEsm
     # DELETE /coupled_models/1
     def destroy
       @coupled_model.destroy
-      redirect_to coupled_models_url, notice: t('message.destroy_success', thing: t('models.coupled'))
+      redirect_to coupled_models_url, notice: t('message.destroy_success', thing: t('scrinium_esm.coupled_model'))
     end
 
     private

@@ -9,19 +9,19 @@
   </li>
   <li>
     <%= t('global.contact') %>:
-    <%= link_to @diagnostic_result.contact.name, main_app.user_path(@diagnostic_result.contact) %>
+    <%= link_to @diagnostic_result.contact.name, @diagnostic_result.contact %>
   </li>
   <% if policy(@diagnostic_result).update? %>
     <li>
       <%=
         link_to fa_icon('edit', text: t('action.edit')),
-        [ scrinium_esm, :edit, @diagnostic_result ]
+        [ :edit, @diagnostic_result ]
       %>
     </li>
     <li>
       <%=
         link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
-        [ scrinium_esm, :new, @diagnostic_result, :resource ]
+        [ :new, @diagnostic_result, :resource ]
       %>
     </li>
   <% end %>
@@ -29,8 +29,7 @@
     <li>
       <%=
         link_to fa_icon('trash', text: t('action.delete')),
-        [ scrinium_esm, @diagnostic_result ],
-        method: :delete,
+        [ @diagnostic_result ], method: :delete,
         data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.diagnostic_result')) }
       %>
     </li>

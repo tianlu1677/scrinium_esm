@@ -2,38 +2,29 @@
   <li><%= @comparison_project.name %></li>
   <li>
     <%= t('global.contact') %>:
-    <%=
-      link_to @comparison_project.contact.name,
-      [ main_app, @comparison_project.contact ]
-    %>
+    <%= link_to @comparison_project.contact.name, @comparison_project.contact %>
   </li>
   <% if policy(@comparison_project).update? %>
     <li>
-      <%=
-        link_to fa_icon('edit', text: t('action.edit')),
-        [ scrinium_esm, :edit, @comparison_project ]
-      %>
+      <%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @comparison_project ] %>
     </li>
     <li>
       <%=
         link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
-        [ scrinium_esm, :new, @comparison_project, :resource ],
-        id: 'add-resource', style: 'display: none;'
+        [ :new, @comparison_project, :resource ], id: 'add-resource', style: 'display: none;'
       %>
     </li>
     <li>
       <%=
         link_to fa_icon('file-text-o', text: t('action.add')+t('scrinium_esm.experiment_spec')),
-        [ scrinium_esm, :new, @comparison_project, :experiment_spec ],
-        id: 'add-experiment-spec', style: 'display: none;'
+        [ :new, @comparison_project, :experiment_spec ], id: 'add-experiment-spec', style: 'display: none;'
       %>
     </li>
   <% end %>
   <% if policy(@comparison_project).destroy? %>
     <li>
       <%=
-        link_to fa_icon('trash', text: t('action.delete')),
-        [ scrinium_esm, @comparison_project ], method: :delete,
+        link_to fa_icon('trash', text: t('action.delete')), @comparison_project, method: :delete,
         data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.comparison_project')) }
       %>
     </li>

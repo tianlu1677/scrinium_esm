@@ -28,7 +28,7 @@ module ScriniumEsm
       @atm_model = AtmModel.new(atm_model_params)
 
       if @atm_model.save
-        redirect_to @atm_model, notice: t('message.create_success', thing: t('models.atm'))
+        redirect_to @atm_model, notice: t('message.create_success', thing: t('scrinium_esm.atm_model'))
       else
         render :new
       end
@@ -37,7 +37,7 @@ module ScriniumEsm
     # PATCH/PUT /atm_models/1
     def update
       if @atm_model.update(atm_model_params)
-        redirect_to @atm_model, notice: t('message.update_success', thing: t('models.atm'))
+        redirect_to @atm_model, notice: t('message.update_success', thing: t('scrinium_esm.atm_model'))
       else
         render :edit
       end
@@ -46,7 +46,7 @@ module ScriniumEsm
     # DELETE /atm_models/1
     def destroy
       @atm_model.destroy
-      redirect_to atm_models_url, notice: t('message.destroy_success', thing: t('models.atm'))
+      redirect_to atm_models_url, notice: t('message.destroy_success', thing: t('scrinium_esm.atm_model'))
     end
 
     private

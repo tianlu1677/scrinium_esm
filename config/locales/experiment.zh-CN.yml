@@ -2,6 +2,12 @@ zh-CN:
   scrinium_esm:
     experiment: 试验
 
+  experiment:
+    name: 试验名称
+    description: 试验简介
+    type: 试验类型
+    categories: 试验类别（如CMIP6）
+
   enumerize:
     scrinium_esm/experiment:
       experiment_type:

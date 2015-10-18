@@ -11,5 +11,9 @@ module ScriniumEsm
 
     enumerize :simulation_region, in: [ :global, :regional ]
     enumerize :simulation_type, in: [ :climate, :weather ]
+
+    def contact
+      User.find(self.contact_id)
+    end
   end
 end

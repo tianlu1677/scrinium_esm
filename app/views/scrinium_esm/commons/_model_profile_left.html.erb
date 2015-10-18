@@ -2,7 +2,7 @@
   <li><%= model.short_name %></li>
   <li>
     <%= t('global.contact') %>:
-    <%= link_to User.find(model.contact_id).name, main_app.user_path(model.contact_id) %>
+    <%= link_to model.contact.name, model.contact %>
   </li>
   <li>
     <% if policy(model).update? %>

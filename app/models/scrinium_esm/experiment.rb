@@ -23,6 +23,10 @@ module ScriniumEsm
       :cmip => 'ScriniumEsm::CoupledModel'
     }
 
+    def contact
+      User.find(self.contact_id)
+    end
+
     def user
       User.find(self.contact_id)
     end
@@ -33,10 +37,10 @@ module ScriniumEsm
 
     def logs
       # 删除内容为空的日志。
-      self.log_ids.each do |i|
-        next if not Article.exists? i
-        a = Article.find(i)
-        a.destroy if a.content.empty?
+      self.log_ids.each do |id|
+        next if not Article.exists? id
+        article = Article.find(id)
+        article.destroy if article.content.empty?
       end
       # 检查日志是否还存在，否则从log_ids中删除之。
       self.update(log_ids: self.log_ids.delete_if { |i| not Article.exists? i })

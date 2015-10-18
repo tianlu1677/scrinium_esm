@@ -2,10 +2,7 @@
 <% add_breadcrumb t('scrinium_esm.experiment'), experiments_path %>
 
 <% content_for :main_block do %>
-  <%=
-    render partial: 'table_list',
-    locals: { experiments: ScriniumEsm::Experiment.all }
-  %>
+  <%= render 'table_list', experiments: ScriniumEsm::Experiment.all %>
   <% if policy(ScriniumEsm::Experiment).create? %>
     <%= link_to t('action.add'), new_experiment_path, class: 'button float-right' %>
   <% end %>

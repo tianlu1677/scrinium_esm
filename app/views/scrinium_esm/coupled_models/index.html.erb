@@ -1,11 +1,8 @@
-<% content_for :title, t('models.coupled') %>
-<% add_breadcrumb t('models.coupled'), coupled_models_path, on_nav_bar: true %>
+<% content_for :title, t('scrinium_esm.coupled_model') %>
+<% add_breadcrumb t('scrinium_esm.coupled_model'), coupled_models_path, on_nav_bar: true %>
 
 <% content_for :main_block do %>
-  <%=
-    render partial: 'scrinium_esm/commons/model_list',
-    locals: { models: ScriniumEsm::CoupledModel.all }
-  %>
+  <%= render 'scrinium_esm/commons/model_list', models: ScriniumEsm::CoupledModel.all %>
   <% if policy(ScriniumEsm::CoupledModel).create? %>
     <%= link_to t('action.add'), new_coupled_model_path, class: 'button float-right' %>
   <% end %>

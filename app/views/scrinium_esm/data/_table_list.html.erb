@@ -7,13 +7,13 @@
     </tr>
   </thead>
   <tbody>
-    <% data.each do |d| %>
+    <% data.each do |datum| %>
       <tr>
         <td>
-          <%= link_to d.name, scrinium_esm.datum_path(d) %>
+          <%= link_to d.name, datum %>
         </td>
-        <td><%= d.datum_type %></td>
-        <td><%= d.created_at %></td>
+        <td><%= datum.datum_type %></td>
+        <td><%= datum.created_at %></td>
       </tr>
     <% end %>
   </tbody>

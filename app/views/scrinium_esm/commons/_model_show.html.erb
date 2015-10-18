@@ -1,11 +1,8 @@
 <% content_for :title, model.short_name %>
-<% add_breadcrumb model.short_name, url_for(model) %>
+<% add_breadcrumb model.short_name, model %>
 
 <% content_for :left_side do %>
-  <%=
-    render partial: 'scrinium_esm/commons/model_profile_left',
-    locals: { model: model }
-  %>
+  <%= render 'scrinium_esm/commons/model_profile_left', model: model %>
 <% end %>
 
 <% content_for :main_block do %>

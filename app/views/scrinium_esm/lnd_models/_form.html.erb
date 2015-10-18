@@ -3,16 +3,9 @@
     <dl>
       <dt><%= t('global.basic_info') %></dt>
       <dd>
-        <%=
-          render partial: 'scrinium_esm/commons/model_form',
-          locals: { f: f, model: @lnd_model }
-        %>
+        <%= render 'scrinium_esm/commons/model_form', f: f, model: @lnd_model %>
       </dd>
     </dl>
-    <% if @lnd_model.id %>
-      <%= f.button :submit, t('action.edit'), class: 'button float-right' %>
-    <% else %>
-      <%= f.button :submit, t('action.add'), class: 'button float-right' %>
-    <% end %>
+    <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>
 </div>

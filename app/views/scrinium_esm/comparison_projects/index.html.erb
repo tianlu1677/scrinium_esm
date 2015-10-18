@@ -1,8 +1,7 @@
 <% content_for :title, t('scrinium_esm.comparison_project') %>
 <%
   add_breadcrumb t('scrinium_esm.comparison_project'),
-  scrinium_esm.comparison_projects_path,
-  on_nav_bar: true
+  comparison_projects_path, on_nav_bar: true
 %>
 
 <% content_for :main_block do %>
@@ -11,10 +10,6 @@
     comparison_projects: ScriniumEsm::ComparisonProject.all
   %>
   <% if policy(ScriniumEsm::ComparisonProject).create? %>
-    <%=
-      link_to t('action.add'),
-      scrinium_esm.new_comparison_project_path,
-      class: 'button float-right'
-    %>
+    <%= link_to t('action.add'), new_comparison_project_path, class: 'button float-right' %>
   <% end %>
 <% end %>

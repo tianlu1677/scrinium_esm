@@ -1,4 +1,4 @@
 <%=
-  render partial: 'scrinium_esm/diagnostic_results/table_list',
-  locals: { diagnostic_results: @experiment.diagnostic_results }
+  render 'scrinium_esm/diagnostic_results/table_list',
+  diagnostic_results: @experiment.diagnostic_results
 %>

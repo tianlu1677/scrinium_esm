@@ -1,10 +1,10 @@
 <% content_for :title, @datum.name %>
-<% add_breadcrumb @datum.name, scrinium_esm.datum_path(@datum) %>
+<% add_breadcrumb @datum.name, @datum %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
 <% end %>
 
 <% content_for :main_block do %>
-  
+
 <% end %>

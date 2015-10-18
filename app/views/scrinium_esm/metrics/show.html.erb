@@ -1,5 +1,5 @@
 <% content_for :title, @metric.short_name %>
-<% add_breadcrumb @metric.short_name, [ scrinium_esm, @metric ] %>
+<% add_breadcrumb @metric.short_name, @metric %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>

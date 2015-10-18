@@ -5,12 +5,6 @@
 <dl>
   <dt></dt>
   <dd>
-    <%=
-      render partial: 'comments/list',
-      locals: {
-        app: scrinium_esm,
-        commentable: @metric
-      }
-    %>
+    <%= render 'comments/list', app: scrinium_esm, commentable: @metric %>
   </dd>
 </dl>
