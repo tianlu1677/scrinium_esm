@@ -73,7 +73,7 @@ $(document).on 'page:change', ->
     $('form').on 'click', '.add_field', (event) ->
       time = new Date().getTime()
       regexp = new RegExp($(this).data('id'), 'g')
-      $(this).closest('div.right').before($(this).data('fields').replace(regexp, time))
+      $(this).before($(this).data('fields').replace(regexp, time))
       event.preventDefault()
       $('.select-action-type').change ->
         action_id = $(this).attr('id').split('_')[4]
@@ -89,12 +89,25 @@ $(document).on 'page:change', ->
     $('form').on 'click', '.move_up_field', (event) ->
       event.preventDefault()
       field = $(this).closest('fieldset.experiment-action-field')
-      alert field.prev().is('fieldset.experiment-action-field')
-      return if not field.prev().is('fieldset.experiment-action-field')
-      field.insertBefore(field.prev())
+      input = field.next()
+      if field.prev().is('fieldset.experiment-action-field')
+        field.insertBefore(field.prev())
+        if input.is('input[id^=experiment_experiment_actions_attributes_]')
+          input.insertAfter(field)
+      else if field.prev().is('input[id^=experiment_experiment_actions_attributes_]')
+        field.insertBefore(field.prev().prev())
+        if input.is('input[id^=experiment_experiment_actions_attributes_]')
+          input.insertAfter(field)
 
     $('form').on 'click', '.move_down_field', (event) ->
       event.preventDefault()
       field = $(this).closest('fieldset.experiment-action-field')
-      return if not field.next().is('fieldset.experiment-action-field')
-      field.insertAfter(field.next())
+      input = field.next()
+      if field.next().is('fieldset.experiment-action-field')
+        field.insertAfter(field.next())
+        if input.is('input[id^=experiment_experiment_actions_attributes_]')
+          input.insertAfter(field)
+      else if field.next().is('input[id^=experiment_experiment_actions_attributes_]')
+        field.insertAfter(field.next().next())
+        if input.is('input[id^=experiment_experiment_actions_attributes_]')
+          input.insertAfter(field)

@@ -87,6 +87,11 @@ module ScriniumEsm
 
     def experiment_params
       params[:experiment][:experimentable_type] = ScriniumEsm::Experiment::ModelType[params[:experiment][:experiment_type].to_sym]
+      order = 0
+      params[:experiment][:experiment_actions_attributes].values.each do |action|
+        action[:order] = order
+        order += 1
+      end
       params.require(:experiment).permit(:name,
                                          :description,
                                          :contact_id,
@@ -99,6 +104,7 @@ module ScriniumEsm
                                          { log_ids: [] },
                                          experiment_actions_attributes: [
                                            :id,
+                                           :order,
                                            :action_object,
                                            :action_type,
                                            :content1,
