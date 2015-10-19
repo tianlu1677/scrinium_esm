@@ -1,7 +1,7 @@
 <% content_for :title, @experiment_spec.short_name %>
 <%
   add_breadcrumb @experiment_spec.short_name,
-  [ @experiment_spec.comparison_project, @experiment_spec ]
+  [ scrinium_esm, @experiment_spec.comparison_project, @experiment_spec ]
 %>
 
 <% content_for :left_side do %>
@@ -18,7 +18,7 @@
       ],
       resources: [
         t('scrinium.resource'),
-        render('resources/table_list', app: scrinium_esm, resources: @experiment_spec.resources)
+        render('resources/list', resources: @experiment_spec.resources)
       ]
     }
   %>

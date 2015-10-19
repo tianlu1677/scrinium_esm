@@ -1,5 +1,5 @@
 <% content_for :title, @comparison_project.short_name %>
-<% add_breadcrumb @comparison_project.short_name, @comparison_project %>
+<% add_breadcrumb @comparison_project.short_name, [ scrinium_esm, @comparison_project ] %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
@@ -19,7 +19,7 @@
       ],
       resources: [
         t('scrinium.resource'),
-        render('resources/table_list', app: scrinium_esm, resources: @comparison_project.resources)
+        render('resources/list', resources: @comparison_project.resources)
       ]
     }
   %>

@@ -1,5 +1,5 @@
 <% content_for :title, @metric.short_name %>
-<% add_breadcrumb @metric.short_name, @metric %>
+<% add_breadcrumb @metric.short_name, [ scrinium_esm, @metric ] %>
 
 <% content_for :left_side do %>
   <%= render 'profile_left' %>
@@ -15,7 +15,7 @@
       ],
       resources: [
         t('scrinium.resource'),
-        render('resources/list', app: scrinium_esm, resources: @metric.resources)
+        render('resources/list', resources: @metric.resources)
       ]
     }
   %>
