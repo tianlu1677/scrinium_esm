@@ -2,31 +2,33 @@
 
 <% content_for :left_side do %>
   <%= render 'organizations/profile_left' %>
-  <% if policy(ScriniumEsm::AtmModel).create? %>
-    <li>
-      <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/atm_model')), new_atm_model_path %>
-    </li>
-  <% end %>
-  <% if policy(ScriniumEsm::OcnModel).create? %>
-    <li>
-      <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/ocn_model')), new_ocn_model_path %>
-    </li>
-  <% end %>
-  <% if policy(ScriniumEsm::LndModel).create? %>
-    <li>
-      <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/lnd_model')), new_lnd_model_path %>
-    </li>
-  <% end %>
-  <% if policy(ScriniumEsm::SeaIceModel).create? %>
-    <li>
-      <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/sea_ice_model')), new_sea_ice_model_path %>
-    </li>
-  <% end %>
-  <% if policy(ScriniumEsm::CoupledModel).create? %>
-    <li>
-      <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/coupled_model')), new_coupled_model_path %>
-    </li>
-  <% end %>
+  <ul class='clean-list'>
+    <% if policy(ScriniumEsm::AtmModel).create? %>
+      <li>
+        <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/atm_model')), new_atm_model_path %>
+      </li>
+    <% end %>
+    <% if policy(ScriniumEsm::OcnModel).create? %>
+      <li>
+        <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/ocn_model')), new_ocn_model_path %>
+      </li>
+    <% end %>
+    <% if policy(ScriniumEsm::LndModel).create? %>
+      <li>
+        <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/lnd_model')), new_lnd_model_path %>
+      </li>
+    <% end %>
+    <% if policy(ScriniumEsm::SeaIceModel).create? %>
+      <li>
+        <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/sea_ice_model')), new_sea_ice_model_path %>
+      </li>
+    <% end %>
+    <% if policy(ScriniumEsm::CoupledModel).create? %>
+      <li>
+        <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/coupled_model')), new_coupled_model_path %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
 
 <% content_for :main_block do %>
