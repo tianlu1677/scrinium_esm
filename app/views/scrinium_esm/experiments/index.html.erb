@@ -9,5 +9,5 @@
 <% end %>
 
 <% content_for :main_block do %>
-  <%= render 'table_list', experiments: ScriniumEsm::Experiment.all %>
+  <%= render 'table_list', experiments: @experiments %>
 <% end %>
