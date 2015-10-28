@@ -12,7 +12,7 @@ module ScriniumEsm
           next if not membership.host_type == 'Organization'
           organization = membership.host
           organization.licenses.each do |license|
-            next if not license.engine_name == 'esm'
+            next if not license.engine_name == 'scrinium_esm'
             @organization = organization
           end
         end

@@ -1,3 +1,4 @@
 zh-CN:
-  scrinium_esm:
-    sea_ice_model: 海冰模式
+  activerecord:
+    models:
+      scrinium_esm/sea_ice_model: 海冰模式

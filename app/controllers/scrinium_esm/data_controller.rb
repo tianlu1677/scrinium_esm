@@ -2,12 +2,13 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class DataController < ApplicationController
-    before_action :authenticate_user!, :except => [:index, :show]
-    before_action :set_datum, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, :except => [ :index, :show ]
+    before_action :set_datum, only: [ :show, :edit, :update, :destroy ]
 
     # GET /data
     def index
-      @data = Datum.all
+      @organization = Organization.find(session[:current_organization_id])
+      @data = Datum.find_by_organization_id(session[:current_organization_id])
     end
 
     # GET /data/1
@@ -27,9 +28,9 @@ module ScriniumEsm
     # POST /data
     def create
       @datum = Datum.new(datum_params)
-
+      @datum.organization_id = session[:current_organization_id]
       if @datum.save
-        redirect_to @datum, notice: t('message.create_success', thing: t('scrinium_esm.data'))
+        redirect_to @datum, notice: t('message.create_success', thing: t('activerecord.models.scrinium_esm/datum'))
       else
         render :new
       end
@@ -38,7 +39,7 @@ module ScriniumEsm
     # PATCH/PUT /data/1
     def update
       if @datum.update(datum_params)
-        redirect_to @datum, notice: t('message.update_success', thing: t('scrinium_esm.data'))
+        redirect_to @datum, notice: t('message.update_success', thing: t('activerecord.models.scrinium_esm/datum'))
       else
         render :edit
       end
@@ -47,7 +48,7 @@ module ScriniumEsm
     # DELETE /data/1
     def destroy
       @datum.destroy
-      redirect_to data_url, notice: t('message.destroy_success', thing: t('scrinium_esm.data'))
+      redirect_to data_url, notice: t('message.destroy_success', thing: t('activerecord.models.scrinium_esm/datum'))
     end
 
     private

@@ -1,14 +1,13 @@
 <div class='data-form'>
   <%= simple_form_for @datum do |f| %>
-    <%= f.input :name, label: t('data.name') %>
-    <%= f.input :description, label: t('data.description'), as: :text %>
-    <%= f.input :datum_type, label: t('data.type') %>
-    <%= f.input :datum_format, label: t('data.format') %>
-    <%= f.input :home_page, label: t('data.home_page') %>
-    <%= f.input :local_store, label: t('data.local_store') %>
+    <%= f.input :name %>
+    <%= f.input :description, as: :text %>
+    <%= f.input :datum_type %>
+    <%= f.input :datum_format %>
+    <%= f.input :home_page %>
+    <%= f.input :local_store %>
     <%=
       f.input :contact_id,
-      label: t('global.contact'),
       collection: [ @datum.contact_id ],
       input_html: { id: 'input-user-name' }
     %>

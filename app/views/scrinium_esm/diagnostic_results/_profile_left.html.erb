@@ -4,11 +4,11 @@
     <%= @diagnostic_result.experiment.name %>
   </li>
   <li>
-    <%= t('activerecord.attributes.diagnostic_result.metric_id') %>:
+    <%= t('activerecord.attributes.scrinium_esm/diagnostic_result.metric_id') %>:
     <%= @diagnostic_result.metric.name %>
   </li>
   <li>
-    <%= t('activerecord.attributes.diagnostic_result.contact_id') %>:
+    <%= t('activerecord.attributes.scrinium_esm/diagnostic_result.contact_id') %>:
     <%= link_to @diagnostic_result.contact.name, @diagnostic_result.contact %>
   </li>
   <% if policy(@diagnostic_result).update? %>
@@ -17,20 +17,18 @@
         link_to fa_icon('edit', text: t('action.edit')),
         [ :edit, @diagnostic_result ]
       %>
+      <% if policy(@diagnostic_result).destroy? %>
+        <%=
+          link_to fa_icon('trash', text: t('action.delete')),
+          [ @diagnostic_result ], method: :delete,
+          data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.scrinium_esm/diagnostic_result')) }
+        %>
+      <% end %>
     </li>
     <li>
       <%=
-        link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
+        link_to fa_icon('plus-square-o', text: t('activerecord.models.resource')),
         [ :new, @diagnostic_result, :resource ]
-      %>
-    </li>
-  <% end %>
-  <% if policy(@diagnostic_result).destroy? %>
-    <li>
-      <%=
-        link_to fa_icon('trash', text: t('action.delete')),
-        [ @diagnostic_result ], method: :delete,
-        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.diagnostic_result')) }
       %>
     </li>
   <% end %>

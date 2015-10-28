@@ -2,8 +2,8 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class MetricsController < ApplicationController
-    before_action :authenticate_user!, :except => [:index, :show]
-    before_action :set_metric, only: [:show, :edit, :update, :destroy, :add_resource]
+    before_action :authenticate_user!, :except => [ :index, :show ]
+    before_action :set_metric, only: [ :show, :edit, :update, :destroy, :add_resource ]
 
     # GET /metrics
     def index

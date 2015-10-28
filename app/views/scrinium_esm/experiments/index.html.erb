@@ -1,9 +1,13 @@
 <% content_for :title, t('activerecord.models.scrinium_esm/experiment') %>
 <% add_breadcrumb t('activerecord.models.scrinium_esm/experiment'), experiments_path %>
 
+<% content_for :left_side do %>
+  <%= render 'organizations/profile_left' %>
+  <% if policy(ScriniumEsm::Experiment).create? %>
+    <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/experiment')), new_experiment_path %>
+  <% end %>
+<% end %>
+
 <% content_for :main_block do %>
   <%= render 'table_list', experiments: ScriniumEsm::Experiment.all %>
-  <% if policy(ScriniumEsm::Experiment).create? %>
-    <%= link_to t('action.add'), new_experiment_path, class: 'button float-right' %>
-  <% end %>
 <% end %>

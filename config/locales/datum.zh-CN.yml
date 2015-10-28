@@ -1,35 +1,17 @@
 zh-CN:
-  scrinium_esm:
-    data: 数据
-
-  data:
-    type: 数据类型
-    format: 数据格式
-
-  enumerize:
-    scrinium_esm/datum:
-      datum_type:
-        station_data: 台站数据
-        reanalysis_data: 再分析数据
-        satellite_data: 卫星数据
-        model_data: 模式数据
-        cmip5_data: CMIP5数据
-      datum_format:
-        grib: GRIB
-        netcdf: NetCDF
-        hdf4: HDF4
-        hdf5: HDF5
-        binary: 二进制数据
-
-  data:
-    name: 数据名称
-    type: 数据类型
-    format: 数据格式
-    description: 数据描述
-    home_page: 数据主页
-    local_store: 本地存储位置
-
   activerecord:
+    models:
+      scrinium_esm/datum: 数据
+    attributes:
+      scrinium_esm/datum:
+        name: 数据名称
+        contact_id: 联系人
+        datum_type: 数据类型
+        datum_format: 数据格式
+        description: 数据描述
+        home_page: 数据主页
+        local_store: 本地存储位置
+        created_at: 创建时间
     errors:
       models:
         scrinium_esm/datum:
@@ -45,3 +27,18 @@ zh-CN:
             datum_format:
               blank: 未设定数据格式！
               inclusion: 未设定数据格式！
+
+  enumerize:
+    scrinium_esm/datum:
+      datum_type:
+        station_data: 台站数据
+        reanalysis_data: 再分析数据
+        satellite_data: 卫星数据
+        model_data: 模式数据
+        cmip5_data: CMIP5数据
+      datum_format:
+        grib: GRIB
+        netcdf: NetCDF
+        hdf4: HDF4
+        hdf5: HDF5
+        binary: 二进制数据

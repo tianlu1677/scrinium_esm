@@ -2,10 +2,10 @@ zh-CN:
   activerecord:
     models:
       scrinium_esm/experiment_action: 试验操作
-
-  experiment_action:
-    object: 操作对象
-    type: 操作类型
+    attributes:
+      scrinium_esm/experiment_action:
+        action_object: 操作对象
+        action_type: 操作类型
 
   enumerize:
     scrinium_esm/experiment_action:

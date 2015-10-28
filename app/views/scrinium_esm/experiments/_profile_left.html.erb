@@ -20,34 +20,32 @@
         link_to fa_icon('edit', text: t('action.edit')),
         [ :edit, @experiment ], :'data-no-turbolink' => true
       %>
+      <% if policy(@experiment).destroy? %>
+        <%=
+          link_to fa_icon('trash', text: t('action.delete')),
+          @experiment, method: :delete,
+          data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.scrinium_esm/experiment')) }
+        %>
+      <% end %>
     </li>
     <li>
       <%=
-        link_to fa_icon('coffee', text: t('action.add')+t('experiment.log')),
+        link_to fa_icon('plus-square-o', text: t('experiment.log')),
         [ :add, @experiment, :log ], id: 'add-log', style: 'display: none;'
       %>
     </li>
     <li>
       <%=
-        link_to fa_icon('cube', text: t('action.add')+t('scrinium_esm.diagnostic_result')),
+        link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/diagnostic_result')),
         new_diagnostic_result_path(experiment_id: @experiment.id),
         id: 'add-diagnostic-result', style: 'display: none;'
       %>
     </li>
     <li>
       <%=
-        link_to fa_icon('plus-square', text: t('action.add')+t('experiment.ensemble_member')),
+        link_to fa_icon('plus-square-o', text: t('experiment.ensemble_member')),
         new_experiment_path(experiment_id: @experiment.id),
         id: 'add-ensemble-member', style: 'display: none;'
-      %>
-    </li>
-  <% end %>
-  <% if policy(@experiment).destroy? %>
-    <li>
-      <%=
-        link_to fa_icon('trash', text: t('action.delete')),
-        @experiment, method: :delete,
-        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.scrinium_esm/experiment')) }
       %>
     </li>
   <% end %>

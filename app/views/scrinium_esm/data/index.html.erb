@@ -1,9 +1,13 @@
-<% content_for :title, t('scrinium_esm.data') %>
-<% add_breadcrumb t('scrinium_esm.data'), data_path, on_nav_bar: true %>
+<% content_for :title, t('activerecord.models.scrinium_esm/datum') %>
+<% add_breadcrumb t('activerecord.models.scrinium_esm/datum'), data_path, on_nav_bar: true %>
+
+<% content_for :left_side do %>
+  <%= render 'organizations/profile_left' %>
+  <% if policy(ScriniumEsm::Datum).create? %>
+    <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/datum')), new_datum_path %>
+  <% end %>
+<% end %>
 
 <% content_for :main_block do %>
   <%= render 'scrinium_esm/data/table_list', data: ScriniumEsm::Datum.all %>
-  <% if policy(ScriniumEsm::Datum).create? %>
-    <%= link_to t('action.add'), new_datum_path, class: 'button float-right' %>
-  <% end %>
 <% end %>

@@ -2,9 +2,9 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class ExperimentSpecsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!, except: [ :index, :show ]
     before_action :load_comparison_project
-    before_action :set_experiment_spec, only: [:show, :edit, :update, :destroy]
+    before_action :set_experiment_spec, only: [ :show, :edit, :update, :destroy ]
 
     def index
       @experiment_specs = ExperimentSpec.all

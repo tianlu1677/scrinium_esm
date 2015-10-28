@@ -6,7 +6,11 @@ module ScriniumEsm
     before_action :set_ocn_model, only: [ :show, :edit, :update, :destroy ]
 
     def index
-      @ocn_models = OcnModel.all
+      if session[:current_organization_id].present?
+        @ocn_models = OcnModel.find_by_organization_id(session[:current_organization_id])
+      else
+        @ocn_models = OcnModel.all
+      end
     end
 
     def show
@@ -21,6 +25,7 @@ module ScriniumEsm
 
     def create
       @ocn_model = OcnModel.new(ocn_model_params)
+      @ocn_model.organization_id = session[:current_organization_id]
       if @ocn_model.save!
         redirect_to @ocn_model, notice: t('message.create_success', thing: t('activerecord.models.scrinium_esm/ocn_model'))
       else

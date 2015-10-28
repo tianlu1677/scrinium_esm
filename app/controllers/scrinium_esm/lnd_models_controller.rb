@@ -2,12 +2,16 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class LndModelsController < ApplicationController
-    before_filter :authenticate_user!, :except => [:index, :show]
-    before_action :set_lnd_model, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, :except => [ :index, :show ]
+    before_action :set_lnd_model, only: [ :show, :edit, :update, :destroy ]
 
     # GET /lnd_models
     def index
-      @lnd_models = LndModel.all
+      if session[:current_organization_id].presetn?
+        @lnd_models = LndModel.find_by_organization_id(session[:current_organization_id])
+      else
+        @lnd_models = LndModel.all
+      end
     end
 
     # GET /lnd_models/1
@@ -26,9 +30,9 @@ module ScriniumEsm
     # POST /lnd_models
     def create
       @lnd_model = LndModel.new(lnd_model_params)
-
-      if @lnd_model.save
-        redirect_to @lnd_model, notice: t('message.create_success', thing: t('scrinium_esm.lnd_model'))
+      @lnd_model.organization_id = session[:current_organization_id]
+      if @lnd_model.save!
+        redirect_to @lnd_model, notice: t('message.create_success', thing: t('activerecord.models.scrinium_esm/lnd_model'))
       else
         render :new
       end
@@ -37,7 +41,7 @@ module ScriniumEsm
     # PATCH/PUT /lnd_models/1
     def update
       if @lnd_model.update(lnd_model_params)
-        redirect_to @lnd_model, notice: t('message.update_success', thing: t('scrinium_esm.lnd_model'))
+        redirect_to @lnd_model, notice: t('message.update_success', thing: t('activerecord.models.scrinium_esm/lnd_model'))
       else
         render :edit
       end
@@ -46,7 +50,7 @@ module ScriniumEsm
     # DELETE /lnd_models/1
     def destroy
       @lnd_model.destroy
-      redirect_to lnd_models_url, notice: t('message.destroy_success', thing: t('scrinium_esm.lnd_model'))
+      redirect_to lnd_models_url, notice: t('message.destroy_success', thing: t('activerecord.models.scrinium_esm/lnd_model'))
     end
 
     private

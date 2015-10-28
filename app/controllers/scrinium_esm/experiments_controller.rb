@@ -2,11 +2,12 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class ExperimentsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show]
-    before_action :set_experiment, only: [:show, :edit, :update, :destroy, :add_log]
+    before_action :authenticate_user!, except: [ :index, :show ]
+    before_action :set_experiment, only: [ :show, :edit, :update, :destroy, :add_log ]
 
     def index
-      @experiments = Experiment.all
+      @organization = Organization.find(session[:current_organization_id])
+      @experiments = Experiment.find_by_organization_id(session[:current_organization_id])
     end
 
     def show

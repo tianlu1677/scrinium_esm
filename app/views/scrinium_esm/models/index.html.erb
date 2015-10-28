@@ -1,26 +1,63 @@
 <% content_for :title, '模式' %>
 
+<% content_for :left_side do %>
+  <%= render 'organizations/profile_left' %>
+  <% if policy(ScriniumEsm::AtmModel).create? %>
+    <li>
+      <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/atm_model')), new_atm_model_path %>
+    </li>
+  <% end %>
+  <% if policy(ScriniumEsm::OcnModel).create? %>
+    <li>
+      <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/ocn_model')), new_ocn_model_path %>
+    </li>
+  <% end %>
+  <% if policy(ScriniumEsm::LndModel).create? %>
+    <li>
+      <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/lnd_model')), new_lnd_model_path %>
+    </li>
+  <% end %>
+  <% if policy(ScriniumEsm::SeaIceModel).create? %>
+    <li>
+      <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/sea_ice_model')), new_sea_ice_model_path %>
+    </li>
+  <% end %>
+  <% if policy(ScriniumEsm::CoupledModel).create? %>
+    <li>
+      <%= link_to fa_icon('plus-square-o', text: t('activerecord.models.scrinium_esm/coupled_model')), new_coupled_model_path %>
+    </li>
+  <% end %>
+<% end %>
+
 <% content_for :main_block do %>
   <% if not @atm_models.empty? %>
     <dl>
       <dt><%= t('activerecord.models.scrinium_esm/atm_model') %></dt>
-      <dd>
-        <%= render 'scrinium_esm/commons/model_list', models: @atm_models %>
-        <% if policy(ScriniumEsm::AtmModel).create? %>
-          <%= link_to t('action.add'), new_atm_model_path, class: 'button float-right' %>
-        <% end %>
-      </dd>
+      <dd><%= render 'scrinium_esm/commons/model_list', models: @atm_models %></dd>
     </dl>
   <% end %>
   <% if not @ocn_models.empty? %>
     <dl>
       <dt><%= t('activerecord.models.scrinium_esm/ocn_model') %></dt>
-      <dd>
-        <%= render 'scrinium_esm/commons/model_list', models: @ocn_models %>
-        <% if policy(ScriniumEsm::OcnModel).create? %>
-          <%= link_to t('action.add'), new_ocn_model_path, class: 'button float-right' %>
-        <% end %>
-      </dd>
+      <dd><%= render 'scrinium_esm/commons/model_list', models: @ocn_models %></dd>
+    </dl>
+  <% end %>
+  <% if not @lnd_models.empty? %>
+    <dl>
+      <dt><%= t('activerecord.models.scrinium_esm/lnd_model') %></dt>
+      <dd><%= render 'scrinium_esm/commons/model_list', models: @lnd_models %></dd>
+    </dl>
+  <% end %>
+  <% if not @sea_ice_models.empty? %>
+    <dl>
+      <dt><%= t('activerecord.models.scrinium_esm/sea_ice_model') %></dt>
+      <dd><%= render 'scrinium_esm/commons/model_list', models: @sea_ice_models %></dd>
+    </dl>
+  <% end %>
+  <% if not @coupled_models.empty? %>
+    <dl>
+      <dt><%= t('activerecord.models.scrinium_esm/coupled_model') %></dt>
+      <dd><%= render 'scrinium_esm/commons/model_list', models: @coupled_models %></dd>
     </dl>
   <% end %>
 <% end %>

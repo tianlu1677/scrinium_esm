@@ -3,7 +3,6 @@
     <%= f.association :metric, label: t('scrinium_esm.metric') %>
     <%=
       f.input :contact_id,
-      label: t('global.contact'),
       collection: [ @diagnostic_result.contact_id ],
       input_html: { id: 'input-user-name' }
     %>

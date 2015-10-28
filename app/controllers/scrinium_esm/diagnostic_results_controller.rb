@@ -2,12 +2,8 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class DiagnosticResultsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show]
-    before_action :set_diagnostic_result, only: [:show, :edit, :update, :destroy]
-
-    def index
-      @diagnostic_results = DiagnosticResult.all
-    end
+    before_action :authenticate_user!, except: [ :show ]
+    before_action :set_diagnostic_result, only: [ :show, :edit, :update, :destroy ]
 
     def show
     end
@@ -24,8 +20,8 @@ module ScriniumEsm
       match = session[:previous_url].last.match(/\/diagnostic_results\/new\?experiment_id=(\d+)/)
       experiment_id = match ? match[1] : nil
       @diagnostic_result.experiment = Experiment.find(experiment_id)
-
-      if @diagnostic_result.save
+      @diagnostic_result.organization_id = session[:current_organization_id]
+      if @diagnostic_result.save!
         redirect_to [ @experiment, @diagnostic_result ], notice: t('message.create_success', thing: t('scrinium_esm.diagnostic_result'))
       else
         render :new

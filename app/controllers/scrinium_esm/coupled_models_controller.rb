@@ -2,12 +2,16 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class CoupledModelsController < ApplicationController
-    before_filter :authenticate_user!, :except => [:index, :show]
-    before_action :set_coupled_model, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, :except => [ :index, :show ]
+    before_action :set_coupled_model, only: [ :show, :edit, :update, :destroy ]
 
     # GET /coupled_models
     def index
-      @coupled_models = CoupledModel.all
+      if session[:current_organization_id].present?
+        @coupled_models = CoupledModel.find_by_organization_id(session[:current_organization_id])
+      else
+        @coupled_models = CoupledModel.all
+      end
     end
 
     # GET /coupled_models/1
@@ -26,8 +30,8 @@ module ScriniumEsm
     # POST /coupled_models
     def create
       @coupled_model = CoupledModel.new(coupled_model_params)
-
-      if @coupled_model.save
+      @coupled_model.organization_id = session[:current_organization_id]
+      if @coupled_model.save!
         redirect_to @coupled_model, notice: t('message.create_success', thing: t('scrinium_esm.coupled_model'))
       else
         render :new

@@ -2,12 +2,16 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class AtmModelsController < ApplicationController
-    before_filter :authenticate_user!, :except => [:index, :show]
-    before_action :set_atm_model, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, :except => [ :index, :show ]
+    before_action :set_atm_model, only: [ :show, :edit, :update, :destroy ]
 
     # GET /atm_models
     def index
-      @atm_models = AtmModel.all
+      if session[:current_organization_id].present?
+        @atm_models = AtmModel.find_by_organization_id(session[:current_organization_id])
+      else
+        @atm_models = AtmModel.all
+      end
     end
 
     # GET /atm_models/1
@@ -26,8 +30,8 @@ module ScriniumEsm
     # POST /atm_models
     def create
       @atm_model = AtmModel.new(atm_model_params)
-
-      if @atm_model.save
+      @atm_model.organization_id = session[:current_organization_id]
+      if @atm_model.save!
         redirect_to @atm_model, notice: t('message.create_success', thing: t('activerecord.models.scrinium_esm/atm_model'))
       else
         render :new
