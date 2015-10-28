@@ -1,6 +1,6 @@
 <ul class='left-side-list'>
   <li><%= @experiment.name %></li>
-  <li><%= "#{t('experiment.type')}: #{@experiment.experiment_type.text}" %></li>
+  <li><%= "#{t('activerecord.attributes.scrinium_esm/experiment.experiment_type')}: #{@experiment.experiment_type.text}" %></li>
   <li>
     <ul class='left-side-list'>
       <% @experiment.categories.each do |tag| %>
@@ -11,7 +11,7 @@
     </ul>
   </li>
   <li>
-    <%= t('global.contact') %>:
+    <%= t('model.contact') %>:
     <%= link_to @experiment.contact.name, @experiment.contact %>
   </li>
   <% if policy(@experiment).update? %>
@@ -23,7 +23,7 @@
     </li>
     <li>
       <%=
-        link_to fa_icon('coffee', text: t('action.add')+t('global.log')),
+        link_to fa_icon('coffee', text: t('action.add')+t('experiment.log')),
         [ :add, @experiment, :log ], id: 'add-log', style: 'display: none;'
       %>
     </li>
@@ -47,7 +47,7 @@
       <%=
         link_to fa_icon('trash', text: t('action.delete')),
         @experiment, method: :delete,
-        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.experiment')) }
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.scrinium_esm/experiment')) }
       %>
     </li>
   <% end %>

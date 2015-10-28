@@ -1,18 +1,19 @@
 module ScriniumEsm
   class ExperimentSpec < ActiveRecord::Base
+    mount_uploader :logo, ImageUploader
+
+    acts_as_taggable
+    acts_as_taggable_on :categories
+
     has_many :resources, as: :resourceable, dependent: :destroy
     has_many :comments, as: :commentable, dependent: :destroy
     has_many :collections, as: :collectable, dependent: :destroy
     belongs_to :comparison_project
 
-    has_attached_file :logo, styles: { medium: '150x150', thumb: '100x100', small: '20x20' }
-    validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
-
-    acts_as_taggable
-    acts_as_taggable_on :categories
-
-    validates_uniqueness_of [ :name, :short_name ]
-    validates_presence_of [ :name, :short_name, :contact_id ]
+    validates :name, :short_name, uniqueness: true
+    validates :name, :short_name, :contact_id, presence: true
+    validates :logo, file_size: { less_than_or_equal_to: 2.megabytes },
+                     file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
 
     def contact
       User.find(self.contact_id)

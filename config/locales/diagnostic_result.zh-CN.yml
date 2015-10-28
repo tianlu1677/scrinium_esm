@@ -1,0 +1,9 @@
+zh-CN:
+  activerecord:
+    models:
+      diagnostic_result: 诊断结果
+    attributes:
+      diagnostic_result:
+        metric_id: 评估指标
+        contact_id: 联系人
+        created_at: 创建时间

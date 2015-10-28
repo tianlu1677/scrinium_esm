@@ -9,8 +9,8 @@ module ScriniumEsm
     acts_as_taggable_on :categories
 
     validates :metric_id, inclusion: { in: ScriniumEsm::Metric.all.map { |x| x.id } }
-    validates_presence_of :contact_id
-    validates_uniqueness_of :metric_id, scope: :experiment_id
+    validates :contact_id, uniqueness: true
+    validates :metric_id, uniqueness: { scope: :experiment_id }
 
     def contact
       User.find(self.contact_id)

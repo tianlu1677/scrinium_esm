@@ -1,28 +1,26 @@
 <div class='experiment-form'>
   <%= simple_form_for @experiment do |f| %>
     <dl>
-      <dt><%= t('global.basic_info') %></dt>
+      <dt><%= t('experiment.basic_info') %></dt>
       <dd>
-        <%= f.input :name, label: t('experiment.name') %>
+        <%= f.input :name %>
         <%=
           f.input :category_list,
-          label: t('experiment.categories'),
           collection: @experiment.categories.map { |t| t.name },
           input_html: { multiple: 'multiple' }
         %>
-        <%= f.input :description, label: t('experiment.description'), as: :text %>
+        <%= f.input :description, as: :text %>
         <div class='row'>
           <div class='col-md-3'>
             <%=
               f.input :contact_id,
-              label: t('global.contact'),
               collection: [@experiment.contact_id],
               input_html: { id: 'input-user-name' }
             %>
           </div>
           <div class='col-md-3' id='input-experiment-type'>
             <%=
-              f.input :experiment_type, label: t('experiment.type'),
+              f.input :experiment_type,
               input_html: { id: 'input-experiment-type' }
             %>
           </div>
@@ -34,7 +32,6 @@
           <% end %>
             <%=
               f.input :experimentable_id,
-              label: t('scrinium_esm.atm_model'),
               collection: ScriniumEsm::AtmModel.all,
               label_method: :short_name,
               value_method: :id,
@@ -49,7 +46,6 @@
           <% end %>
             <%=
               f.input :experimentable_id,
-              label: t('scrinium_esm.ocn_model'),
               collection: ScriniumEsm::OcnModel.all,
               label_method: :short_name,
               value_method: :id,
@@ -75,7 +71,7 @@
       </dd>
     </dl>
     <dl>
-      <dt><%= t('scrinium_esm.experiment_action') %></dt>
+      <dt><%= t('activerecord.models.scrinium_esm/experiment_action') %></dt>
       <dd>
         <%= f.simple_fields_for :experiment_actions, @experiment.experiment_actions.sort_by { |x| x.order } do |g| %>
           <%= render 'experiment_action_field', f: g %>
@@ -83,7 +79,7 @@
       </dd>
     </dl>
     <%=
-      link_to_add_field t('action.add')+t('scrinium_esm.experiment_action'),
+      link_to_add_field t('action.add')+t('activerecord.models.scrinium_esm/experiment_action'),
       f, :experiment_actions, class: 'button float-left'
     %>
     <%= f.button :submit, t('action.submit'), class: 'button float-right' %>

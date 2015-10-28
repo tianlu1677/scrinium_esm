@@ -6,7 +6,7 @@ class CreateScriniumEsmMetrics < ActiveRecord::Migration
       t.text :description
       t.integer :contact_id
       t.integer :organization_id
-      t.attachment :logo
+      t.string :logo
 
       t.timestamps null: false
     end

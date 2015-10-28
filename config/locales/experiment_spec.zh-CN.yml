@@ -1,0 +1,4 @@
+zh-CN:
+  activerecord:
+    models:
+      scrinium_esm/experiment_spec: 试验规范

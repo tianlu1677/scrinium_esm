@@ -1,6 +1,7 @@
 zh-CN:
-  scrinium_esm:
-    experiment_action: 试验操作
+  activerecord:
+    models:
+      scrinium_esm/experiment_action: 试验操作
 
   experiment_action:
     object: 操作对象

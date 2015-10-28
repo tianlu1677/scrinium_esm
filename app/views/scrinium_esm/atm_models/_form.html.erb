@@ -3,32 +3,50 @@
     <div class='row'>
       <div class='col-md-4'>
         <dl>
-          <dt><%= t('global.basic_info') %></dt>
+          <dt><%= t('model.basic_info') %></dt>
           <dd>
-            <%= render 'scrinium_esm/commons/model_form', f: f, model: @atm_model %>
+            <%= f.input :name %>
+            <%= f.input :short_name %>
+            <%= f.input :repository_url %>
+            <%= f.input :affiliation %>
+            <div class='row'>
+              <div class='col-md-4'>
+                <%= f.input :simulation_region %>
+              </div>
+              <div class='col-md-4'>
+                <%= f.input :simulation_type %>
+              </div>
+              <div class='col-md-4'>
+                <%= f.input :contact_id,
+                  collection: [ @atm_model.contact_id ],
+                  input_html: { id: 'input-user-name' }
+                %>
+              </div>
+            </div>
+            <%= f.input :description, as: :text %>
           </dd>
         </dl>
       </div>
       <div class='col-md-4'>
         <dl>
-          <dt><%= t('atm_model.dynamical_core_scheme') %></dt>
+          <dt><%= t('activerecord.attributes.scrinium_esm/atm_model.dynamical_core_scheme') %></dt>
           <dd>
-            <%= f.input :dynamical_core_scheme, label: t('atm_model.dynamical_core_scheme') %>
-            <%= f.input :advection_scheme, label: t('atm_model.advection_scheme') %>
+            <%= f.input :dynamical_core_scheme %>
+            <%= f.input :advection_scheme %>
             <div class='row'>
               <div class='col-md-6'>
-                <%= f.input :is_hydrostatic, label: t('atm_model.is_hydrostatic') %>
+                <%= f.input :is_hydrostatic %>
               </div>
               <div class='col-sm-6'>
-                <%= f.input :is_shallow, label: t('atm_model.is_shallow') %>
+                <%= f.input :is_shallow %>
               </div>
             </div>
             <div class='row'>
               <div class='col-md-6'>
-                <%= f.input :horizontal_mesh, label: t('atm_model.horizontal_mesh') %>
+                <%= f.input :horizontal_mesh %>
               </div>
               <div class='col-md-6'>
-                <%= f.input :vertical_coordinate, label: t('atm_model.vertical_coordinate') %>
+                <%= f.input :vertical_coordinate %>
               </div>
             </div>
           </dd>
@@ -38,11 +56,11 @@
         <dl>
           <dt><%= t('model.physics_parameterization') %></dt>
           <dd>
-            <%= f.input :radiation_scheme, label: t('atm_model.physics_parameterizations.radiation_scheme') %>
-            <%= f.input :convection_scheme, label: t('atm_model.physics_parameterizations.convection_scheme') %>
-            <%= f.input :microphysics_scheme, label: t('atm_model.physics_parameterizations.microphysics_scheme') %>
-            <%= f.input :planet_boundary_layer_scheme, label: t('atm_model.physics_parameterizations.planet_boundary_layer_scheme') %>
-            <%= f.input :gravity_drag_scheme, label: t('atm_model.physics_parameterizations.gravity_drag_scheme') %>
+            <%= f.input :radiation_scheme %>
+            <%= f.input :convection_scheme %>
+            <%= f.input :microphysics_scheme %>
+            <%= f.input :planet_boundary_layer_scheme %>
+            <%= f.input :gravity_drag_scheme %>
           </dd>
         </dl>
       </div>

@@ -2,8 +2,15 @@ module ScriniumEsm
   class Experiment < ActiveRecord::Base
     extend Enumerize
 
-    validates :name, uniqueness: { scope: :experimentable_id }
-    validates :name, :contact_id, :experimentable_id, :experimentable_type, presence: true
+    enumerize :experiment_type, in: [ :amip, :omip, :cmip ], predicate: true
+    ModelType = {
+      :amip => 'ScriniumEsm::AtmModel',
+      :omip => 'ScriniumEsm::OcnModel',
+      :cmip => 'ScriniumEsm::CoupledModel'
+    }
+
+    acts_as_taggable
+    acts_as_taggable_on :categories
 
     belongs_to :experimentable, polymorphic: true
     has_many :experiment_actions, dependent: :destroy
@@ -13,15 +20,8 @@ module ScriniumEsm
     has_many :experiment_ensembles
     has_many :members, through: :experiment_ensembles
 
-    acts_as_taggable
-    acts_as_taggable_on :categories
-
-    enumerize :experiment_type, in: [ :amip, :omip, :cmip ]
-    ModelType = {
-      :amip => 'ScriniumEsm::AtmModel',
-      :omip => 'ScriniumEsm::OcnModel',
-      :cmip => 'ScriniumEsm::CoupledModel'
-    }
+    validates :name, uniqueness: { scope: :experimentable_id }
+    validates :name, :contact_id, :experimentable_id, :experimentable_type, presence: true
 
     def contact
       User.find(self.contact_id)

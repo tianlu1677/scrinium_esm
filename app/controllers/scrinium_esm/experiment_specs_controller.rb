@@ -24,7 +24,7 @@ module ScriniumEsm
       @experiment_spec = @comparison_project.experiment_specs.new(experiment_spec_params)
 
       if @experiment_spec.save
-        redirect_to [ @comparison_project, @experiment_spec ], notice: t('message.create_success', thing: t('scrinium_esm.experiment_spec'))
+        redirect_to [ @comparison_project, @experiment_spec ], notice: t('message.create_success', thing: t('activerecord.models.scrinium_esm/experiment_spec'))
       else
         render :new
       end
@@ -33,7 +33,7 @@ module ScriniumEsm
     # PATCH/PUT /experiment_specs/1
     def update
       if @experiment_spec.update(experiment_spec_params)
-        redirect_to [ @comparison_project, @experiment_spec ], notice: t('message.update_success', thing: t('scrinium_esm.experiment_spec'))
+        redirect_to [ @comparison_project, @experiment_spec ], notice: t('message.update_success', thing: t('activerecord.models.scrinium_esm/experiment_spec'))
       else
         render :edit
       end
@@ -42,7 +42,7 @@ module ScriniumEsm
     # DELETE /experiment_specs/1
     def destroy
       @experiment_spec.destroy
-      redirect_to experiment_specs_url, notice: t('message.destroy_success', thing: t('scrinium_esm.experiment_spec'))
+      redirect_to experiment_specs_url, notice: t('message.destroy_success', thing: t('activerecord.models.scrinium_esm/experiment_spec'))
     end
 
     private

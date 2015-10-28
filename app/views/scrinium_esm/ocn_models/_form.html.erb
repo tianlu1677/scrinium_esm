@@ -3,24 +3,42 @@
     <div class='row'>
       <div class='col-md-4'>
         <dl>
-          <dt><%= t('global.basic_info') %></dt>
+          <dt><%= t('model.basic_info') %></dt>
           <dd>
-            <%= render 'scrinium_esm/commons/model_form', f: f, model: @ocn_model %>
+            <%= f.input :name %>
+            <%= f.input :short_name %>
+            <%= f.input :repository_url %>
+            <%= f.input :affiliation %>
+            <div class='row'>
+              <div class='col-md-4'>
+                <%= f.input :simulation_region %>
+              </div>
+              <div class='col-md-4'>
+                <%= f.input :simulation_type %>
+              </div>
+              <div class='col-md-4'>
+                <%= f.input :contact_id,
+                  collection: [ @ocn_model.contact_id ],
+                  input_html: { id: 'input-user-name' }
+                %>
+              </div>
+            </div>
+            <%= f.input :description, as: :text %>
           </dd>
         </dl>
       </div>
       <div class='col-md-4'>
         <dl>
-          <dt><%= t('ocn_model.dynamical_core_scheme') %></dt>
+          <dt><%= t('activerecord.attributes.scrinium_esm/ocn_model.dynamical_core_scheme') %></dt>
           <dd>
-            <%= f.input :dynamical_core_scheme, label: t('ocn_model.dynamical_core_scheme') %>
-            <%= f.input :advection_scheme, label: t('ocn_model.advection_scheme') %>
+            <%= f.input :dynamical_core_scheme %>
+            <%= f.input :advection_scheme %>
             <div class='row'>
               <div class='col-md-6'>
-                <%= f.input :horizontal_mesh, label: t('ocn_model.horizontal_mesh') %>
+                <%= f.input :horizontal_mesh %>
               </div>
               <div class='col-md-6'>
-                <%= f.input :vertical_coordinate, label: t('ocn_model.vertical_coordinate') %>
+                <%= f.input :vertical_coordinate %>
               </div>
             </div>
           </dd>

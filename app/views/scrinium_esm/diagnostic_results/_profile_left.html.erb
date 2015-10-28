@@ -1,14 +1,14 @@
 <ul class='left-side-list'>
   <li>
-    <%= t('scrinium_esm.experiment') %>:
+    <%= t('activerecord.models.scrinium_esm/experiment') %>:
     <%= @diagnostic_result.experiment.name %>
   </li>
   <li>
-    <%= t('scrinium_esm.metric') %>:
+    <%= t('activerecord.attributes.diagnostic_result.metric_id') %>:
     <%= @diagnostic_result.metric.name %>
   </li>
   <li>
-    <%= t('global.contact') %>:
+    <%= t('activerecord.attributes.diagnostic_result.contact_id') %>:
     <%= link_to @diagnostic_result.contact.name, @diagnostic_result.contact %>
   </li>
   <% if policy(@diagnostic_result).update? %>

@@ -1,7 +1,7 @@
 <ul class='left-side-list'>
   <li><%= model.short_name %></li>
   <li>
-    <%= t('global.contact') %>:
+    <%= t('model.contact') %>:
     <%= link_to model.contact.name, model.contact %>
   </li>
   <li>
@@ -11,7 +11,7 @@
     <% if policy(model).destroy? %>
       <%=
         link_to fa_icon('trash', text: t('action.delete')), model, method: :delete,
-        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.ocn_model')) }
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.scrinium_esm/ocn_model')) }
       %>
     <% end %>
   </li>

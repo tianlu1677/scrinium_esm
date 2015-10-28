@@ -2,15 +2,13 @@ module ScriniumEsm
   class SeaIceModel < ActiveRecord::Base
     extend Enumerize
 
-    validates :name, uniqueness: true
-    validates :short_name, uniqueness: true
-    validates :contact_id, presence: true
-    translates :description
+    enumerize :simulation_region, in: [ :global, :regional ]
+    enumerize :simulation_type, in: [ :climate, :weather ]
 
     has_many :experiments, as: :experimentable, dependent: :destroy
 
-    enumerize :simulation_region, in: [ :global, :regional ]
-    enumerize :simulation_type, in: [ :climate, :weather ]
+    validates :name, :short_name, uniqueness: true
+    validates :name, :short_name, :contact_id, presence: true
 
     def contact
       User.find(self.contact_id)

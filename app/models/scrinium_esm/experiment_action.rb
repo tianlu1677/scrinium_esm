@@ -2,8 +2,6 @@ module ScriniumEsm
   class ExperimentAction < ActiveRecord::Base
     extend Enumerize
 
-    belongs_to :experiment
-
     enumerize :action_type, in: [
       :change, :add, :delete
     ]
@@ -14,5 +12,9 @@ module ScriniumEsm
       :code,
       :parallel_setting
     ]
+
+    belongs_to :experiment
+
+    validates :action_type, :action_object, presence: true
   end
 end

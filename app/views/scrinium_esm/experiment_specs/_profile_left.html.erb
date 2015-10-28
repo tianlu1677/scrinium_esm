@@ -22,7 +22,7 @@
     <li>
       <%=
         link_to fa_icon('trash', text: t('action.delete')), @experiment_spec, method: :delete,
-        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.experiment_spec')) }
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.scrinium_esm/experiment_spec')) }
       %>
     </li>
   <% end %>

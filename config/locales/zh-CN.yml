@@ -11,6 +11,11 @@ zh-CN:
   model:
     short_name: 模式简称
     name: 模式全称
+    contact: 联系人
+    create_time: 创建时间
+    specification: 模式规格
+    description: 模式描述
+    basic_info: 基本信息
     repository_url: 版本库地址
     affiliation: 所属单位
     physics_parameterization: 物理参数化

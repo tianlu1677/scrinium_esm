@@ -1,6 +1,41 @@
 zh-CN:
-  scrinium_esm:
-    ocn_model: 海洋环流模式
+  activerecord:
+    models:
+      scrinium_esm/ocn_model: 海洋环流模式
+    attributes:
+      scrinium_esm/ocn_model:
+        name: 名称
+        short_name: 简称
+        description: 简介
+        contact_id: 联系人
+        repository_url: 版本库地址
+        affiliation: 开发机构
+        simulation_region: 模拟区域
+        simulation_type: 模拟类型
+        dynamical_core_scheme: 动力框架方案
+        advection_scheme: 平流方案
+        horizontal_mesh: 水平网格
+        vertical_coordinate: 垂直网格
+    errors:
+      models:
+        scrinium_esm/ocn_model:
+          attributes:
+            name:
+              taken: 已经存在相同名称的海洋环流模式！
+            short_name:
+              taken: 已经存在相同简称的海洋环流模式！
+            contact_id:
+              blank: 未指定联系人！
+            simulation_region:
+              blank: 请指定模式模拟区域！
+            simulation_type:
+              blank: 请指定模式模拟类型！
+            horizontal_mesh:
+              blank: 请指定模式水平网格！
+            vertical_mesh:
+              blank: 请指定模式垂直网格！
+            vertical_coordinate:
+              blank: 请指定模式垂直坐标！
 
   enumerize:
     scrinium_esm/ocn_model:
@@ -18,23 +53,3 @@ zh-CN:
         height: 高度垂直坐标
         hybrid_sigma_height: 混合𝜎高度垂直坐标
         isopycnic: 等密度垂直坐标
-
-  ocn_model:
-    simulation_region: 模拟区域
-    simulation_type: 模拟类型
-    dynamical_core_scheme: 动力框架方案
-    advection_scheme: 平流方案
-    horizontal_mesh: 水平网格
-    vertical_coordinate: 垂直网格
-
-  activerecord:
-    errors:
-      models:
-        scrinium_esm/ocn_model:
-          attributes:
-            name:
-              taken: 已经存在相同名称的海洋环流模式！
-            short_name:
-              taken: 已经存在相同简称的海洋环流模式！
-            contact_id:
-              blank: 未指定联系人！

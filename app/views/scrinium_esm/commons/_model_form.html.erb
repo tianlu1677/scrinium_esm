@@ -11,10 +11,10 @@
   </div>
   <div class='col-md-4'>
     <%= f.input :contact_id,
-      label: t('global.contact'),
+      label: t('model.contact'),
       collection: [ model.contact_id ],
       input_html: { id: 'input-user-name' }
     %>
   </div>
 </div>
-<%= f.input :description, label: t('global.description'), as: :text %>
+<%= f.input :description, label: t('model.description'), as: :text %>

@@ -2,11 +2,6 @@ module ScriniumEsm
   class Datum < ActiveRecord::Base
     extend Enumerize
 
-    has_attached_file :logo, styles: { medium: '150x150', thumb: '100x100', small: '20x20' }
-    validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
-    validates_presence_of :name, message: I18n.t('data.name_is_empty')
-    validates_presence_of :contact_id, message: I18n.t('data.contact_is_empty')
-
     enumerize :datum_type, in: [
       :station_data,
       :reanalysis_data,
@@ -21,6 +16,13 @@ module ScriniumEsm
       :hdf5,
       :binary
     ]
+
+    mount_uploader :logo, ImageUploader
+
+    validates :name, uniqueness: true
+    validates :name, :contact_id, presence: true
+    validates :logo, file_size: { less_than_or_equal_to: 2.megabytes },
+                     file_content_type: { allow: [ 'image/jpeg', 'image/png' ] }
 
     def contact
       User.find(self.contact_id)

@@ -1,21 +1,15 @@
 zh-CN:
-  scrinium_esm:
-    experiment: 试验
-
-  experiment:
-    name: 试验名称
-    description: 试验简介
-    type: 试验类型
-    categories: 试验类别（如CMIP6）
-
-  enumerize:
-    scrinium_esm/experiment:
-      experiment_type:
-        amip: AMIP
-        omip: OMIP
-        cmip: CMIP
-
   activerecord:
+    models:
+      scrinium_esm/experiment: 试验
+    attributes:
+      scrinium_esm/experiment:
+        name: 名称
+        description: 简介
+        experiment_type: 试验类型
+        experimentable_id: 试验模式
+        category_list: 试验类别
+        contact_id: 联系人
     errors:
       models:
         scrinium_esm/experiment:
@@ -27,3 +21,19 @@ zh-CN:
             experiment_type:
               blank: 未设定试验类型！
               inclusion: 未设定试验类型！
+
+  enumerize:
+    scrinium_esm/experiment:
+      experiment_type:
+        amip: AMIP
+        omip: OMIP
+        cmip: CMIP
+
+  experiment:
+    tab:
+      info: 试验信息
+      logs: 试验日志
+      diagnostic_results: 诊断结果
+      ensemble_members: 集合成员
+    basic_info: 试验基本信息
+    log: 试验日志
