@@ -7,7 +7,7 @@ module ScriniumEsm
 
     def index
       if session[:current_organization_id].present?
-        @ocn_models = OcnModel.find_by_organization_id(session[:current_organization_id])
+        @ocn_models = OcnModel.where organization_id: session[:current_organization_id]
       else
         @ocn_models = OcnModel.all
       end

@@ -5,11 +5,11 @@ module ScriniumEsm
     def index
       @organization = Organization.find(session[:current_organization_id])
       id = session[:current_organization_id]
-      @atm_models = [ AtmModel.find_by_organization_id(id) ].flatten.compact
-      @ocn_models = [ OcnModel.find_by_organization_id(id) ].flatten.compact
-      @lnd_models = [ LndModel.find_by_organization_id(id) ].flatten.compact
-      @sea_ice_models = [ SeaIceModel.find_by_organization_id(id) ].flatten.compact
-      @coupled_models = [ CoupledModel.find_by_organization_id(id) ].flatten.compact
+      @atm_models = AtmModel.where organization_id: id
+      @ocn_models = OcnModel.where organization_id: id
+      @lnd_models = LndModel.where organization_id: id
+      @sea_ice_models = SeaIceModel.where organization_id: id
+      @coupled_models = CoupledModel.where organization_id: id
     end
   end
 end

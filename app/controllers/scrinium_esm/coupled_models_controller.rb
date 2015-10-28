@@ -8,7 +8,7 @@ module ScriniumEsm
     # GET /coupled_models
     def index
       if session[:current_organization_id].present?
-        @coupled_models = CoupledModel.find_by_organization_id(session[:current_organization_id])
+        @coupled_models = CoupledModel.where organization_id: session[:current_organization_id]
       else
         @coupled_models = CoupledModel.all
       end

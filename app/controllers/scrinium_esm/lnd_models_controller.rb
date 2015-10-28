@@ -8,7 +8,7 @@ module ScriniumEsm
     # GET /lnd_models
     def index
       if session[:current_organization_id].presetn?
-        @lnd_models = LndModel.find_by_organization_id(session[:current_organization_id])
+        @lnd_models = LndModel.where organization_id: session[:current_organization_id]
       else
         @lnd_models = LndModel.all
       end

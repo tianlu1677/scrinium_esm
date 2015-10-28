@@ -8,7 +8,7 @@ module ScriniumEsm
     # GET /atm_models
     def index
       if session[:current_organization_id].present?
-        @atm_models = AtmModel.find_by_organization_id(session[:current_organization_id])
+        @atm_models = AtmModel.where organization_id: session[:current_organization_id]
       else
         @atm_models = AtmModel.all
       end

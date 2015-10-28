@@ -8,7 +8,7 @@ module ScriniumEsm
     # GET /sea_ice_models
     def index
       if session[:current_organization_id].present?
-        @sea_ice_models = SeaIceModel.find_by_organization_id(session[:current_organization_id])
+        @sea_ice_models = SeaIceModel.where organization_id: session[:current_organization_id]
       else
         @sea_ice_models = SeaIceModel.all
       end

@@ -7,7 +7,7 @@ module ScriniumEsm
 
     def index
       @organization = Organization.find(session[:current_organization_id])
-      @experiments = [ Experiment.find_by(organization_id: session[:current_organization_id]) ].flatten.compact
+      @experiments = Experiment.where organization_id: session[:current_organization_id]
     end
 
     def show
