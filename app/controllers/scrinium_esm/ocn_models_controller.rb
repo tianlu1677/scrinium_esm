@@ -26,7 +26,7 @@ module ScriniumEsm
     def create
       @ocn_model = OcnModel.new(ocn_model_params)
       @ocn_model.organization_id = session[:current_organization_id]
-      if @ocn_model.save!
+      if @ocn_model.save
         redirect_to @ocn_model, notice: t('message.create_success', thing: t('activerecord.models.scrinium_esm/ocn_model'))
       else
         render :new
@@ -34,7 +34,7 @@ module ScriniumEsm
     end
 
     def update
-      if @ocn_model.update!(ocn_model_params)
+      if @ocn_model.update(ocn_model_params)
         redirect_to @ocn_model, notice: t('message.update_success', thing: t('activerecord.models.scrinium_esm/ocn_model'))
       else
         render :edit

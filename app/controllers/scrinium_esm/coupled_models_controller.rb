@@ -31,7 +31,7 @@ module ScriniumEsm
     def create
       @coupled_model = CoupledModel.new(coupled_model_params)
       @coupled_model.organization_id = session[:current_organization_id]
-      if @coupled_model.save!
+      if @coupled_model.save
         redirect_to @coupled_model, notice: t('message.create_success', thing: t('scrinium_esm.coupled_model'))
       else
         render :new

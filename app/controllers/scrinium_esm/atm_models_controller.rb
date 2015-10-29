@@ -31,7 +31,7 @@ module ScriniumEsm
     def create
       @atm_model = AtmModel.new(atm_model_params)
       @atm_model.organization_id = session[:current_organization_id]
-      if @atm_model.save!
+      if @atm_model.save
         redirect_to @atm_model, notice: t('message.create_success', thing: t('activerecord.models.scrinium_esm/atm_model'))
       else
         render :new

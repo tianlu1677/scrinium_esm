@@ -31,7 +31,7 @@ module ScriniumEsm
     def create
       @lnd_model = LndModel.new(lnd_model_params)
       @lnd_model.organization_id = session[:current_organization_id]
-      if @lnd_model.save!
+      if @lnd_model.save
         redirect_to @lnd_model, notice: t('message.create_success', thing: t('activerecord.models.scrinium_esm/lnd_model'))
       else
         render :new

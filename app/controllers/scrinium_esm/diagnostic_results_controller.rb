@@ -21,7 +21,7 @@ module ScriniumEsm
       experiment_id = match ? match[1] : nil
       @diagnostic_result.experiment = Experiment.find(experiment_id)
       @diagnostic_result.organization_id = session[:current_organization_id]
-      if @diagnostic_result.save!
+      if @diagnostic_result.save
         redirect_to [ @experiment, @diagnostic_result ], notice: t('message.create_success', thing: t('scrinium_esm.diagnostic_result'))
       else
         render :new

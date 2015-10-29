@@ -31,7 +31,7 @@ module ScriniumEsm
     def create
       @sea_ice_model = SeaIceModel.new(sea_ice_model_params)
       @sea_ice_model.organization_id = session[:current_organization_id]
-      if @sea_ice_model.save!
+      if @sea_ice_model.save
         redirect_to @sea_ice_model, notice: t('message.create_success', thing: t('activerecord.models.scrinium_esm/sea_ice_model'))
       else
         render :new
