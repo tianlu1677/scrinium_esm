@@ -1,88 +1,12 @@
 zh-CN:
   scrinium_esm:
     model: 模式
-    data: 数据
-    metric: 评估指标
-    diagnostic_result: 诊断结果
-    comparison_project: 模式比较计划
-    project: 计划
-    experiment_spec: 试验规范
 
   model:
-    short_name: 模式简称
-    name: 模式全称
     contact: 联系人
-    create_time: 创建时间
-    specification: 模式规格
-    description: 模式描述
+    description: 简介
+    specification: 规格
     basic_info: 基本信息
-    repository_url: 版本库地址
-    affiliation: 所属单位
-    physics_parameterization: 物理参数化
-    scheme_name: 方案名称
     simulation_region: 模拟区域
     simulation_type: 模拟类型
-
-  experiment:
-    actions: 试验操作
-    ensemble_member: 集合成员
-    action_types:
-      change_parameter: 修改参数
-      replace_scheme: 更换方案
-      change_scheme: 修改方案
-      change_code: 修改程序
-      add_compiler_option: 添加编译选项
-      delete_compiler_option: 删除编译选项
-      change_compiler_option: 修改编译选项
-      change_space_resolution: 改变空间分辨率
-      change_time_step_size: 改变时间步长
-    action_subjects:
-      parameter_name: 参数名称
-      parameter_new_value: 参数新值
-      what_scheme: 什么方案
-      scheme_name: 方案名称
-      changed_parts: 修改的程序
-      code_file: 程序文件
-      added_compiler_option: 添加的编译选项
-      deleted_compiler_option: 删除的编译选项
-      changed_compiler_option: 修改的编译选项
-      compiler_option_new_value: 新的编译选项
-      new_space_resolution: 新的空间分辨率
-      new_time_step_size: 新的时间步长
-    log: 试验日志
-
-  comparison_project:
-    info: 计划信息
-    resource: 计划资源
-
-  activerecord:
-    errors:
-      models:
-        scrinium_esm/experiment:
-          attributes:
-            name:
-              blank: 未设置试验名称！
-              taken: 已经存在相同名称的试验！
-            contact_id:
-              blank: 未指定联系人！
-            experimentable_type:
-              blank: 未设置试验类型！
-            experimentable_id:
-              blank: 未设置试验模式！
-        scrinium_esm/metric:
-          attributes:
-            name:
-              blank: 未设置指标名称！
-              taken: 已经存在相同名称的指标！
-            short_name:
-              blank: 未设置指准简称！
-              taken: 已经存在相同简称的指标！
-            contact_id:
-              blank: 未指定联系人！
-        scrinium_esm/diagnostic_result:
-          attributes:
-            contact_id:
-              blank: 未指定联系人！
-            metric_id:
-              taken: 已经添加过该指标结果！
-              inclusion: 未指定指标！
+    physics_parameterization: 物理参数化方案

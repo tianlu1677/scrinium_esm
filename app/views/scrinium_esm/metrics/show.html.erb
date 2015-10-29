@@ -10,11 +10,11 @@
     render 'layouts/navtab',
     tabs: {
       info: [
-        t('global.info'),
+        t('tab.info'),
         render('info')
       ],
       resources: [
-        t('scrinium.resource'),
+        t('activerecord.models.resource'),
         render('resources/list', resources: @metric.resources)
       ]
     }

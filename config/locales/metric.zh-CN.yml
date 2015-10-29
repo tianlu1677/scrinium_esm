@@ -1,0 +1,22 @@
+zh-CN:
+  activerecord:
+    models:
+      scrinium_esm/metric: 评估指标
+    attributes:
+      scrinium_esm/metric:
+        name: 名称
+        short_name: 简称
+        contact_id: 联系人
+        description: 简介
+    errors:
+      models:
+        scrinium_esm/metric:
+          attributes:
+            name:
+              blank: 未设置指标名称！
+              taken: 已经存在相同名称的指标！
+            short_name:
+              blank: 未设置指准简称！
+              taken: 已经存在相同简称的指标！
+            contact_id:
+              blank: 未指定联系人！

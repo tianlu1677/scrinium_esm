@@ -1,0 +1,20 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th width='100'><%= t('activerecord.attributes.scrinium_esm/lnd_model.short_name') %></th>
+      <th width='300'><%= t('activerecord.attributes.scrinium_esm/lnd_model.name') %></th>
+      <th width='100'><%= t('activerecord.attributes.scrinium_esm/lnd_model.contact_id') %></th>
+      <th width='200'><%= t('activerecord.attributes.scrinium_esm/lnd_model.created_at') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lnd_models.each do |model| %>
+      <tr>
+        <td><%= link_to model.short_name, model %></td>
+        <td><%= model.name %></td>
+        <td><%= link_to User.find(model.contact_id).name, model.contact %></td>
+        <td><%= model.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -8,6 +8,7 @@ zh-CN:
         short_name: 简称
         description: 简介
         contact_id: 联系人
+        created_at: 创建时间
         repository_url: 版本库地址
         affiliation: 开发机构
         simulation_region: 模拟区域

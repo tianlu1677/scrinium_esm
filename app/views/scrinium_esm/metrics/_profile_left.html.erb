@@ -1,25 +1,23 @@
 <ul class='left-side-list'>
   <li><%= @metric.name %></li>
   <li>
-    <%= t('global.contact') %>:
+    <%= t('activerecord.attributes.scrinium_esm/metric.contact_id') %>:
     <%= link_to @metric.contact.name, @metric.contact %>
   </li>
   <% if policy(@metric).update? %>
     <li>
       <%= link_to fa_icon('edit', text: t('action.edit')), [ :edit, @metric ] %>
+      <% if policy(@metric).destroy? %>
+        <%=
+          link_to fa_icon('trash', text: t('action.delete')), @metric, method: :delete,
+          data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.scrinium_esm/metric')) }
+        %>
+      <% end %>
     </li>
     <li>
       <%=
-        link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
+        link_to fa_icon('plus-square-o', text: t('activerecord.models.resource')),
         [ :new, @metric, :resource ], id: 'add-resource', style: 'display: none;'
-      %>
-    </li>
-  <% end %>
-  <% if policy(@metric).destroy? %>
-    <li>
-      <%=
-        link_to fa_icon('trash', text: t('action.delete')), @metric, method: :delete,
-        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.metric')) }
       %>
     </li>
   <% end %>

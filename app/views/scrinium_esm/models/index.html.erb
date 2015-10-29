@@ -35,31 +35,31 @@
   <% if not @atm_models.empty? %>
     <dl>
       <dt><%= t('activerecord.models.scrinium_esm/atm_model') %></dt>
-      <dd><%= render 'scrinium_esm/commons/model_list', models: @atm_models %></dd>
+      <dd><%= render 'scrinium_esm/atm_models/table_list' %></dd>
     </dl>
   <% end %>
   <% if not @ocn_models.empty? %>
     <dl>
       <dt><%= t('activerecord.models.scrinium_esm/ocn_model') %></dt>
-      <dd><%= render 'scrinium_esm/commons/model_list', models: @ocn_models %></dd>
+      <dd><%= render 'scrinium_esm/ocn_models/table_list' %></dd>
     </dl>
   <% end %>
   <% if not @lnd_models.empty? %>
     <dl>
       <dt><%= t('activerecord.models.scrinium_esm/lnd_model') %></dt>
-      <dd><%= render 'scrinium_esm/commons/model_list', models: @lnd_models %></dd>
+      <dd><%= render 'scrinium_esm/lnd_models/table_list' %></dd>
     </dl>
   <% end %>
   <% if not @sea_ice_models.empty? %>
     <dl>
       <dt><%= t('activerecord.models.scrinium_esm/sea_ice_model') %></dt>
-      <dd><%= render 'scrinium_esm/commons/model_list', models: @sea_ice_models %></dd>
+      <dd><%= render 'scrinium_esm/sea_ice_models/table_list' %></dd>
     </dl>
   <% end %>
   <% if not @coupled_models.empty? %>
     <dl>
       <dt><%= t('activerecord.models.scrinium_esm/coupled_model') %></dt>
-      <dd><%= render 'scrinium_esm/commons/model_list', models: @coupled_models %></dd>
+      <dd><%= render 'scrinium_esm/coupled_models/table_list' %></dd>
     </dl>
   <% end %>
 <% end %>

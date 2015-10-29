@@ -15,6 +15,7 @@ zh-CN:
         scrinium_esm/experiment:
           attributes:
             name:
+              blank: 未设置试验名称！
               taken: 已经存在相同名称的模式试验！
             contact_id:
               blank: 未指定联系人！

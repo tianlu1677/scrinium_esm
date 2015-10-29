@@ -2,7 +2,7 @@
 <% add_breadcrumb t('activerecord.models.scrinium_esm/sea_ice_model'), sea_ice_models_path, on_nav_bar: true %>
 
 <% content_for :main_block do %>
-  <%= render 'scrinium_esm/commons/model_list', models: ScriniumEsm::SeaIceModel.all %>
+  <%= render 'table_list' %>
   <% if policy(ScriniumEsm::SeaIceModel).create? %>
     <%= link_to t('action.add'), new_sea_ice_model_path, class: 'button float-right' %>
   <% end %>
