@@ -1,11 +1,33 @@
 <div class='model-form'>
   <%= simple_form_for @sea_ice_model do |f| %>
-    <dl>
-      <dt><%= t('global.basic_info') %></dt>
-      <dd>
-        <%= render 'scrinium_esm/commons/model_form', f: f, model: @sea_ice_model %>
-      </dd>
-    </dl>
+    <div class='row'>
+      <div class='col-md-4'>
+        <dl>
+          <dt><%= t('model.basic_info') %></dt>
+          <dd>
+            <%= f.input :name %>
+            <%= f.input :short_name %>
+            <%= f.input :repository_url %>
+            <%= f.input :affiliation %>
+            <div class='row'>
+              <div class='col-md-4'>
+                <%= f.input :simulation_region %>
+              </div>
+              <div class='col-md-4'>
+                <%= f.input :simulation_type %>
+              </div>
+              <div class='col-md-4'>
+                <%= f.input :contact_id,
+                  collection: [ @sea_ice_model.contact_id ],
+                  input_html: { id: 'input-user-name' }
+                %>
+              </div>
+            </div>
+            <%= f.input :description, as: :text %>
+          </dd>
+        </dl>
+      </div>
+    </div>
     <%= f.button :submit, t('action.submit'), class: 'button float-right' %>
   <% end %>
 </div>

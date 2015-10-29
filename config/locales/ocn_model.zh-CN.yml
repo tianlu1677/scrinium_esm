@@ -22,8 +22,10 @@ zh-CN:
         scrinium_esm/ocn_model:
           attributes:
             name:
+              blank: 请输入模式名称！
               taken: 已经存在相同名称的海洋环流模式！
             short_name:
+              blank: 请输入模式简称！
               taken: 已经存在相同简称的海洋环流模式！
             contact_id:
               blank: 未指定联系人！

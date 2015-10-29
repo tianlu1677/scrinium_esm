@@ -1,11 +1,10 @@
 <div class='metric-form'>
   <%= simple_form_for @metric do |f| %>
-    <%= f.input :name, label: t('global.name') %>
-    <%= f.input :short_name, label: t('global.short_name') %>
-    <%= f.input :description, label: t('global.description'), as: :text %>
+    <%= f.input :name %>
+    <%= f.input :short_name %>
+    <%= f.input :description, as: :text %>
     <%=
       f.input :contact_id,
-      label: t('global.contact'),
       collection: [ @metric.contact_id ],
       input_html: { id: 'input-user-name' }
     %>
