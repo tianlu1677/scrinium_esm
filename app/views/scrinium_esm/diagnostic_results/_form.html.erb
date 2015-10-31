@@ -1,6 +1,7 @@
 <div class='metric-form'>
   <%= simple_form_for @diagnostic_result do |f| %>
-    <%= f.association :metric, label: t('scrinium_esm.metric') %>
+    <!-- TODO: 为什么association不采用activerecord的翻译？ -->
+    <%= f.association :metric, label: t('activerecord.attributes.scrinium_esm/diagnostic_result.metric_id') %>
     <%=
       f.input :contact_id,
       collection: [ @diagnostic_result.contact_id ],
