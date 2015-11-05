@@ -10,6 +10,7 @@ zh-CN:
         experimentable_id: 试验模式
         category_list: 试验类别
         contact_id: 联系人
+        created_at: 创建时间
     errors:
       models:
         scrinium_esm/experiment:
@@ -38,3 +39,4 @@ zh-CN:
       ensemble_members: 集合成员
     basic_info: 试验基本信息
     log: 试验日志
+    ensemble_member: 集合成员

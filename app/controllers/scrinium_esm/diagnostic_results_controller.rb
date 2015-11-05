@@ -22,7 +22,7 @@ module ScriniumEsm
       @diagnostic_result.experiment = Experiment.find(experiment_id)
       @diagnostic_result.organization_id = session[:current_organization_id]
       if @diagnostic_result.save
-        redirect_to [ @experiment, @diagnostic_result ], notice: t('message.create_success', thing: t('scrinium_esm.diagnostic_result'))
+        redirect_to [ @experiment, @diagnostic_result ], notice: t('message.create_success', thing: t('activerecord.models.scrinium_esm/diagnostic_result'))
       else
         render :new
       end
@@ -30,7 +30,7 @@ module ScriniumEsm
 
     def update
       if @diagnostic_result.update(diagnostic_result_params)
-        redirect_to [ @experiment, @diagnostic_result ], notice:  t('message.update_success', thing: t('scrinium_esm.diagnostic_result'))
+        redirect_to [ @experiment, @diagnostic_result ], notice:  t('message.update_success', thing: t('activerecord.models.scrinium_esm/diagnostic_result'))
       else
         render :edit
       end
@@ -38,7 +38,7 @@ module ScriniumEsm
 
     def destroy
       @diagnostic_result.destroy
-      redirect_to scrinium_esm.user_experiment_path(current_user, @experiment), notice:  t('message.destroy_success', thing: t('scrinium_esm.diagnostic_result'))
+      redirect_to scrinium_esm.user_experiment_path(current_user, @experiment), notice:  t('message.destroy_success', thing: t('activerecord.models.scrinium_esm/diagnostic_result'))
     end
 
     private
