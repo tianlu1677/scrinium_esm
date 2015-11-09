@@ -6,8 +6,9 @@ module ScriniumEsm
     before_action :set_experiment, only: [ :show, :edit, :update, :destroy, :add_log ]
 
     def index
-      @organization = Organization.find(session[:current_organization_id])
-      @experiments = Experiment.where organization_id: session[:current_organization_id]
+      # @organization = Organization.find(session[:current_organization_id])
+      # @experiments = Experiment.where organization_id: session[:current_organization_id]
+      @experiments = Experiment.all  # this is select experiments with organizaton_id
     end
 
     def show
