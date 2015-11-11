@@ -34,4 +34,8 @@ ScriniumEsm::Engine.routes.draw do
   resources :atm_models
   # Data -----------------------------------------------------------------------
   resources :data
+
+  namespace :admin do
+    resources :experiments
+  end
 end

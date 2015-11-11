@@ -1,6 +1,7 @@
 module ScriniumEsm
   class Experiment < ActiveRecord::Base
     extend Enumerize
+    acts_as_tenant(:organization)
 
     enumerize :experiment_type, in: [ :amip, :omip, :cmip ], predicate: true
     ModelType = {
