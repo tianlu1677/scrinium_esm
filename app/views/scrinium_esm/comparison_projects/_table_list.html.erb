@@ -1,22 +1,18 @@
 <table class='table table-striped'>
   <thead>
     <tr>
-      <th width="100"><%= t('global.short_name') %></th>
-      <th width="300"><%= t('global.name') %></th>
-      <th width="100"><%= t('global.contact') %></th>
-      <th width="200"><%= t('global.create_time') %></th>
+      <th width="100"><%= t('activerecord.attributes.scrinium_esm/comparison_project.short_name') %></th>
+      <th width="300"><%= t('activerecord.attributes.scrinium_esm/comparison_project.name') %></th>
+      <th width="100"><%= t('activerecord.attributes.scrinium_esm/comparison_project.contact_id') %></th>
+      <th width="200"><%= t('activerecord.attributes.scrinium_esm/comparison_project.created_at') %></th>
     </tr>
   </thead>
   <tbody>
     <% comparison_projects.each do |project| %>
-      <tr>
-        <td>
-          <%= link_to project.short_name, project %>
-        </td>
+      <tr class='clickable-row' data-href='<%= url_for project %>'>
+        <td><%= project.short_name %></td>
         <td><%= project.name %></td>
-        <td>
-          <%= link_to project.contact.name, project.contact %>
-        </td>
+        <td><%= project.contact.name %></td>
         <td><%= project.created_at %></td>
       </tr>
     <% end %>

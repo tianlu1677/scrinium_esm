@@ -19,7 +19,7 @@
       ],
       resources: [
         t('scrinium.resource'),
-        render('resources/list', resources: @comparison_project.resources)
+        render('resource_board/show', current_folder: @comparison_project.folders.first)
       ]
     }
   %>

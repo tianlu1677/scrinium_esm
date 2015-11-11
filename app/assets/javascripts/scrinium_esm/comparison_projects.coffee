@@ -3,4 +3,4 @@ $(document).on 'page:change', ->
     turnOnTab
       info: [],
       experiment_specs: [ 'add-experiment-spec' ]
-      resources: [ 'add-resource' ]
+      resources: []

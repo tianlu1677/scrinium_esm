@@ -18,7 +18,7 @@ namespace :scrinium_esm do
     print "[Notice]: Run 'db:migrate' task.\n"
     system 'rake db:migrate'
     # Add CoffeeScript and SCSS assets.
-    file_path = "#{scrinium_root}/app/assets/javascripts/engine_requires.coffee"
+    file_path = "#{scrinium_root}/app/assets/javascripts/application/engine_requires.coffee"
     FileUtils.touch file_path if not File.exist? file_path
     File.open(file_path, 'a+') do |f|
       if not f.read.match('#= require scrinium_esm/application')
@@ -26,7 +26,7 @@ namespace :scrinium_esm do
         f << "#= require scrinium_esm/application\n"
       end
     end
-    file_path = "#{scrinium_root}/app/assets/stylesheets/engine_requires.scss"
+    file_path = "#{scrinium_root}/app/assets/stylesheets/application/engine_requires.scss"
     FileUtils.touch file_path if not File.exist? file_path
     File.open(file_path, 'a+') do |f|
       if not f.read.match('//= require scrinium_esm/application')

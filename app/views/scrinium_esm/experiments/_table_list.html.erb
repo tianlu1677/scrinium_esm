@@ -1,4 +1,4 @@
-<table class='table'>
+<table class='table table-striped'>
   <thead>
     <tr>
       <th width='100'><%= t('activerecord.attributes.scrinium_esm/experiment.name') %></th>
@@ -11,11 +11,11 @@
   <tbody>
     <% experiments.each do |experiment| %>
       <% model = experiment.experimentable %>
-      <tr>
-        <td><%= link_to experiment.name, experiment %></td>
+      <tr class='clickable-row' data-href='<%= url_for experiment %>'>
+        <td><%= experiment.name %></td>
         <td><%= experiment.experiment_type.text %></td>
-        <td><%= link_to model.short_name, model %></td>
-        <td><%= link_to experiment.contact.name, experiment.contact %></td>
+        <td><%= model.short_name %></td>
+        <td><%= experiment.contact.name %></td>
         <td><%= experiment.created_at %></td>
       </tr>
     <% end %>

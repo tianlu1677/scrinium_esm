@@ -1,11 +1,12 @@
 module ScriniumEsm
   class Metric < ActiveRecord::Base
+    include Resourceable
+
     mount_uploader :logo, ImageUploader
 
     acts_as_taggable
     acts_as_taggable_on :categories
 
-    has_many :resources, as: :resourceable, dependent: :destroy
     has_many :comments, as: :commentable, dependent: :destroy
     has_many :collections, as: :collectable, dependent: :destroy
     has_many :diagnostic_results, dependent: :destroy
