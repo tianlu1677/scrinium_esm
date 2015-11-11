@@ -2,7 +2,8 @@ require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class Admin::ExperimentsController < ::Admin::ApplicationController
-  	defaults :route_prefix => 'admin'
+
+    defaults :route_prefix => 'admin'
     before_action :authenticate_user!
 
   end
