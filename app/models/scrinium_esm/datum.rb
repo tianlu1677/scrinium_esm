@@ -1,6 +1,7 @@
 module ScriniumEsm
   class Datum < ActiveRecord::Base
     extend Enumerize
+    acts_as_tenant(:organization)
 
     enumerize :datum_type, in: [
       :station_data,

@@ -1,5 +1,7 @@
 module ScriniumEsm
   class DiagnosticResult < ActiveRecord::Base
+    acts_as_tenant(:organization)
+
     has_many :resources, as: :resourceable, dependent: :destroy
     has_many :comments, as: :commentable, dependent: :destroy
     has_many :collections, as: :collectable, dependent: :destroy

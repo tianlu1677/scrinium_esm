@@ -1,6 +1,7 @@
 module ScriniumEsm
   class OcnModel < ActiveRecord::Base
     extend Enumerize
+    acts_as_tenant(:organization)
 
     enumerize :simulation_region, in: [ :global, :regional ]
     enumerize :simulation_type, in: [ :climate, :weather ]

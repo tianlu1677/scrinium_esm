@@ -1,6 +1,7 @@
 module ScriniumEsm
   class Metric < ActiveRecord::Base
     mount_uploader :logo, ImageUploader
+    acts_as_tenant(:organization)
 
     acts_as_taggable
     acts_as_taggable_on :categories

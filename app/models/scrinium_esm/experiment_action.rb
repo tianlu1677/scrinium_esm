@@ -1,6 +1,7 @@
 module ScriniumEsm
   class ExperimentAction < ActiveRecord::Base
     extend Enumerize
+    acts_as_tenant(:organization)
 
     enumerize :action_type, in: [
       :change, :add, :delete
