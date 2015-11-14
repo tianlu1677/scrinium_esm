@@ -1,4 +1,3 @@
-require_dependency "scrinium_esm/application_controller"
 
 module ScriniumEsm
   class Admin::ExperimentsController < ::Admin::ApplicationController
