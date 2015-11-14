@@ -1,6 +1,7 @@
 module ScriniumEsm
   class DiagnosticResult < ActiveRecord::Base
     include Resourceable
+    acts_as_tenant(:organization)
 
     acts_as_taggable
     acts_as_taggable_on :categories
