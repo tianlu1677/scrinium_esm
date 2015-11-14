@@ -1,0 +1,10 @@
+zh-CN:
+  activerecord:
+    models:
+      scrinium_esm/comparison_project: 模式比较计划
+    attributes:
+      scrinium_esm/comparison_project:
+        name: 计划名称
+        short_name: 计划简称
+        contact_id: 联系人
+        created_at: 创建时间

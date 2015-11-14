@@ -28,7 +28,7 @@ module ScriniumEsm
       @comparison_project = ComparisonProject.new(comparison_project_params)
 
       if @comparison_project.save
-        redirect_to [ current_user, @comparison_project ], notice: t('message.create_success', thing: t('scrinium_esm.comparison_project'))
+        redirect_to [ current_user, @comparison_project ], notice: t('message.create_success', thing: t('activerecord.models.scrinium_esm/comparison_project'))
       else
         render :new
       end
@@ -37,7 +37,7 @@ module ScriniumEsm
     # PATCH/PUT /comparison_projects/1
     def update
       if @comparison_project.update(comparison_project_params)
-        redirect_to [ current_user, @comparison_project ], notice: t('message.update_success', thing: t('scrinium_esm.comparison_project'))
+        redirect_to [ current_user, @comparison_project ], notice: t('message.update_success', thing: t('activerecord.models.scrinium_esm/comparison_project'))
       else
         render :edit
       end
@@ -46,7 +46,7 @@ module ScriniumEsm
     # DELETE /comparison_projects/1
     def destroy
       @comparison_project.destroy
-      redirect_to comparison_projects_url, notice: t('message.destroy_success', thing: t('scrinium_esm.comparison_project'))
+      redirect_to comparison_projects_url, notice: t('message.destroy_success', thing: t('activerecord.models.scrinium_esm/comparison_project'))
     end
 
     private

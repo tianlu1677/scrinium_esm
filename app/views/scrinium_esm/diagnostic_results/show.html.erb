@@ -6,5 +6,5 @@
 <% end %>
 
 <% content_for :main_block do %>
-  <%= render 'resources/list', resources: @diagnostic_result.resources %>
+  <%= render 'resource_board/show', current_folder: @diagnostic_result.folders.first %>
 <% end %>

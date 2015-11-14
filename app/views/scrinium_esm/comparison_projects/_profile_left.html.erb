@@ -10,12 +10,6 @@
     </li>
     <li>
       <%=
-        link_to fa_icon('cube', text: t('action.add')+t('scrinium.resource')),
-        [ :new, @comparison_project, :resource ], id: 'add-resource', style: 'display: none;'
-      %>
-    </li>
-    <li>
-      <%=
         link_to fa_icon('file-text-o', text: t('action.add')+t('activerecord.models.scrinium_esm/experiment_spec')),
         [ :new, @comparison_project, :experiment_spec ], id: 'add-experiment-spec', style: 'display: none;'
       %>
@@ -25,7 +19,7 @@
     <li>
       <%=
         link_to fa_icon('trash', text: t('action.delete')), @comparison_project, method: :delete,
-        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('scrinium_esm.comparison_project')) }
+        data: { confirm: t('message.are_you_sure_to_delete?', thing: t('activerecord.models.scrinium_esm/comparison_project')) }
       %>
     </li>
   <% end %>
